@@ -61,7 +61,7 @@
                 <div class="col">
                     <div class="site-logo-wrap">
                         <div class="site-logo">
-                            <a href="index.html"><img src="{{ asset('assets/frontend') }}/img/cropped-Starlit-logo.png" alt="Logo"></a>
+                            <a href="{{ route('home') }}"><img src="{{ asset('assets/frontend') }}/img/cropped-Starlit-logo.png" alt="Logo"></a>
                         </div>
                         <div class="get-support clearfix d-none">
                             <div class="get-support-icon">

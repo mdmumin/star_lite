@@ -22,10 +22,10 @@ Route::get('/properties/completed', [App\Http\Controllers\FrontendController\Pro
 
 Route::get('/gallery', [App\Http\Controllers\FrontendController\GalleryController::class, 'index'])->name('gallery');
 Route::get('/gallery/image', [App\Http\Controllers\FrontendController\GalleryController::class, 'image'])->name('gallery.image');
-Route::get('/gallery/video', [App\Http\Controllers\FrontendController\PropertiesController::class, 'wellness'])->name('gallery.video'); 
+Route::get('/gallery/video', [App\Http\Controllers\FrontendController\GalleryController::class, 'video'])->name('gallery.video'); 
 
 Route::get('/news', [App\Http\Controllers\FrontendController\NewsController::class, 'index'])->name('news');
 
-Route::get('/contact', [App\Http\Controllers\FrontendController\PropertiesController::class, 'wellness'])->name('contact');
+Route::get('/contact', [App\Http\Controllers\FrontendController\ContactController::class, 'index'])->name('contact');
 
 
