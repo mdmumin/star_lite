@@ -11,4 +11,8 @@ class NewsController extends Controller
     {
         return view('frontend.pages.news.news');
     }
+    public function news_details()
+    {
+        return view('frontend.pages.news.news_details.news_details');
+    }
 }

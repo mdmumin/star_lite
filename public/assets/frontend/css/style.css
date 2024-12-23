@@ -10562,6 +10562,12 @@ blockquote {
   background-color: var(--white);
   padding: 30px 35px 40px;
   max-width: 100%;
+
+  min-height: 350px;
+  max-height: 350px;
+  overflow: hidden;
+  
+  padding-bottom: 10px;
   border-radius: 10px;
   -webkit-box-shadow: var(--ltn__box-shadow-4);
   box-shadow: var(--ltn__box-shadow-4);
@@ -10571,7 +10577,10 @@ blockquote {
   .ltn__testimonial-item-7 .ltn__testimonial-img {
     margin-bottom: 30px; }
   .ltn__testimonial-item-7 .ltn__testimoni-info p {
-    font-size: 18px; }
+    font-size: 18px;
+
+    padding: 14px 0px; 
+  }
     .ltn__testimonial-item-7 .ltn__testimoni-info p i {
       font-size: 30px;
       position: relative;

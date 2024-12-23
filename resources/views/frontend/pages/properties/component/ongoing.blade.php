@@ -1,5 +1,5 @@
 <!-- PRODUCT SLIDER AREA START -->
-<div class="ltn__product-slider-area ltn__product-gutter pt-115 pb-50 plr--7">
+<div class="ltn__product-slider-area ltn__product-gutter pt-50 pb-50 plr--7">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
