@@ -1,5 +1,5 @@
 <!-- PAGE DETAILS AREA START (blog-details) -->
-<div class="ltn__page-details-area ltn__blog-details-area mb-120">
+<div class="ltn__page-details-area ltn__blog-details-area pt-60 mb-120">
     <div class="container">
         <div class="row">
             <div class="col-lg-8">

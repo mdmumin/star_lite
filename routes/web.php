@@ -22,6 +22,7 @@ Route::get('/properties/wellness', [App\Http\Controllers\FrontendController\Prop
 Route::get('/properties/onging', [App\Http\Controllers\FrontendController\PropertiesController::class, 'ongoing'])->name('properties.ongoing');
 Route::get('/properties/upcoming', [App\Http\Controllers\FrontendController\PropertiesController::class, 'upcoming'])->name('properties.upcoming');
 Route::get('/properties/completed', [App\Http\Controllers\FrontendController\PropertiesController::class, 'completed'])->name('properties.completed');
+Route::get('/properties/details', [App\Http\Controllers\FrontendController\PropertiesController::class, 'details'])->name('properties_details');
 
 
 Route::get('/gallery', [App\Http\Controllers\FrontendController\GalleryController::class, 'index'])->name('gallery');
@@ -45,15 +46,19 @@ Route::group(['prefix' => '', 'namespace'=>'App\Http\Controllers', 'middleware' 
     Route::post('/user/update/{id}', 'BackendController\UserController@update')->name('user_update');
     Route::post('/user/delete/{id}', 'BackendController\UserController@delete')->name('user_delete');
 
-    Route::get('/user_role/index', 'BackendController\UserRoleController@index')->name('user_role_index');
-    Route::get('/user_role/create', 'BackendController\UserRoleController@create')->name('user_role_create');
-    Route::post('/user_role/store', 'BackendController\UserRoleController@store')->name('user_role_store');
-    Route::get('/user_role/edit/{id}', 'BackendController\UserRoleController@edit')->name('user_role_edit');
-    Route::post('/user_role/update/{id}', 'BackendController\UserRoleController@update')->name('user_role_update');
-    Route::post('/user_role/delete/{id}', 'BackendController\UserRoleController@delete')->name('user_role_delete');
+    Route::get('/user/role/index', 'BackendController\UserRoleController@index')->name('user_role_index');
+    Route::get('/user/role/create', 'BackendController\UserRoleController@create')->name('user_role_create');
+    Route::post('/user/role/store', 'BackendController\UserRoleController@store')->name('user_role_store');
+    Route::get('/user/role/edit/{id}', 'BackendController\UserRoleController@edit')->name('user_role_edit');
+    Route::post('/user/role/update/{id}', 'BackendController\UserRoleController@update')->name('user_role_update');
+    Route::post('/user/role/delete/{id}', 'BackendController\UserRoleController@delete')->name('user_role_delete');
+
+
+    Route::get('home/index', 'Management\BannerController@index')->name('home_banner_index');
+    Route::get('/home/create', 'Management\BannerController@create')->name('home_banner_create');
+    Route::post('/home/store', 'Management\BannerController@store')->name('home_banner_store');
+
 });
-
-
 
 // Route::get('/admin', [App\Http\Controllers\BackendController\AdminController::class, 'index'])->middleware('admin');
 

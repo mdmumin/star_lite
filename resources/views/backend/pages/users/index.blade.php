@@ -1,62 +1,69 @@
 @extends('backend.layouts.admin')
 @section('content')
-    <div class="container">
-        <div class="page-Wrapper">
-            <div class="page-content">
-                <div class="d-flex justify-content-between from_heading_margin_bottom">
-                    <div>
-                        <a class="from_heading_text_decoration_right btn-info" href="{{ route('user_create') }}"><h4>Create user Data</h4></a> 
-                    </div>
-                    <input id="searchInput" class="form-control w-25" type="text" placeholder="Search...">
+<div class="container">
+    <div class="page-Wrapper">
+        <div class="page-content">
+            <!-- Header Section -->
+            <div class="d-flex justify-content-between align-items-center py-3 px-4" style="background-color: rgb(43, 76, 107);">
+                <div class="text-white">
+                    <h4 class="mb-0">All Users</h4>
                 </div>
-                <div class="card">
-                    <div class="card-body table-responsive">
-                        <table class="table mb-0" id="userTable">
-                            <thead>
-                                <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">name</th>
-                                    <th scope="col">Image</th>
-                                    <th scope="col">Role Serial</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Phone</th>
-                                    <th scope="col">Created at</th>
-                                    <th scope="col">Updated at</th>
-                                    <th class="text-center">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($user as $item)
-                                    <tr>
-                                        <th scope="row">{{ $item->id }}</th>
-                                        <td>{{ $item->name }}</td>
-                                        <td>
-                                            <img src="/{{ $item->image }}" height="60" alt="" srcset="">
-                                        </td>
-                                        <td>{{ $item->user_role?->title }}</td>
-                                        <td>{{ $item->email }}</td>
-                                        <td>{{ $item->phone_number }}</td>
-                                        <td>{{ $item->created_at }}</td>
-                                        <td>{{ $item->updated_at }}</td>
-                                        <td class="d-flex justify-content-center">
-                                            <a href="{{ route('user_edit', $item->id) }}"><i
-                                                    class="btn btn-primary">Edit</i></a>
-                                            <a href=""><i class="btn btn-info mx-1">View</i></a>
+                <input id="searchInput" class="form-control w-25" type="text" placeholder="Search...">
+                <div>
+                    <a class="btn btn-success btn-sm" href="{{ route('user_create') }}">
+                        <h6 class="mb-0"><i class="bi bi-plus"></i>Add New User</h6>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Table Section -->
+            <div class="table-container">
+                <div class="card-body table-responsive">
+                    <table class="table table-bordered table-hover" id="userTable">
+                        <thead class="bg-color-thead">
+                            <tr class="text-center">
+                                <th scope="col">ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Role Serial</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Created At</th>
+                                <th >Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($user as $item)
+                                <tr class="align-middle text-center">
+                                    <th scope="row">{{ $item->id }}</th>
+                                    <td>{{ $item->name }}</td>
+                                    <td>
+                                        <div >
+                                            <img class="index-img-size" src="/{{ $item->image }}" alt="User Image">
+                                        </div>
+                                    </td>
+                                    <td>{{ $item->user_role?->title }}</td>
+                                    <td>{{ $item->email }}</td>
+                                    <td>{{ $item->phone_number }}</td>
+                                    <td>{{ $item->created_at->format("d/m/y") }}</td>
+                                    <td>
+                                        <div class="d-flex justify-content-center align-items-center">
+                                            <a href="{{ route('user_edit', $item->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                                            <a href="#" class="btn btn-info btn-sm mx-2">View</a>
                                             <form action="{{ route('user_delete', $item->id) }}" method="POST" class="delete-form">
                                                 @csrf
-                                                <button class="btn btn-danger btn-delete" type="button">Delete</button>
+                                                <button class="btn btn-danger btn-sm btn-delete" type="button">Delete</button>
                                             </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Include SweetAlert2 -->
-    
 @endsection

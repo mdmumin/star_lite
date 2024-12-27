@@ -40,4 +40,9 @@ class PropertiesController extends Controller
     {
         return view('frontend.pages.properties.completed.completed');
     }
+    public function details()
+    {
+        return view('frontend.pages.properties.property_details.property_details');
+    }
+
 }

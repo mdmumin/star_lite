@@ -13,43 +13,21 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('/assets/backend') }}/css/custom.css">
+
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    <style>
-        .center-image-container {
-            display: flex;
-            /* Flexbox container */
-            justify-content: center;
-            /* Horizontally centers the image */
-            align-items: center;
-            padding-top: 40px;
-            padding-bottom: 80px;
-            /* Vertically centers the image */
-        }
-
-        .bgcolor {
-            /* background-color: #eee; */
-            background-image: url('{{ asset('assets/frontend') }}/img/bg/bgimage.jpg');
-            height: 100vh;
-            font-family: 'Poppins', sans-serif;
-            background-size: cover;
-            /* background: linear-gradient(to top, #fff 10%, rgba(93, 42, 141, 0.4) 90%) no-repeat */
-        }
-
-        .bgcl {
-            background-color: #0000005e;
-            padding-bottom: 50px;
-            border-radius: 5px solid rgb(0, 51, 255);
-        }
-        .btna{
-            text-decoration: none;
-            color: lightgoldenrodyellow;
-        }
-        .btna:hover{
-            color: rgb(85, 244, 207);
-        }
-    </style>
+   <style>
+    .bgcolor {
+    /* background-color: #eee; */
+    background-image: url('{{ asset('assets/frontend') }}/img/bg/bgimage.jpg');
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background-size: cover;
+    /* background: linear-gradient(to top, #fff 10%, rgba(93, 42, 141, 0.4) 90%) no-repeat */
+}
+   </style>
 </head>
 
 <body class="bgcolor">

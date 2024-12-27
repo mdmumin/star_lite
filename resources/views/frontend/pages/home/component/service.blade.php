@@ -1,6 +1,6 @@
  <!-- FEATURE AREA START ( Feature - 6) -->
- <div class="ltn__feature-area section-bg-1 pt-120 pb-90 mb-120---">
-    <div class="container">
+ <div class="container">
+    <div class="ltn__feature-area section-bg-1 pt-120 pb-90 mb-120---">
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title-area ltn__section-title-2--- text-center">
@@ -50,6 +50,6 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </div> 
+ </div>
 <!-- FEATURE AREA END -->

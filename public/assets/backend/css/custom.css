@@ -1,0 +1,36 @@
+.bg-color-thead tr th{
+    background-color: #dbdbdb !important;
+}
+.form-background {
+    background-color: white;
+    margin-top: 10px;
+    padding: 30px 30px;
+    border: 2px solid rgb(230, 224, 224);
+}
+
+.center-image-container {
+    display: flex;
+    /* Flexbox container */
+    justify-content: center;
+    /* Horizontally centers the image */
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 80px;
+    /* Vertically centers the image */
+}
+
+.bgcl {
+    background-color: #0000005e;
+    padding-bottom: 50px;
+    border-radius: 5px solid rgb(0, 51, 255);
+}
+.btna{
+    text-decoration: none;
+    color: lightgoldenrodyellow;
+}
+.btna:hover{
+    color: rgb(85, 244, 207);
+}
+.invert{
+    filter: invert(1);
+}

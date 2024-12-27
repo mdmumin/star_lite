@@ -2,11 +2,11 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6 bgcl">
-                <div class="">
+        <div class="row justify-content-center align-items-center vh-100">
+            <div class="col-md-6" >
+                <div class="bgcl">
                     <div class="center-image-container">
-                        <a href="{{ route('home') }}"><img src="{{ asset('assets/frontend') }}/img/cropped-Starlit-logo.png"
+                        <a href="{{ route('home') }}"><img class="invert" src="{{ asset('assets/frontend') }}/img/cropped-Starlit-logo.png"
                                 alt="Logo"></a>
                     </div>
 
@@ -15,7 +15,6 @@
                             @csrf
 
                             <div class="row mb-3 ">
-                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="text-white" for="email">{{ __('Email Address') }}</label>
                                         <input id="email" type="email"
@@ -29,11 +28,9 @@
                                             </span>
                                         @enderror
                                     </div>
-                                </div>
                             </div>
 
-                            <div class="row mb-3">                                
-                                <div class="col-md-12">
+                            <div class="row mb-3">    
                                     <div class="form-group">
                                         <label class="text-white" for="password">{{ __('Password') }}</label>
                                         
@@ -45,7 +42,6 @@
                                             </span>
                                         @enderror
                                     </div>
-                                </div>
                             </div>
 
                             <div class="row mb-3">

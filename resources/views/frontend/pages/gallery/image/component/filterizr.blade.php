@@ -1,10 +1,23 @@
-<div class="row">
-    <div class="col-lg-12 pb-10">
-        <button class="filter-btn" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="1">Category 1</button>
-        <button class="filter-btn" data-filter="2">Category 2</button>
-        <button class="filter-btn" data-filter="3">Category 3</button>
-        <button class="filter-btn" data-filter="4">Category 4</button>
+<div class="mb-25">
+    <!-- Navigation Bar -->
+    <div class="filterizer-font-size">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" onclick="setActive(this)" href="#">All</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" onclick="setActive(this)" href="#">Residential</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" onclick="setActive(this)" href="#">Commercial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" onclick="setActive(this)" href="#">Luxury</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" onclick="setActive(this)" href="#">Land </a>
+            </li>
+        </ul>
     </div>
 </div>
 

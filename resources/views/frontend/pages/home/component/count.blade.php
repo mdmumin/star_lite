@@ -1,6 +1,6 @@
   <!-- COUNTER UP AREA START -->
-  <div class="ltn__counterup-area section-bg-1 pt-120 pb-70">
-    <div class="container">
+  <div class="container">
+    <div class="ltn__counterup-area section-bg-1 pt-120 pb-70">
         <div class="row">
             <div class="col-md-3 col-sm-6 align-self-center">
                 <div class="ltn__counterup-item text-color-white---">
@@ -41,5 +41,5 @@
             </div>
         </div>
     </div>
-</div>
+  </div>
 <!-- COUNTER UP AREA END -->

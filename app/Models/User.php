@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use App\Models\Backend\Admin\UserManagement\UserRole;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -54,4 +55,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(UserRole::class,'role_serial','role_serial');
     }
-}
+//     public function getCreatedAtAttribute($value)
+//     {
+        
+//         return Carbon::parse($value)->format('d-m-Y H:i:s');
+//     }
+ }

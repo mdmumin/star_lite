@@ -14,7 +14,7 @@
             <div class="col-lg-4">
                 <div class="ltn__product-item ltn__product-item-4 text-center---">
                     <div class="product-img">
-                        <a href="product-details.html"><img src="{{ asset('assets/frontend') }}/img/product-3/1.jpg" alt="#"></a>
+                        <a href="{{ route('properties_details') }}"><img src="{{ asset('assets/frontend') }}/img/product-3/1.jpg" alt="#"></a>
                         <div class="product-badge">
                             <ul>
                                 <li class="sale-badge bg-green">For Rent</li>
@@ -31,10 +31,10 @@
                             <div class="product-img-gallery">
                                 <ul>
                                     <li>
-                                        <a href="product-details.html"><i class="fas fa-camera"></i> 4</a>
+                                        <a href="{{ route('properties_details') }}"><i class="fas fa-camera"></i> 4</a>
                                     </li>
                                     <li>
-                                        <a href="product-details.html"><i class="fas fa-film"></i> 2</a>
+                                        <a href="{{ route('properties_details') }}"><i class="fas fa-film"></i> 2</a>
                                     </li>
                                 </ul>
                             </div>
@@ -44,7 +44,7 @@
                         <div class="product-price">
                             <span>$34,900<label>/Month</label></span>
                         </div>
-                        <h2 class="product-title"><a href="product-details.html">New Apartment Nice View</a></h2>
+                        <h2 class="product-title"><a href="{{ route('properties_details') }}">New Apartment Nice View</a></h2>
                         <div class="product-description">
                             <p>Beautiful Huge 1 Family House In Heart Of <br>
                                 Westbury. Newly Renovated With New Wood</p>
@@ -83,7 +83,7 @@
                                         <i class="flaticon-heart-1"></i></a>
                                 </li>
                                 <li>
-                                    <a href="product-details.html" title="Product Details">
+                                    <a href="{{ route('properties_details') }}" title="Product Details">
                                         <i class="flaticon-add"></i>
                                     </a>
                                 </li>
@@ -96,7 +96,7 @@
             <div class="col-lg-4">
                 <div class="ltn__product-item ltn__product-item-4 text-center---">
                     <div class="product-img">
-                        <a href="product-details.html"><img src="{{ asset('assets/frontend') }}/img/product-3/2.jpg" alt="#"></a>
+                        <a href="{{ route('properties_details') }}"><img src="{{ asset('assets/frontend') }}/img/product-3/2.jpg" alt="#"></a>
                         <div class="product-badge">
                             <ul>
                                 <li class="sale-badge bg-green---">For Sale</li>
@@ -113,10 +113,10 @@
                             <div class="product-img-gallery">
                                 <ul>
                                     <li>
-                                        <a href="product-details.html"><i class="fas fa-camera"></i> 4</a>
+                                        <a href="{{ route('properties_details') }}"><i class="fas fa-camera"></i> 4</a>
                                     </li>
                                     <li>
-                                        <a href="product-details.html"><i class="fas fa-film"></i> 2</a>
+                                        <a href="{{ route('properties_details') }}"><i class="fas fa-film"></i> 2</a>
                                     </li>
                                 </ul>
                             </div>
@@ -126,7 +126,7 @@
                         <div class="product-price">
                             <span>$34,900<label>/Month</label></span>
                         </div>
-                        <h2 class="product-title"><a href="product-details.html">Modern Apartments</a></h2>
+                        <h2 class="product-title"><a href="{{ route('properties_details') }}">Modern Apartments</a></h2>
                         <div class="product-description">
                             <p>Beautiful Huge 1 Family House In Heart Of <br>
                                 Westbury. Newly Renovated With New Wood</p>
@@ -165,7 +165,7 @@
                                         <i class="flaticon-heart-1"></i></a>
                                 </li>
                                 <li>
-                                    <a href="product-details.html" title="Product Details">
+                                    <a href="{{ route('properties_details') }}" title="Product Details">
                                         <i class="flaticon-add"></i>
                                     </a>
                                 </li>
@@ -178,7 +178,7 @@
             <div class="col-lg-4">
                 <div class="ltn__product-item ltn__product-item-4 text-center---">
                     <div class="product-img">
-                        <a href="product-details.html"><img src="{{ asset('assets/frontend') }}/img/product-3/3.jpg" alt="#"></a>
+                        <a href="{{ route('properties_details') }}"><img src="{{ asset('assets/frontend') }}/img/product-3/3.jpg" alt="#"></a>
                         <div class="product-badge">
                             <ul>
                                 <li class="sale-badge bg-green">For Rent</li>
@@ -195,10 +195,10 @@
                             <div class="product-img-gallery">
                                 <ul>
                                     <li>
-                                        <a href="product-details.html"><i class="fas fa-camera"></i> 4</a>
+                                        <a href="{{ route('properties_details') }}"><i class="fas fa-camera"></i> 4</a>
                                     </li>
                                     <li>
-                                        <a href="product-details.html"><i class="fas fa-film"></i> 2</a>
+                                        <a href="{{ route('properties_details') }}"><i class="fas fa-film"></i> 2</a>
                                     </li>
                                 </ul>
                             </div>
@@ -208,7 +208,7 @@
                         <div class="product-price">
                             <span>$34,900<label>/Month</label></span>
                         </div>
-                        <h2 class="product-title"><a href="product-details.html">Comfortable Apartment</a></h2>
+                        <h2 class="product-title"><a href="{{ route('properties_details') }}">Comfortable Apartment</a></h2>
                         <div class="product-description">
                             <p>Beautiful Huge 1 Family House In Heart Of <br>
                                 Westbury. Newly Renovated With New Wood</p>
@@ -247,7 +247,7 @@
                                         <i class="flaticon-heart-1"></i></a>
                                 </li>
                                 <li>
-                                    <a href="product-details.html" title="Product Details">
+                                    <a href="{{ route('properties_details') }}" title="Product Details">
                                         <i class="flaticon-add"></i>
                                     </a>
                                 </li>

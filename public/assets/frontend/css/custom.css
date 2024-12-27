@@ -1,0 +1,35 @@
+.nav-item a {
+    color: black;
+    margin-right: 15px;
+    text-decoration: none;
+}
+.nav-item:hover a{
+    font-weight: bold;
+    color: #1588c8 !important;
+    border-bottom: 2px solid #1588c8;
+}
+.nav-item a.active {
+    font-weight: bold;
+    color: #1588c8 !important;
+    border-bottom: 2px solid #1588c8;
+}
+.filterizer-font-size{
+    font-size: 25px;
+}
+.footer_background_color{
+    background-color: #171b2a;
+}
+.invert{
+    filter: invert(1);
+}
+.text-wh ul li a{
+color: white;
+}
+a{
+    text-decoration: none;
+}
+@media (min-width: 1600px) {
+    .ltn__slide-item-2 {
+        max-height: 1500px;
+    }
+}

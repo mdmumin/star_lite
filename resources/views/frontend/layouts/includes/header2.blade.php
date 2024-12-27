@@ -207,7 +207,7 @@
         </div>
         <div class="ltn__utilize-menu">
             <ul>
-                <li><a href="{{ route('home') }}">Home</a></li>
+                <li class="active"><a  href="{{ route('home') }}">Home</a></li>
                 <li><a href="{{ route('about') }}">About</a></li>
                 <li><a href="{{ route('properties') }}">Property</a>
                     <ul class="sub-menu">
@@ -221,36 +221,7 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
-        <div class="ltn__utilize-buttons ltn__utilize-buttons-2">
-            <ul>
-                <li>
-                    <a href="account.html" title="My Account">
-                        <span class="utilize-btn-icon">
-                            <i class="far fa-user"></i>
-                        </span>
-                        My Account
-                    </a>
-                </li>
-                <li>
-                    <a href="wishlist.html" title="Wishlist">
-                        <span class="utilize-btn-icon">
-                            <i class="far fa-heart"></i>
-                            <sup>3</sup>
-                        </span>
-                        Wishlist
-                    </a>
-                </li>
-                <li>
-                    <a href="cart.html" title="Shoping Cart">
-                        <span class="utilize-btn-icon">
-                            <i class="fas fa-shopping-cart"></i>
-                            <sup>5</sup>
-                        </span>
-                        Shoping Cart
-                    </a>
-                </li>
-            </ul>
-        </div>
+       
         <div class="ltn__social-media-2">
             <ul>
                 <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>

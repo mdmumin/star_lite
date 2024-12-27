@@ -1,6 +1,6 @@
  <!-- ABOUT US AREA START -->
- <div class="ltn__about-us-area pt-40 pb-90 ">
-    <div class="container">
+ <div class="container">
+    <div class="ltn__about-us-area pt-40 pb-90 ">
         <div class="row">
             <div class="col-lg-6 align-self-center">
                 <div class="about-us-info-wrap">
@@ -56,5 +56,5 @@
             </div>
         </div>
     </div>
-</div>
+ </div>
 <!-- ABOUT US AREA END -->

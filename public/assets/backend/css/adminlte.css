@@ -16252,8 +16252,13 @@ html.maximized-card {
 .from_heading_text_decoration_right:hover {
     color: rgb(85, 244, 207);
 }
-.from-background {
-    /* background-color: ghostwhite; */
-    padding: 30px 30px;
-    border: 2px solid rgb(230, 224, 224);
+
+.from_heading_padding {
+    padding: 10px 20px;
+}
+.index-img-size {
+    height: 40px;
+}
+.indde{
+  background: black;
 }

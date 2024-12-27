@@ -1,6 +1,7 @@
 <!-- PRODUCT SLIDER AREA START -->
 <div class="ltn__product-slider-area ltn__product-gutter pt-50 pb-50 plr--7">
-    <div class="container-fluid">
+    <div class="container">
+        <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title-area ltn__section-title-2--- text-center">
@@ -102,6 +103,7 @@
             
             <!--  -->
         </div>
+    </div>
     </div>
 </div>
 <!-- PRODUCT SLIDER AREA END -->

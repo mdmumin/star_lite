@@ -1,4 +1,5 @@
-<footer class="ltn__footer-area  ">
+<footer class="ltn__footer-area footer_background_color">
+   <div class="container">
     <div class="footer-top-area  section-bg-2 plr--5">
         <div class="container-fluid">
             <div class="row">
@@ -6,7 +7,7 @@
                     <div class="footer-widget footer-about-widget">
                         <div class="footer-logo">
                             <div class="site-logo">
-                                <img src="{{ asset('assets/frontend') }}/img/cropped-Starlit-logo.png" alt="Logo">
+                                <img class="invert" src=" {{ asset('assets/frontend') }}/img/cropped-Starlit-logo.png" alt="Logo">
                             </div>
                         </div>
                         <p>Leave us a note and we will get back to you for a free consultation</p>
@@ -24,8 +25,8 @@
                                     <div class="footer-address-icon">
                                         <i class="icon-call"></i>
                                     </div>
-                                    <div class="footer-address-info">
-                                        <p><a href="tel:+88 01978 800 842">+88 01978 800 842</a></p>
+                                    <div class="footer-address">
+                                        <p><a class="text-white" href="tel:+88 01978 800 842">+88 01978 800 842</a></p>
                                     </div>
                                 </li>
                                 <li>
@@ -33,7 +34,7 @@
                                         <i class="icon-mail"></i>
                                     </div>
                                     <div class="footer-address-info">
-                                        <p><a href="mailto:starlithomesltd@gmail.com">starlithomesltd@gmail.com</a></p>
+                                        <p><a class="text-white" href="mailto:starlithomesltd@gmail.com">starlithomesltd@gmail.com</a></p>
                                     </div>
                                 </li>
                             </ul>
@@ -51,7 +52,7 @@
                 <div class="col-xl-2 col-md-6 col-sm-6 col-12">
                     <div class="footer-widget footer-menu-widget clearfix">
                         <h4 class="footer-title">Company</h4>
-                        <div class="footer-menu">
+                        <div class="footer-menu text-wh">
                             <ul>
                                 <li><a href="about.html">About</a></li>
                                 <li><a href="blog.html">Blog</a></li>
@@ -66,7 +67,7 @@
                 <div class="col-xl-2 col-md-6 col-sm-6 col-12">
                     <div class="footer-widget footer-menu-widget clearfix">
                         <h4 class="footer-title">Services</h4>
-                        <div class="footer-menu">
+                        <div class="footer-menu text-wh">
                             <ul>
                                 <li><a href="order-tracking.html">Order tracking</a></li>
                                 <li><a href="wishlist.html">Wish List</a></li>
@@ -81,7 +82,7 @@
                 <div class="col-xl-2 col-md-6 col-sm-6 col-12">
                     <div class="footer-widget footer-menu-widget clearfix">
                         <h4 class="footer-title">Customer Care</h4>
-                        <div class="footer-menu">
+                        <div class="footer-menu text-wh">
                             <ul>
                                 <li><a href="login.html">Login</a></li>
                                 <li><a href="account.html">My account</a></li>
@@ -121,7 +122,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-12 align-self-center">
-                    <div class="ltn__copyright-menu text-end">
+                    <div class="ltn__copyright-menu text-end text-wh">
                         <ul>
                             <li><a href="#">Terms & Conditions</a></li>
                             <li><a href="#">Claim</a></li>
@@ -132,4 +133,5 @@
             </div>
         </div>
     </div>
+   </div>
 </footer>
