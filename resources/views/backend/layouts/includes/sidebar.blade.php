@@ -17,8 +17,65 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item"> <a href="#" class="nav-link"> <i
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                         {{-- <i class="nav-icon bi bi-person-bounding-box"></i> --}}
+                        <p>
+                            Management
+                            <i class="nav-arrow bi bi-chevron-right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item"> <a href="#" class="nav-link"> <i
                             class="nav-icon bi bi-person-bounding-box"></i>
+                        <p>
+                            Home Banner
+                            <i class="nav-arrow bi bi-chevron-right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('home_banner_index') }}" class="nav-link"> <i
+                                    class="nav-icon bi bi-circle"></i>
+                                <p>All Banner</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('home_banner_create') }}" class="nav-link"> <i
+                                    class="nav-icon bi bi-circle"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link"> <i class="nav-icon bi bi-person-bounding-box"></i>
+                                <p>
+                                    Team
+                                    <i class="nav-arrow bi bi-chevron-right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('user_index') }}" class="nav-link"> <i
+                                            class="nav-icon bi bi-circle"></i>
+                                        <p>All users</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('user_create') }}" class="nav-link"> <i
+                                            class="nav-icon bi bi-circle"></i>
+                                        <p>Create</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link"> <i class="nav-icon bi bi-person-bounding-box"></i>
                         <p>
                             User management
                             <i class="nav-arrow bi bi-chevron-right"></i>
@@ -60,28 +117,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item"> <a href="#" class="nav-link"> <i
-                    class="nav-icon bi bi-person-bounding-box"></i>
-                <p>
-                    Home Banner
-                    <i class="nav-arrow bi bi-chevron-right"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="{{ route('home_banner_index') }}" class="nav-link"> <i
-                            class="nav-icon bi bi-circle"></i>
-                        <p>All Banner</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('home_banner_create') }}" class="nav-link"> <i
-                            class="nav-icon bi bi-circle"></i>
-                        <p>Create</p>
-                    </a>
-                </li>
-            </ul>
-        </li>
+                
                 <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-pencil-square"></i>
                         <p>
                             Forms
@@ -111,7 +147,8 @@
 
 
                 <li class="nav-header">DOCUMENTATIONS</li>
-                <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-ui-checks-grid"></i>
+                <li class="nav-item"> <a href="#" class="nav-link"> <i
+                            class="nav-icon bi bi-ui-checks-grid"></i>
                         <p>
                             Components
                             <i class="nav-arrow bi bi-chevron-right"></i>

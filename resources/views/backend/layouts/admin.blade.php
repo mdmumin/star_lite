@@ -43,7 +43,12 @@
         <!--begin::App Main-->
         <main class="app-main"> <!--begin::App Content Header-->
 
+
+
             @yield('content')
+
+
+
 
         </main> <!--end::App Main-->
         <!--begin::Footer-->
@@ -106,7 +111,7 @@
     </script> <!-- apexcharts -->
 
     {{-- search start table JavaScript --}}
-    <script>
+    {{-- <script>
         // Select the search input and table
         const searchInput = document.getElementById('searchInput');
         const table = document.getElementById('userTable');
@@ -132,39 +137,10 @@
                 row.style.display = match ? '' : 'none';
             }
         });
-    </script>
+    </script> --}}
     {{-- search end table JavaScript --}}
 
-    {{-- Start Data Delete JavaScript --}}
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Get all delete buttons
-            const deleteButtons = document.querySelectorAll('.btn-delete');
-
-            deleteButtons.forEach(button => {
-                button.addEventListener('click', function (e) {
-                    e.preventDefault();
-
-                    const form = this.closest('.delete-form');
-
-                    Swal.fire({
-                        title: 'Are you sure?',
-                        text: "This action cannot be undone!",
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Yes, delete it!'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            form.submit(); // Submit the form if confirmed
-                        }
-                    });
-                });
-            });
-        });
-    </script>
-    {{-- End Data Delete JavaScript --}}
+  
     {{-- start logout JavaScript --}}
     <script>
         function confirmLogout() {

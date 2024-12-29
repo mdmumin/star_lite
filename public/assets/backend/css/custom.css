@@ -7,6 +7,12 @@
     padding: 30px 30px;
     border: 2px solid rgb(230, 224, 224);
 }
+.from-heading-background-color{
+    background-color: rgb(43, 76, 107);
+}
+.from-heading-background-padding {
+    padding: 15px 10px;
+}
 
 .center-image-container {
     display: flex;

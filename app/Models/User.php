@@ -55,6 +55,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(UserRole::class,'role_serial','role_serial');
     }
+    public function scopeActive($query){
+        return $query->where('status', 1);
+    }
 //     public function getCreatedAtAttribute($value)
 //     {
         

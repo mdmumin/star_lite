@@ -45,6 +45,7 @@ Route::group(['prefix' => '', 'namespace'=>'App\Http\Controllers', 'middleware' 
     Route::get('/user/edit/{id}', 'BackendController\UserController@edit')->name('user_edit');
     Route::post('/user/update/{id}', 'BackendController\UserController@update')->name('user_update');
     Route::post('/user/delete/{id}', 'BackendController\UserController@delete')->name('user_delete');
+    Route::get('/user/search', 'BackendController\UserController@search')->name('user_search');
 
     Route::get('/user/role/index', 'BackendController\UserRoleController@index')->name('user_role_index');
     Route::get('/user/role/create', 'BackendController\UserRoleController@create')->name('user_role_create');

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('image', 100)->nullable(); 
             $table->string('password')->nullable(); 
             $table->integer('creator')->nullable();
+            $table->integer('status')->default(1);
             $table->rememberToken(); 
             $table->timestamps(); 
         });
