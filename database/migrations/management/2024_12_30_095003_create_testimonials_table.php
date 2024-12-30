@@ -11,16 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('banners', function (Blueprint $table) {
+        Schema::create('testimonials', function (Blueprint $table) {
             $table->id();
-
-            // table fields
-            $table->string('title')->nullable();
-            $table->string('sub_title')->nullable();
-            $table->text('sort_descripton')->nullable();
-            $table->string('video_url')->nullable();
-            $table->string('button_title')->nullable();
-            $table->string('button_url')->nullable();
+            
+            $table->string('name', 100);
+            $table->string('designation', 100);
+            $table->string('image', 100)->nullable();
+            $table->text('comment')->nullable();
 
             $table->unsignedBigInteger('creator')->nullable();
             $table->string('slug',100)->nullable();
@@ -34,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('banners');
+        Schema::dropIfExists('testimonials');
     }
 };

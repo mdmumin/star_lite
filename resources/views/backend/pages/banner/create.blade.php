@@ -8,7 +8,7 @@
                 <div class="from-heading-background-padding from-heading-background-color text-white">
                     <div class="row">
                         <div class="col-md-8">
-                            <h4 class="mb-0">Edit User</h4>
+                            <h4 class="mb-0">Add new Banner</h4>
                         </div>
                         <div class="col-md-4">
                             <div class=" text-end">
@@ -37,33 +37,18 @@
             <div class="col-md-6">
                 <div class="card shadow">
                     <div class="card-body">
-                        <h5 class="card-title text-center mb-4">Add New User</h5>
-                        <form action="{{ route('user_store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('home_banner_store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <!-- Name Field -->
+                            <!-- Title Field -->
                             <div class="mb-3">
-                                <label for="title" class="form-label">title</label>
+                                <label for="title" class="form-label">Title</label>
                                 <input type="text" name="title" class="form-control" id="title"
                                     value="{{ old('title') }}">
                                 @error('title')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
-
-                            <!-- Role Serial Field -->
-                            {{-- <div class="mb-3">
-                                <label for="role_serial" class="form-label">Role Serial</label>
-                                <select name="role_serial" class="form-control" id="role_serial">
-                                    @foreach ($user_roles as $item)
-                                        <option value="{{ $item->role_serial }}">{{ $item->title }}</option>
-                                    @endforeach
-                                </select>
-                                @error('role_serial')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                            </div> --}}
-
-                            <!-- Email Field -->
+                            <!-- subtitle Field -->
                             <div class="mb-3">
                                 <label for="subtitle" class="form-label">subtitle</label>
                                 <input type="text" name="subtitle" class="form-control" id="subtitle"
@@ -72,38 +57,45 @@
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
-
-                            <!-- Phone Number Field -->
+                            <!-- Textarea Field -->
                             <div class="mb-3">
-                                <label for="phone" class="form-label">Phone Number</label>
-                                <input type="text" name="phone" class="form-control" id="phone"
-                                    value="{{ old('phone') }}">
-                                @error('phone')
+                                <label for="short_description" class="form-label">Short Description</label>
+                                <textarea name="short_description" id="short_description" class="form-control" rows="4"
+                                    placeholder="Enter short description here...">{{ old('short_description') }}</textarea>
+                                @error('short_description')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
-
-                            <!-- Password Field -->
+                            <!-- Button Text Field -->
                             <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" name="password" class="form-control" id="password">
-                                @error('password')
+                                <label for="button_text" class="form-label">Button Text</label>
+                                <input type="text" name="button_text" class="form-control" id="button_text"
+                                    value="{{ old('button_text') }}">
+                                @error('button_text')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
-
-                            <!-- Image Upload Field -->
+                            <!-- Button Url Field -->
                             <div class="mb-3">
-                                <label for="image">Choose an Image:</label>
-                                <input type="file" id="image" name="image" onchange="previewImage(event)">
-                                <br>
-                                <img class="imgform" id="image-preview" src="#" alt="Image Preview"
-                                    style="display:none;">
-                                <br>
+                                <label for="button_url" class="form-label">Button Text</label>
+                                <input type="text" name="button_url" class="form-control" id="button_url"
+                                    value="{{ old('button_url') }}">
+                                @error('button_url')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
-
+                            <div class="mb-3">
+                                <label for="status" class="form-label">Status</label>
+                                <select name="status" id="status" class="form-select">
+                                    <option value="1" {{ old('status') == 'active' ? 'selected' : '' }}>Active</option>
+                                    <option value="0" {{ old('status') == 'inactive' ? 'selected' : '' }}>Inactive</option>
+                                </select>
+                                @error('status')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
                             <!-- Submit Button -->
-                            <div class="">
+                            <div class="mb-3">
                                 <button type="submit" class="btn btn-success px-4">Submit</button>
                             </div>
                         </form>

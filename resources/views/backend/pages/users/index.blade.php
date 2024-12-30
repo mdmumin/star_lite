@@ -5,22 +5,21 @@
         <div class="page-Wrapper">
             <div class="page-content">
                 <!-- Header Section -->
-                <div
-                    class="d-flex justify-content-between align-items-center from-heading-background-padding from-heading-background-color">
-                    <div class="text-white">
-                        <h4 class="mb-0">All Users</h4>
-                    </div>
-                    <form action="{{ route('user_search') }}" method="GET">
-                        <input id="searchInput" name="search" class="form-control w-60" type="text"
+                <form action="{{ route('user_search') }}" method="GET">
+                    <div
+                        class="d-flex justify-content-between align-items-center from-heading-background-padding from-heading-background-color">
+                        <div class="text-white">
+                            <h4 class="mb-0">All Users</h4>
+                        </div>
+                        <input id="searchInput" name="search" class="form-control w-25" type="text"
                             placeholder="Search..." value="{{ request('search') }}">
-                    </form>
-                    <div>
-                        <a class="btn btn-success btn-sm" href="{{ route('user_create') }}">
-                            <h6 class="mb-0"><i class="bi bi-plus"></i>Add New User</h6>
-                        </a>
+                        <div>
+                            <a class="btn btn-success btn-sm" href="{{ route('user_create') }}">
+                                <h6 class="mb-0"><i class="bi bi-plus"></i>Add New User</h6>
+                            </a>
+                        </div>
                     </div>
-                </div>
-
+                </form>
                 <!-- Table Section -->
                 <div class="row">
                     <div class="col-12">

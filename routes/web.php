@@ -55,9 +55,9 @@ Route::group(['prefix' => '', 'namespace'=>'App\Http\Controllers', 'middleware' 
     Route::post('/user/role/delete/{id}', 'BackendController\UserRoleController@delete')->name('user_role_delete');
 
 
-    Route::get('home/index', 'Management\BannerController@index')->name('home_banner_index');
-    Route::get('/home/create', 'Management\BannerController@create')->name('home_banner_create');
-    Route::post('/home/store', 'Management\BannerController@store')->name('home_banner_store');
+    Route::get('home/banner/index', 'Management\BannerController@index')->name('home_banner_index');
+    Route::get('/home/banner/create', 'Management\BannerController@create')->name('home_banner_create');
+    Route::post('/home/banner/store', 'Management\BannerController@store')->name('home_banner_store');
 
 });
 

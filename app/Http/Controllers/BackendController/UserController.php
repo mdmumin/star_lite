@@ -19,15 +19,17 @@ class UserController extends Controller
         return view('backend.pages.users.index', compact('user'));
     }
 
-    public function search(Request $request){
+    public function search(Request $request)
+    {
         $search = $request->input('search');
 
         $user = User::when($search, function ($query, $search) {
-            return $query->where('name', 'like', '%' . $search . '%');
-        })->paginate(2); 
-    
+            return $query->where('name', 'like', '%' . $search . '%')
+                ->orWhere('id', 'like', '%' . $search . '%')
+                ->orWhere('email', 'like', '%' . $search . '%');
+        })->paginate(10);
+
         return view('backend.pages.users.index', compact('user'));
-       
     }
     // public function search(Request $request){
     //     $user = User::where('name', 'LIKE', '%'. $request->search_string .'%')
@@ -51,18 +53,13 @@ class UserController extends Controller
     }
     public function store(Request $request)
     {
-
         $this->validate($request, [
             'name' => 'required',
             'role_serial' => 'required',
             'email' => 'required|unique:user_roles,role_serial',
             'phone' => 'required',
-            'password' => 'required',
-            'string',
-            'min:8',
-            'confirmed',
-            'image' => 'required',
-            'image'
+            'password' => 'required' ,'string', 'min:8','confirmed',
+            'image' => 'required','image'
         ]);
 
 
@@ -84,6 +81,7 @@ class UserController extends Controller
             $image->resize(300, 200);
             $image->save(public_path('upload/user/' . $fileName));
             $user->image = 'upload/user/' . $fileName;
+            $user->save();
         }
         $user->save();
         return redirect()->back()->with('success', 'Success!');

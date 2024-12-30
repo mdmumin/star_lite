@@ -40,3 +40,6 @@
 .invert{
     filter: invert(1);
 }
+.all-data-search{
+    width: 200px;
+}
