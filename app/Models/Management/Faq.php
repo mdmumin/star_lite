@@ -4,7 +4,7 @@ namespace App\Models\Management;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Faqs extends Model
+class Faq extends Model
 {
-    //
+    protected $guarded = [];
 }

@@ -4,7 +4,8 @@
     "scripts": {
         "build": "vite build",
         "dev": "vite",
-        "server": "php artisan serve --port 9001 --host  0.0.0.0"
+        "server": "php artisan serve --port 9001 --host  0.0.0.0",
+        "dbrefresh": "php artisan migrate:fresh && php artisan migrate --path=\"database/migrations/*\" && php artisan migrate --path=\"database/migrations/*/*\" && php artisan migrate --path=\"database/migrations/*/*/*\" --seed "
     },
     "devDependencies": {
         "@popperjs/core": "^2.11.6",

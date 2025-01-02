@@ -13,7 +13,8 @@ class BannerSeeder extends Seeder
      */
     public function run(): void
     {
-        Banner::create([
+       $data = [
+        [
             'title' => 'Find Your Dream House By Us',
             'sub_title' => 'Real Estate Agency',
             'sort_descripton' => 'This video covers the basics of setting up a starlite project.',
@@ -22,6 +23,10 @@ class BannerSeeder extends Seeder
             'creator' => '0',
             'slug' => 'super_admin',
             'status' => 1,
-     ]);
+        ] 
+     ];
+     foreach ($data as $item) {
+        Banner::create($item);
+     }
     }
 }

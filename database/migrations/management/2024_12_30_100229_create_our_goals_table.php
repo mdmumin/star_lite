@@ -13,7 +13,21 @@ return new class extends Migration
     {
         Schema::create('our_goals', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+
+            // Content fields
+            $table->string('title', 100)->nullable();
+            $table->string('icon', 255)->nullable();
+            $table->string('sub_title', 100)->nullable();
+            $table->text('short_description')->nullable();
+            $table->text('description')->nullable();
+
+            $table->string('slug', 255)->nullable()->unique();
+
+            // Meta fields
+            $table->unsignedBigInteger('creator')->nullable();
+            $table->integer('status')->default(1);
+
+            $table->timestamps(); 
         });
     }
 

@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('title',100)->nullable();
             $table->string('icon', 255)->nullable();
-            $table->integer('amount',100)->nullable();
-            $table->string('slug', 255)->nullable()->unique();
+            $table->integer('amount')->nullable();
+
+            $table->string('slug', 255)->unique()->nullable();
 
             // Meta fields
             $table->unsignedBigInteger('creator')->nullable();

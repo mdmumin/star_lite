@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('contact_message_replies', function (Blueprint $table) {
             $table->id();
+            $table->string('subject',100);
+            $table->text('message');
+            $table->boolean('is_seen')->default(false);
+
+            $table->string('creator',100)->nullable();
+            $table->string('slug',100)->nullable();
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

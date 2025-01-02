@@ -13,12 +13,12 @@ class GlanceSeeder extends Seeder
      */
     public function run(): void
     {
-        Glance::create([
+        $data = [
             [
                 'title' => 'Complete Project',
                 'icon' => '#',
                 'amount' => '22',
-                'slug' => 'about-us-title',
+                'slug' => 'about-us-titlesdg',
                 'creator' => 1,
                 'status' => 1,
             ],
@@ -27,7 +27,7 @@ class GlanceSeeder extends Seeder
                 'title' => 'Project Ongoing',
                 'icon' => '#',
                 'amount' => '12',
-                'slug' => 'about-us-title',
+                'slug' => 'about-us-titlerty',
                 'creator' => 1,
                 'status' => 1,
             ],
@@ -35,7 +35,7 @@ class GlanceSeeder extends Seeder
                 'title' => 'Happy customers',
                 'icon' => '#',
                 'amount' => '166',
-                'slug' => 'about-us-title',
+                'slug' => 'about-us-titlegfg',
                 'creator' => 1,
                 'status' => 1,
             ],
@@ -43,11 +43,14 @@ class GlanceSeeder extends Seeder
                 'title' => 'Years of experience',
                 'icon' => '#',
                 'amount' => '17',
-                'slug' => 'about-us-title',
+                'slug' => 'about-us-titlebgd',
                 'creator' => 1,
                 'status' => 1,
             ],
             
-     ]);
+     ];
+     foreach ($data as $item) {
+        Glance::create($item);
+     }
     }
 }

@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('about_us_points', function (Blueprint $table) {
             $table->id();
+            $table->string('title',100)->nullable();
+            $table->string('icon', 255)->nullable();
+            $table->integer('amount')->nullable();
+            $table->string('slug', 255)->unique()->nullable();
+
+            // Meta fields
+            $table->unsignedBigInteger('creator')->nullable();
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

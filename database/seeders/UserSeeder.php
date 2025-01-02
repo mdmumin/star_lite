@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -16,7 +17,7 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         DB::table('users')->truncate();
-        DB::table('users')->insert([
+        $data = [
             [
                 'name' => 'Admin',
                 'role_serial' => '1',
@@ -45,6 +46,9 @@ class UserSeeder extends Seeder
                 'created_at' => Carbon::now()
 
             ]
-        ]);
+        ];
+        foreach ($data as $item) {
+            User::create($item);
+        }
     }
 }

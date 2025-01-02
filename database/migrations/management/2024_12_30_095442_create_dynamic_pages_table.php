@@ -13,6 +13,22 @@ return new class extends Migration
     {
         Schema::create('dynamic_pages', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('parent_id')->default(0); 
+            $table->string('title', 255)->nullable();
+            $table->string('page_url', 255)->unique(); 
+            $table->string('subtitle', 255)->nullable();
+            $table->text('description')->nullable();
+            $table->string('image', 255)->nullable();
+            $table->string('meta_title', 255)->nullable();
+            $table->text('meta_description')->nullable();
+            $table->text('meta_keywords')->nullable();
+            $table->string('meta_image', 255)->nullable();
+            $table->text('page_css')->nullable(); 
+            $table->text('page_script')->nullable();
+
+            $table->string('creator',100)->nullable();
+            $table->string('slug',100)->nullable();
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

@@ -1,11 +1,11 @@
 <?php
 
-namespace Database\Seeders\Management;
+namespace Database\Seeders\Property;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class Faqs extends Seeder
+class PropertyKeyFloorPlanCategoryContentSeeder extends Seeder
 {
     /**
      * Run the database seeds.

@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('setting_values', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('setting_title_id')->nullable();
+            $table->string('title', 100)->nullable();
+            $table->text('value')->nullable();
+            $table->bigInteger('creator')->unsigned()->nullable();
+            $table->string('slug', 50)->nullable();
+            $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
         });
     }
