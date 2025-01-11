@@ -19,15 +19,17 @@ Route::prefix('v1')
     ->namespace('App\Http\Controllers')
     ->group(function () {
 
+        /** test api for all management */
         Route::prefix('/test')
             ->group(function () {
-                Route::get('/all', 'TestApiController@users');
-                Route::post('/store', 'TestApiController@store');
-                Route::post('/update', 'TestApiController@update');
-                Route::post('/soft-delete', 'TestApiController@soft_delete');
-                Route::post('/restore', 'TestApiController@restore');
-                Route::post('/destroy', 'TestApiController@destroy');
-                Route::post('/bulk-import', 'TestApiController@bulk_import');
-                Route::get('/{id}', 'TestApiController@show');
+                Route::get('/all', 'Management\BlogCategory\Controller@all');
+                Route::post('/store', 'Management\BlogCategory\Controller@store');
+                Route::post('/update', 'Management\BlogCategory\Controller@update');
+                Route::post('/soft-delete', 'Management\BlogCategory\Controller@soft_delete');
+                Route::post('/restore', 'Management\BlogCategory\Controller@restore');
+                Route::post('/destroy', 'Management\BlogCategory\Controller@destroy');
+                Route::post('/bulk-import', 'Management\BlogCategory\Controller@bulk_import');
+                Route::get('/{id}', 'Management\BlogCategory\Controller@show');
             });
-        });
+
+    });
