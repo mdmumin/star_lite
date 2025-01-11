@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class PropertyLikes extends Model
 {
-    //
+    protected $guarded = [];
 }

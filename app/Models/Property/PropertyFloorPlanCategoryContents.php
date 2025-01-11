@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class PropertyFloorPlanCategoryContents extends Model
 {
-    //
+    protected $guarded = [];
 }

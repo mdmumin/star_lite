@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('property_comments', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('property_id');
+            $table->text('comment');
+            $table->unsignedBigInteger('parent_id')->nullable();
+
+
+            $table->unsignedBigInteger('creator')->nullable();
+            $table->string('slug',100)->nullable();
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

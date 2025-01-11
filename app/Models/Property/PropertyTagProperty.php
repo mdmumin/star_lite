@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class PropertyTagProperty extends Model
 {
-    //
+    protected $guarded = [];
 }

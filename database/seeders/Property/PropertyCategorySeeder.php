@@ -18,7 +18,7 @@ class PropertyCategorySeeder extends Seeder
             [
                 'title' => 'Residential Properties',
                 'cover_image' => 'residential_properties.jpg',
-                'creator' => 'Admin',
+                'creator' => '1',
                 'slug' => Str::slug('Residential Properties'),
                 'status' => 1,
                 
@@ -26,7 +26,7 @@ class PropertyCategorySeeder extends Seeder
             [
                 'title' => 'Commercial Properties',
                 'cover_image' => 'commercial_properties.jpg',
-                'creator' => 'Admin',
+                'creator' => '1',
                 'slug' => Str::slug('Commercial Properties'),
                 'status' => 1,
                 
@@ -34,7 +34,7 @@ class PropertyCategorySeeder extends Seeder
             [
                 'title' => 'Eco-friendly Properties',
                 'cover_image' => 'eco_friendly_properties.jpg',
-                'creator' => 'Admin',
+                'creator' => '1',
                 'slug' => Str::slug('Eco-friendly Properties'),
                 'status' => 1,
                 

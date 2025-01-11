@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('property_details_title_id');
             $table->text('value');
 
-            $table->string('creator',100)->nullable();
+            $table->unsignedBigInteger('creator')->nullable();
             $table->string('slug',100)->nullable();
             $table->integer('status')->default(1);
             $table->timestamps();

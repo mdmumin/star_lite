@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class PropertyKeyFeatureValues extends Model
 {
-    //
+    protected $guarded = [];
 }

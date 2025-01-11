@@ -11,8 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('property_tag_properties', function (Blueprint $table) {
+        Schema::create('blog_likes', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('blog_id');
+            $table->date('date');
+
+            $table->unsignedBigInteger('creator')->nullable();
+            $table->string('slug',100)->nullable();
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }
@@ -22,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('property_tag_properties');
+        Schema::dropIfExists('blog_likes');
     }
 };

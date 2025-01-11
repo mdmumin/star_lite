@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class PropertyComments extends Model
 {
-    //
+    protected $guarded = [];
 }

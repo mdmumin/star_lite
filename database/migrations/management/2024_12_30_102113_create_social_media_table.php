@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('icon', 100)->nullable();
             $table->string('url', 255)->default('#');
 
-            $table->string('creator',100)->nullable();
+            $table->unsignedBigInteger('creator')->nullable();
             $table->string('slug',100)->nullable();
             $table->integer('status')->default(1);
             $table->timestamps();

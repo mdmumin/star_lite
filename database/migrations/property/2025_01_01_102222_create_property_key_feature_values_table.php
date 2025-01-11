@@ -13,6 +13,17 @@ return new class extends Migration
     {
         Schema::create('property_key_feature_values', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('property_id');
+            $table->unsignedBigInteger('property_key_feature_id');
+            $table->string('icon')->nullable();
+            $table->string('title',100);
+            $table->text('value');
+            $table->enum('type', ['string', 'text', 'file']);
+
+            $table->unsignedBigInteger('creator')->nullable();
+            $table->string('slug',100)->nullable();
+            $table->integer('status')->default(1);
+
             $table->timestamps();
         });
     }

@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('property_likes', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('property_id');
+            $table->date('date');
+
+            $table->unsignedBigInteger('creator')->nullable();
+            $table->string('slug',100)->nullable();
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

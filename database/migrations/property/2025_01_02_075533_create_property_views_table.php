@@ -13,6 +13,16 @@ return new class extends Migration
     {
         Schema::create('property_views', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('property_id');
+            $table->date('date');
+            $table->integer('total_count')->default(0);
+            $table->string('ip', 45)->nullable();
+
+            $table->unsignedBigInteger('creator')->nullable();
+            $table->string('slug',100)->nullable();
+            $table->integer('status')->default(1);
+            
             $table->timestamps();
         });
     }

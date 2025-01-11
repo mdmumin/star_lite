@@ -16,22 +16,25 @@ return new class extends Migration
             $table->string('title', 255);
             $table->string('cover_image', 255)->nullable();
 
-            $table->string('creator',100)->nullable();
+            $table->unsignedBigInteger('creator')->nullable();
             $table->string('slug',100)->nullable();
             $table->integer('status')->default(1);
             
             $table->timestamps();
         });
-        Schema::create('property_category_property', function (Blueprint $table) {
+
+        Schema::create('property_category_properties', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('property_id');
             $table->unsignedBigInteger('property_category_id');
 
-            $table->string('creator',100)->nullable();
+            $table->unsignedBigInteger('creator')->nullable();
             $table->string('slug',100)->nullable();
             $table->integer('status')->default(1);
 
             $table->timestamps();
+
+            
         });
     }
 
@@ -41,6 +44,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('property_categories');
-        Schema::dropIfExists('property_category_property');
+        Schema::dropIfExists('property_category_properties');
     }
 };

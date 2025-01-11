@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('message');
             $table->boolean('is_seen')->default(false);
 
-            $table->string('creator',100)->nullable();
+            $table->unsignedBigInteger('creator')->nullable();
             $table->string('slug',100)->nullable();
             $table->integer('status')->default(1);
             $table->timestamps();

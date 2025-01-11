@@ -17,7 +17,7 @@ class PropertiesSeeder extends Seeder
         $data = [
             [
                 'title' => 'Luxury Villas in Starlite Heights',
-                'creator' => 'Admin',
+                'creator' => '1',
                 'short_description' => 'Exclusive villas with stunning views of the city.',
                 'full_description' => 'Discover the epitome of luxury living in Starlite Heights. These villas feature modern architecture, spacious layouts, and top-notch amenities for an unparalleled lifestyle.',
                 'cover_image' => 'luxury_villas.jpg',
@@ -38,7 +38,7 @@ class PropertiesSeeder extends Seeder
 
             [
                 'title' => 'Starlite City Apartments',
-                'creator' => 'Admin',
+                'creator' => '1',
                 'short_description' => 'Affordable and modern apartments in the heart of the city.',
                 'full_description' => 'Starlite City Apartments offer modern living spaces for young professionals and families. Located in the city center, these apartments are close to all essential services and entertainment hubs.',
                 'cover_image' => 'city_apartments.jpg',
@@ -59,7 +59,7 @@ class PropertiesSeeder extends Seeder
 
             [
                 'title' => 'Eco-friendly Housing in Starlite Green',
-                'creator' => 'Admin',
+                'creator' => '1',
                 'short_description' => 'Sustainable and eco-friendly homes with beautiful landscapes.',
                 'full_description' => 'Starlite Green offers a perfect blend of modern architecture and sustainability. These eco-friendly homes are designed with green technologies and offer a peaceful living environment.',
                 'cover_image' => 'eco_housing.jpg',

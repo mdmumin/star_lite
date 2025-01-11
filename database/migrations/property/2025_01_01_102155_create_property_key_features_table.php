@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('property_key_features', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('property_id');
+            $table->string('title',100);
+            $table->text('short_description')->nullable();
+            $table->enum('type', ['key_value', 'points']);
+            
+            $table->unsignedBigInteger('creator')->nullable();
+            $table->string('slug',100)->nullable();
+            $table->integer('status')->default(1);
+
             $table->timestamps();
         });
     }

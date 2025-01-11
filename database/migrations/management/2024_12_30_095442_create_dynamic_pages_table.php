@@ -26,7 +26,7 @@ return new class extends Migration
             $table->text('page_css')->nullable(); 
             $table->text('page_script')->nullable();
 
-            $table->string('creator',100)->nullable();
+            $table->unsignedBigInteger('creator')->nullable();
             $table->string('slug',100)->nullable();
             $table->integer('status')->default(1);
             $table->timestamps();

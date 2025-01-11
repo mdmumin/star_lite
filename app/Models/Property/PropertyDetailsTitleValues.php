@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class PropertyDetailsTitleValues extends Model
 {
-    //
+    protected $guarded = [];
 }

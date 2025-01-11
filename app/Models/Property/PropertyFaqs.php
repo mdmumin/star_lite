@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class PropertyFaqs extends Model
 {
-    //
+    protected $guarded = [];
 }

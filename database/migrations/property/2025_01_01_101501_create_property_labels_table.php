@@ -15,18 +15,18 @@ return new class extends Migration
             $table->id();
             $table->string('title', 255);
 
-            $table->string('creator',100)->nullable();
+            $table->unsignedBigInteger('creator')->nullable();
             $table->string('slug',100)->nullable();
             $table->integer('status')->default(1);
             $table->timestamps();
         });
 
-        Schema::create('property_label_property', function (Blueprint $table) {
+        Schema::create('property_label_properties', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('property_id');
             $table->unsignedBigInteger('property_label_id');
 
-            $table->string('creator',100)->nullable();
+            $table->unsignedBigInteger('creator')->nullable();
             $table->string('slug',100)->nullable();
             $table->integer('status')->default(1);
             $table->timestamps();
@@ -39,6 +39,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('property_labels');
-        Schema::dropIfExists('property_label_property');
+        Schema::dropIfExists('property_label_properties');
     }
 };

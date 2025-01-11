@@ -25,7 +25,7 @@ return new class extends Migration
             $table->ipAddress('ip')->nullable();
             $table->string('location',250)->nullable();
 
-            $table->string('creator',100)->nullable();
+            $table->unsignedBigInteger('creator')->nullable();
             $table->string('slug',100)->nullable();
             $table->integer('status')->default(1);
             $table->timestamps();
