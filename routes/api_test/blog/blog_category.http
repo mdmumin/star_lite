@@ -1,9 +1,9 @@
 @protocol = http://
 # @hostname = qbank.techparkit.org
-@hostname = 127.0.0.1:8000
-@endpoint = api/v1/test
+@hostname = 192.168.0.131:9001
+@endpoint = api/v1/blog/category
 @url = {{protocol}}{{hostname}}/{{endpoint}}
-@token = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMjFjYjQ0OWYxZjg4NGExZTQyYzY3YmYyMWVmNzM3ZDAzNGIwYWVjNTY5ODBjZDlkZDdkYzM4N2Y5MTQ2ZjRlNTdmMWY2ZGMxODMxZmMyZmEiLCJpYXQiOjE3MzY2MDQ2NzAuNzQyNDI1LCJuYmYiOjE3MzY2MDQ2NzAuNzQyNDMsImV4cCI6MTc2ODE0MDY3MC43MDY2MzEsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.CNObmIHKUUqZu9kuVox4nYCOLFXjKDnYrfRFHN5bJzKb_OKncRc1x59rJ6QzqEV7ngPyiSXfsvxozprgfe7Bbr3yZFaw39-UmsEUP4rhaG4kBG2uJOxUC3UIxAB9ni5uWdFfB59qGYtG_kZELPml8-Uhp2S6FUzyupk1q3JG0oyk2V7NQD4c5o3v170brIVodPbfTk4h9KzIQY5Sk_1x8K-idy0J4Kb5Uar8HK6ectBdDpHbVBZ6rD54-fa8-ceVTqBpSpuEhyT7jo_cz0heVjziNs51GJAdDBKSuvljzUeE2tTJ_VO5q4045GvO-UVmc3cZDqDMBNL_i3upPyBAQNKSnxqHTF9Pdt-1VWEwDOgDetJHOFnNRyIc2lf3ZOkxCpudlQ67Ct3Ag8GsXMLkQb98-8NAILN09rF6KkI85dFMYDxi2f2Oqvi_PUrIB8c1E5IFa3Eezqel3aQMl3AEoAkJocWFSLPyNOup-9VyWjTOR0JQbIusl1LDlAwEe5le3hOJeEtlZiZysOSSQEmE95tqPgNIh864V2eZlytCIZ-bIm2XnbCTkBJi05hVa3SXnKE7zZadM4IOeEdh1W3Qe4hF5MDkWHqgSXmVWspSE6In-MWQQMojPdhfvO23Fs2sYRTtSQKSKrex7efqtqEaEJPUN-zX1-kzSD4dOB5prp0
+@token = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI2IiwianRpIjoiMDM1MTg1YWViYjExYzBmZDQ3OGExMTM2MjQ4MjI5MDAxYThkMzFiM2M4NDA0N2EzMWNlYmQ5ODAwYjBlOTRkMzdjOGQ3MzYxODEzYTA2ZDAiLCJpYXQiOjE3MzY2ODMzNTMuMzM5NzQ1LCJuYmYiOjE3MzY2ODMzNTMuMzM5NzUsImV4cCI6MTc2ODIxOTM1My4zMjEwMDEsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.Iix39QOQ9v7CCc_zSAQZnGXA_pAHRH3tFat9IpYqHyAhVd51DYmvzp61lqlkXnggEzAKxzXujmMNaNsZ4h6lsmR7GOxCop4o5tNXIxoqAjQcsRMoAb5aPTywW00VwaBuufKUjAnhh5g-ky5eo5thm5qACk6mgGMegvN6eJGUlSX_Esrz7Gj19KK-qldsYe-83fG8fBAj84MmCIsm_y4T3VcP0xVPZkyg8_hgKlC9WI3NgAcTyck8hxtuR6E4U17CWecuQ8HbFB8m922pEsXx9A--ofv7TKs0i-aYN6aVtgL8f2labu4pv5mATI2_Ge3i129nr4QK8RHgj7RhaDWKYxX2v3_UXSoLZy2KuCSZieDZmgPK89R1pnBtWOtaI0J3HdxE1MAzkKQiZciVAJF6vtfsyeqWXXUQFYsSi6My2aYlg8d0F0sQUqAFz840H7qsAXMJCQIF5F5_8AQ3-NIK7cWTMFaZaS_Fmqf8UUdSdvUYAdT1MAGaU44_1V-0UYSeNRiz1LohOJk_OjcYzvHQztWE4MfzWizZ40keo_i7z-zfgoFg57uJDfuHLF1p7N4XNlM3hETgTIRHXwLeW3TZ4ON_zIw5Bou4NQfzf4ZKOGIDT2h3gjv2vXVS3rwm7YcSUQdhWa0Q5QZcTpDzvGj-hblcKjO8x7NFjxUPHwcR5Zo
 @createdAt = {{$timestamp}}
 # @modifiedBy = {{$processEnv USERNAME}}
 
@@ -15,7 +15,7 @@
 ### will return:  { }
 GET {{url}}/all?paginate=2&orderBy=id&orderByType=ASC HTTP/1.1
 content-type: application/json
-# Authorization: {{token}}
+Authorization: {{token}}
 
 ### get single data
 # @prompt id enter id
@@ -24,13 +24,15 @@ content-type: application/json
 Authorization: {{token}}
 
 ### store data (pb)
-# @prompt title enter title
+# @prompt title enter title 
+# @prompt image enter image 
 POST {{url}}/store HTTP/1.1
 content-type: application/json
 Authorization: {{token}}
 
 {
-    "title": "{{title}}"
+    "title": "{{title}}",
+    "image": "{{image}}"
 }
 
 

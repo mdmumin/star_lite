@@ -1,0 +1,84 @@
+@protocol = http://
+# @hostname = qbank.techparkit.org
+@hostname = 192.168.0.131:9001
+@endpoint = api/v1/blog/view
+@url = {{protocol}}{{hostname}}/{{endpoint}}
+@token = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI1IiwianRpIjoiNDMxNGUxZjkxMDg5ODhhMzVhNGVkY2YxY2I5NzhkNDQ0MmFhNTUzZmE4OWUzYWFkNzE3MjAzYTQ1NDIwYzg5MDJkNTZhNzk0OTg4YTEwMzEiLCJpYXQiOjE3MzY2ODE4OTEuMzY5Njc4LCJuYmYiOjE3MzY2ODE4OTEuMzY5NjgxLCJleHAiOjE3NjgyMTc4OTEuMzQzMjgyLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.E26BpTfFuQLKwkstfNhtmj0dmXfqsocrs4YN5ndIfHh7Bm7tdmphMcD0PInXOHg6kTb4okW2sw9hsRLz5ULw1X1LmIHROKeroPJ4KZukxFxbizUpGvQAEgLTG9vmebLLMSzTpfahpUI4V3Ga9fflcJjN2f0nJREE64xMTbUG6Ivko9_wZTupNvExbugVXkMg2Vt0G_zIGl6qdG9kKjSgSwsJm6Wdc3Fv5vjws9QnEc1nfxx743CCunNXwEePDJei3e1PrlT-kKTFggtzE7sjEN_nlNcsOupgPlD69kRq8Rd5dCrkDZSPOzWspf3vrL_JR87YDskaaooKlCsXQxWlFWsxj-oIgaIcOexCn2Rq2-miFRA3YBOg2H88ftq_kCUr1cSv-6AXFleMLJhmyfENjmYgbkDxV1g7Qq7E-QMsUAC0ZUfYUJJvS1cL_AVqVcgSN-RJKCDKebuAqdByhF8yKVJG-g5TFA0uTqyKK7e7dIsyNkSBCo-COGlkOIgpQbsbjWyFCRu18Tf21bSgLNEOEoy_pwk1geVvh73gyB4QcwaT2QVItTXUks-1vRT0We8vC-df7J6WWDor05BXUhUo_dE26w7fhRAr40sTDiJwXtaTOVhg5ILprQYi-Nv7NgPIH04Q63nqliLlh18ACzUWmMFYg8zEjqagg6hdWAA886c
+@createdAt = {{$timestamp}}
+# @modifiedBy = {{$processEnv USERNAME}}
+
+#                                               #
+#------------------ API TESTING ----------------#
+#                                               #
+
+### get all data without pagination
+### will return:  { }
+GET {{url}}/all?paginate=2&orderBy=id&orderByType=ASC HTTP/1.1
+content-type: application/json
+Authorization: {{token}}
+
+### get single data
+# @prompt id enter id
+GET {{url}}/{{id}} HTTP/1.1
+content-type: application/json
+Authorization: {{token}}
+
+### store data (pb)
+# @prompt title enter title 
+POST {{url}}/store HTTP/1.1
+content-type: application/json
+Authorization: {{token}}
+
+{
+    "title": "{{title}}"
+}
+
+
+### update data (pb)
+# @prompt id enter id
+# @prompt title enter title
+POST {{url}}/update HTTP/1.1
+content-type: application/json
+Authorization: {{token}}
+
+{
+    "id": "{{id}}",
+    "title": "{{title}}"
+}
+
+#### soft delete
+# @prompt id enter id
+POST {{url}}/soft-delete HTTP/1.1
+content-type: application/json
+Authorization: {{token}}
+
+{
+    "id": "{{id}}"
+}
+
+### restore
+# @prompt id enter id
+POST {{url}}/restore HTTP/1.1
+content-type: application/json
+Authorization: {{token}}
+
+{
+    "id": "{{id}}"
+}
+
+#### permenently delete
+# @prompt id enter id
+POST {{url}}/destroy HTTP/1.1
+content-type: application/json
+Authorization: {{token}}
+
+{
+    "id": "{{id}}"
+}
+
+
+
+### bulk-import
+GET {{url}}/bulk-import HTTP/1.1
+content-type: application/json
+Authorization: {{token}}

@@ -63,6 +63,10 @@ Route::group(['prefix' => '', 'namespace' => 'App\Http\Controllers', 'middleware
     Route::get('home/banner/index', 'Management\BannerController@index')->name('home_banner_index');
     Route::get('/home/banner/create', 'Management\BannerController@create')->name('home_banner_create');
     Route::post('/home/banner/store', 'Management\BannerController@store')->name('home_banner_store');
+
+    Route::get('home/blog/index', 'BackendController\BlogManagement\BlogController@index')->name('blog_index');
+    Route::get('/home/banner/create', 'Management\BannerController@create')->name('home_banner_create');
+    Route::post('/home/banner/store', 'Management\BannerController@store')->name('home_banner_store');
 });
 
 // Route::get('/admin', [App\Http\Controllers\BackendController\AdminController::class, 'index'])->middleware('admin');

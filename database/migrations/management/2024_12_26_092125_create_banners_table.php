@@ -17,7 +17,7 @@ return new class extends Migration
             // table fields
             $table->string('title',100)->nullable();
             $table->string('sub_title',100)->nullable();
-            $table->text('sort_descripton')->nullable();
+            $table->text('short_descripton')->nullable();
             $table->string('button_text',100)->nullable();
             $table->string('button_url',100)->nullable();
 

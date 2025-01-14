@@ -141,7 +141,7 @@ class UserController extends Controller
                 ->save(public_path('upload/user/' . $fileName), 100);
 
 
-            $user->image = 'upload/user/' . $fileName;
+            $user->$image = 'upload/user/' . $fileName;
 
 
             $user->update();

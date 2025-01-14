@@ -54,7 +54,7 @@ class BannerController extends Controller
         $home_banner = new Banner();
         $home_banner->title = $request->title;
         $home_banner->sub_title = $request->subtitle;
-        $home_banner->sort_descripton = $request->short_description;
+        $home_banner->short_descripton = $request->short_description;
         $home_banner->button_text = $request->button_text;
         $home_banner->button_url = $request->button_url;
         $home_banner->creator = Auth::user()->id;
