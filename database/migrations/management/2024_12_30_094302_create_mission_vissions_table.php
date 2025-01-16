@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('mission_vissions', function (Blueprint $table) {
             $table->id();
-            $table->string('type', 100);
+            $table->string('type', 100)->nullable();
             $table->string('image', 100)->nullable();
             $table->text('description')->nullable();
 

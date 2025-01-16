@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('property_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 255);
-            $table->string('cover_image', 255)->nullable();
+            $table->string('title', 255)->nullable();
+            $table->string('image', 255)->nullable();
 
             $table->unsignedBigInteger('creator')->nullable();
             $table->string('slug',100)->nullable();

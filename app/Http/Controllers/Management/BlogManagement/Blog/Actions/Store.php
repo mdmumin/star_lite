@@ -22,7 +22,7 @@ class Store
             'seo_title' => ['nullable'],
             'seo_keyword' => ['nullable'],
             'seo_description' => ['nullable'],
-            'status' => ['required', 'in:0,1'],
+            'status' => ['nullable', 'in:0,1'],
         ], []);
 
         if ($validator->fails()) {
@@ -46,19 +46,20 @@ class Store
         $data->seo_keyword = request()->seo_keyword;
         $data->seo_description = request()->seo_description;
         $data->status = request()->status ?? 1;
-        $data->slug = request()->title .'-'.rand(99990,100000);
+        $data->slug = request()->title . '-' . rand(99990, 100000);
 
         if (request()->hasFile('cover_image')) {
             $file = request()->file('cover_image');
             $fileName = time() . '_' . $file->getClientOriginalName();
+            $filePath = public_path('upload/blog/' . $fileName);
+
             $file->move(public_path('upload/blog'), $fileName);
-            $cover_image = Image::make(public_path('upload/blog/' . $fileName));
-            $cover_image->resize(700, 400);
-            $cover_image->save(public_path('upload/blog/' . $fileName));
+            $coverImage = Image::make($filePath);
+            $coverImage->resize(700, 400)->save($filePath);
+
             $data->cover_image = 'upload/blog/' . $fileName;
-            $data->save();
         }
-        
+
         $data->save();
 
         return api_response(

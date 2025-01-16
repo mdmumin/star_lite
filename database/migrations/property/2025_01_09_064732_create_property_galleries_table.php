@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('property_galleries', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('property_id');
-            $table->string('title',100);
+            $table->string('title',100)->nullable();
             $table->text('description')->nullable();
-            $table->string('image',100);
+            $table->string('image',100)->nullable();
             $table->boolean('is_featured')->default(false);
 
             $table->unsignedBigInteger('creator')->nullable();

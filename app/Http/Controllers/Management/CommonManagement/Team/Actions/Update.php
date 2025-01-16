@@ -25,18 +25,18 @@ class Update
 
             // Validation rules
             $rules = [
-                'name' => ['required', 'string', 'max:100'],
-                'designation' => ['nullable', 'string', 'max:100'],
+                'name' => ['required'],
+                'designation' => ['nullable'],
                 'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
-                'contact_number' => ['nullable', 'string', 'max:100'],
+                'contact_number' => ['nullable'],
                 'email' => ['required', 'email', 'max:100', 'unique:teams,email,' . $team->id],
                 'short_description' => ['nullable', 'string'],
                 'description' => ['nullable', 'string'],
-                'facebook' => ['nullable', 'string', 'max:100'],
-                'linkedin' => ['nullable', 'string', 'max:100'],
-                'instagram' => ['nullable', 'string', 'max:100'],
-                'whatsapp' => ['nullable', 'string', 'max:100'],
-                'telegram' => ['nullable', 'string', 'max:100'],
+                'facebook' => ['nullable'],
+                'linkedin' => ['nullable'],
+                'instagram' => ['nullable'],
+                'whatsapp' => ['nullable'],
+                'telegram' => ['nullable'],
                 'status' => ['nullable', 'integer', 'in:0,1'],
             ];
 
@@ -52,20 +52,27 @@ class Update
                 );
             }
 
-            // Update the team member's details
             $team->name = request()->name;
             $team->designation = request()->designation;
 
             if (request()->hasFile('image')) {
-                // Delete the old image if it exists
                 if ($team->image && file_exists(public_path($team->image))) {
                     unlink(public_path($team->image));
                 }
 
                 $file = request()->file('image');
                 $fileName = time() . '_' . $file->getClientOriginalName();
-                $file->move(public_path('upload/teams'), $fileName);
-                $team->image = 'upload/teams/' . $fileName;
+                $filePath = 'upload/teams/' . $fileName;
+
+
+                Image::make($file)
+                    ->fit(700, 500, function ($constraint) {
+                        $constraint->aspectRatio();
+                        $constraint->upsize();
+                    })
+                    ->save(public_path($filePath), 90);
+
+                $team->image = $filePath;
             }
 
             $team->contact_number = request()->contact_number;

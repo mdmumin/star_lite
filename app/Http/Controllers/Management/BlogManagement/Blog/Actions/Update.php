@@ -33,7 +33,7 @@ class Update{
             'seo_title' => ['nullable'],
             'seo_keyword' => ['nullable'],
             'seo_description' => ['nullable'],
-            'status' => ['required', 'in:0,1'],
+            'status' => ['nullable', 'in:0,1'],
         ];
     
         $validator = Validator::make(request()->all(), $rules, []);
@@ -51,21 +51,11 @@ class Update{
         $data->creator = Auth::user()->id;
         $data->short_description = request()->short_description;
         $data->full_description = request()->full_description;
-        $data->is_published = request()->is_published ?? false;
-        $data->publish_date = request()->publish_date;
-        $data->slug = request()->slug;
-        $data->seo_title = request()->seo_title;
-        $data->seo_keyword = request()->seo_keyword;
-        $data->seo_description = request()->seo_description;
-        $data->status = request()->status ?? 1;       
-        $data->update();
-
+        
         if (request()->hasFile('cover_image')) {
-
-            if (!empty($user->cover_image) && file_exists(public_path($data->cover_image))) {
+            if ($data->cover_image && file_exists(public_path($data->cover_image))) {
                 unlink(public_path($data->cover_image));
             }
-
 
             $file = request()->file('cover_image');
             $fileName = time() . '_' . $file->getClientOriginalName();
@@ -77,14 +67,19 @@ class Update{
                     $constraint->aspectRatio();
                     $constraint->upsize();
                 })
-                ->save(public_path($filePath), 100);
-
+                ->save(public_path($filePath), 90);
 
             $data->cover_image = $filePath;
-
-
-            $data->update();
         }
+        $data->is_published = request()->is_published ?? false;
+        $data->publish_date = request()->publish_date;
+        $data->slug = request()->slug;
+        $data->seo_title = request()->seo_title;
+        $data->seo_keyword = request()->seo_keyword;
+        $data->seo_description = request()->seo_description;
+        $data->status = request()->status ?? 1;       
+        $data->update();
+
     
         return $data;
     }

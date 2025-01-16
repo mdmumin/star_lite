@@ -14,7 +14,7 @@ class Store
     {
         $validator = Validator::make(request()->all(), [
             'name' => ['required'],
-            'designation' => ['required'],
+            'designation' => ['nullable'],
             'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
             'contact_number' => ['nullable'],
             'email' => ['required', 'email', 'max:100', 'unique:teams,email'],
@@ -41,10 +41,17 @@ class Store
         $team->name = request()->name;
         $team->designation = request()->designation;
 
-        if (request()->hasFile('image')) {
+         // Handle cover image upload
+         if (request()->hasFile('image')) {
             $file = request()->file('image');
             $fileName = time() . '_' . $file->getClientOriginalName();
+            $filePath = public_path('upload/teams/' . $fileName);
+
+            // Save and resize the image
             $file->move(public_path('upload/teams'), $fileName);
+            $image = Image::make($filePath);
+            $image->resize(700, 400)->save($filePath);
+
             $team->image = 'upload/teams/' . $fileName;
         }
 

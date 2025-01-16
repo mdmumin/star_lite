@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('property_faqs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('property_id');
-            $table->string('title',100);
+            $table->string('title',100)->nullable();
             $table->text('description')->nullable();
 
             $table->unsignedBigInteger('creator')->nullable();

@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('contact_messages', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('property_id')->nullable();
-            $table->string('name',100);
-            $table->string('email',100);
+            $table->string('name',100)->nullable();
+            $table->string('email',100)->nullable();
             $table->string('profession',200)->nullable();
-            $table->string('subject',100);
+            $table->string('subject',100)->nullable();
             $table->string('contact_number',100);
             $table->text('message');
             $table->boolean('is_seen')->default(false);

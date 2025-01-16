@@ -1,0 +1,91 @@
+@protocol = http://
+# @hostname = qbank.techparkit.org
+@hostname = 192.168.0.131:9001
+@endpoint = api/v1/social/media
+@url = {{protocol}}{{hostname}}/{{endpoint}}
+@token = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI2IiwianRpIjoiMDM1MTg1YWViYjExYzBmZDQ3OGExMTM2MjQ4MjI5MDAxYThkMzFiM2M4NDA0N2EzMWNlYmQ5ODAwYjBlOTRkMzdjOGQ3MzYxODEzYTA2ZDAiLCJpYXQiOjE3MzY2ODMzNTMuMzM5NzQ1LCJuYmYiOjE3MzY2ODMzNTMuMzM5NzUsImV4cCI6MTc2ODIxOTM1My4zMjEwMDEsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.Iix39QOQ9v7CCc_zSAQZnGXA_pAHRH3tFat9IpYqHyAhVd51DYmvzp61lqlkXnggEzAKxzXujmMNaNsZ4h6lsmR7GOxCop4o5tNXIxoqAjQcsRMoAb5aPTywW00VwaBuufKUjAnhh5g-ky5eo5thm5qACk6mgGMegvN6eJGUlSX_Esrz7Gj19KK-qldsYe-83fG8fBAj84MmCIsm_y4T3VcP0xVPZkyg8_hgKlC9WI3NgAcTyck8hxtuR6E4U17CWecuQ8HbFB8m922pEsXx9A--ofv7TKs0i-aYN6aVtgL8f2labu4pv5mATI2_Ge3i129nr4QK8RHgj7RhaDWKYxX2v3_UXSoLZy2KuCSZieDZmgPK89R1pnBtWOtaI0J3HdxE1MAzkKQiZciVAJF6vtfsyeqWXXUQFYsSi6My2aYlg8d0F0sQUqAFz840H7qsAXMJCQIF5F5_8AQ3-NIK7cWTMFaZaS_Fmqf8UUdSdvUYAdT1MAGaU44_1V-0UYSeNRiz1LohOJk_OjcYzvHQztWE4MfzWizZ40keo_i7z-zfgoFg57uJDfuHLF1p7N4XNlM3hETgTIRHXwLeW3TZ4ON_zIw5Bou4NQfzf4ZKOGIDT2h3gjv2vXVS3rwm7YcSUQdhWa0Q5QZcTpDzvGj-hblcKjO8x7NFjxUPHwcR5Zo
+@createdAt = {{$timestamp}}
+# @modifiedBy = {{$processEnv USERNAME}}
+
+#                                               #
+#------------------ API TESTING ----------------#
+#                                               #
+
+### get all data without pagination
+### will return:  { }
+GET {{url}}/all?paginate=2&orderBy=id&orderByType=ASC HTTP/1.1
+content-type: application/json
+Authorization: {{token}}
+
+### get single data
+# @prompt id enter id
+GET {{url}}/{{id}} HTTP/1.1
+content-type: application/json
+Authorization: {{token}}
+
+### store data (pb)
+# @prompt title enter title
+# @prompt url enter url 
+
+POST http://192.168.0.131:9001/api/v1/social/media/store HTTP/1.1
+content-type: application/json
+Authorization: {{token}}
+
+{
+    "title": "{{title}}",
+    "url": "{{url}}"
+}
+
+
+### update data (pb)
+# @prompt id enter id
+# @prompt title enter title
+# @prompt url enter url 
+
+
+POST {{url}}/update HTTP/1.1
+content-type: application/json
+Authorization: {{token}}
+
+{
+    "id": "{{id}}",
+    "title": "{{title}}",
+    "url": "{{url}}"
+}
+
+#### soft delete
+# @prompt id enter id
+POST {{url}}/soft-delete HTTP/1.1
+content-type: application/json
+Authorization: {{token}}
+
+{
+    "id": "{{id}}"
+}
+
+### restore
+# @prompt id enter id
+POST {{url}}/restore HTTP/1.1
+content-type: application/json
+Authorization: {{token}}
+
+{
+    "id": "{{id}}"
+}
+
+#### permenently delete
+# @prompt id enter id
+POST {{url}}/destroy HTTP/1.1
+content-type: application/json
+Authorization: {{token}}
+
+{
+    "id": "{{id}}"
+}
+
+
+
+### bulk-import
+GET {{url}}/bulk-import HTTP/1.1
+content-type: application/json
+Authorization: {{token}}

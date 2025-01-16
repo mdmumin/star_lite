@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('teams', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 100);
-            $table->string('designation', 100);
+            $table->string('name', 100)->nullable();
+            $table->string('designation', 100)->nullable();
             $table->string('image', 100)->nullable();
             $table->string('contact_number', 100)->nullable();
             $table->string('email', 100)->unique();

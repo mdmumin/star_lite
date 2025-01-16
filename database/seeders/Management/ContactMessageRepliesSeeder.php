@@ -15,6 +15,7 @@ class ContactMessageRepliesSeeder extends Seeder
     {
         $data = [
             [
+                'contact_message_id' => '3',
                 'subject' => 'Welcome Message',
                 'message' => 'Thank you for contacting us. We will get back to you shortly.',
                 'is_seen' => false,
@@ -23,6 +24,7 @@ class ContactMessageRepliesSeeder extends Seeder
                 'status' => 1,
             ],
             [
+                'contact_message_id' => '2',
                 'subject' => 'Follow-up',
                 'message' => 'We are following up on your recent inquiry. Please let us know if you need further assistance.',
                 'is_seen' => false,
@@ -31,6 +33,7 @@ class ContactMessageRepliesSeeder extends Seeder
                 'status' => 1,
             ],
             [
+                'contact_message_id' => '1',
                 'subject' => 'Issue Resolved',
                 'message' => 'Your issue has been resolved. Please confirm if everything is working fine now.',
                 'is_seen' => true,

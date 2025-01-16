@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('contact_message_replies', function (Blueprint $table) {
             $table->id();
-            $table->string('subject',100);
+            $table->unsignedBigInteger('contact_message_id');
+            $table->string('subject',100)->nullable();
             $table->text('message');
             $table->boolean('is_seen')->default(false);
 

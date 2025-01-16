@@ -17,42 +17,32 @@ class AboutUsPointSeeder extends Seeder
         DB::table('about_us_points')->truncate();
         $data = [
             [
-                'title' => 'Complete Project',
+                'title' => 'Completed Projects',
                 'icon' => 'df',
-                'amount' => '22',
-                'slug' => 'about-use6uy',
-                'creator' => 1,
-                'status' => 1,
+                'description' => 'Starlit has successfully completed 22 projects, providing premium real estate solutions in Bangladesh.',
+                'slug' => 'completed-projects'
             ],
-
             [
-                'title' => 'Project Ongoing',
+                'title' => 'Ongoing Projects',
                 'icon' => 'fh',
-                'amount' => '12',
-                'slug' => 'about-us-titlerrt',
-                'creator' => 1,
-                'status' => 1,
+                'description' => 'Currently, Starlit is managing 12 ongoing projects, ensuring quality and timely delivery.',
+                'slug' => 'ongoing-projects'
             ],
             [
-                'title' => 'Happy customers',
+                'title' => 'Happy Customers',
                 'icon' => 'dg',
-                'amount' => '166',
-                'slug' => 'about-us-titlkk',
-                'creator' => 1,
-                'status' => 1,
+                'description' => 'Starlit is proud to have served 166 happy customers, creating dream homes and offices.',
+                'slug' => 'happy-customers'
             ],
             [
-                'title' => 'Years of experience',
+                'title' => 'Years of Experience',
                 'icon' => 'sf',
-                'amount' => '17',
-                'slug' => 'about-us-titlehgh',
-                'creator' => 1,
-                'status' => 1,
-            ],
-            
+                'description' => 'With 17 years of experience, Starlit is a trusted name in the Bangladeshi real estate sector.',
+                'slug' => 'years-of-experience'
+            ]
         ];
 
-        foreach($data as $item){
+        foreach ($data as $item) {
             AboutUsPoints::create($item);
         }
     }

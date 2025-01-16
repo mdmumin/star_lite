@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('property_id');
             $table->unsignedBigInteger('property_floor_plan_category_id');
-            $table->string('title',200);
-            $table->string('value',250);
+            $table->string('title',200)->nullable();
+            $table->string('value',250)->nullable();
             $table->enum('type', ['string', 'text', 'file']);
 
             $table->unsignedBigInteger('creator')->nullable();

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title',100)->nullable();
             $table->string('icon', 255)->nullable();
-            $table->integer('amount')->nullable();
+            $table->text('description')->nullable();
             $table->string('slug', 255)->unique()->nullable();
 
             // Meta fields

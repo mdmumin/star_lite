@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('property_id');
             $table->unsignedBigInteger('property_floor_plan_category_id');
-            $table->string('title',200);
+            $table->string('title',200)->nullable();
             $table->text('description')->nullable();
             $table->string('thumb_image',250)->nullable();
-            $table->text('additional_images')->nullable();
+            $table->string('additional_images', 100)->nullable();
 
             $table->unsignedBigInteger('creator')->nullable();
             $table->string('slug',100)->nullable();

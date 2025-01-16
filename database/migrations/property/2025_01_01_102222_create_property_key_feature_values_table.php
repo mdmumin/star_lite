@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('property_id');
             $table->unsignedBigInteger('property_key_feature_id');
             $table->string('icon')->nullable();
-            $table->string('title',100);
+            $table->string('title',100)->nullable();
             $table->text('value');
             $table->enum('type', ['string', 'text', 'file']);
 

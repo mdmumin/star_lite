@@ -17,7 +17,7 @@ class PropertyCategorySeeder extends Seeder
         $data = [
             [
                 'title' => 'Residential Properties',
-                'cover_image' => 'residential_properties.jpg',
+                'image' => 'residential_properties.jpg',
                 'creator' => '1',
                 'slug' => Str::slug('Residential Properties'),
                 'status' => 1,
@@ -25,7 +25,7 @@ class PropertyCategorySeeder extends Seeder
             ],
             [
                 'title' => 'Commercial Properties',
-                'cover_image' => 'commercial_properties.jpg',
+                'image' => 'commercial_properties.jpg',
                 'creator' => '1',
                 'slug' => Str::slug('Commercial Properties'),
                 'status' => 1,
@@ -33,7 +33,7 @@ class PropertyCategorySeeder extends Seeder
             ],
             [
                 'title' => 'Eco-friendly Properties',
-                'cover_image' => 'eco_friendly_properties.jpg',
+                'image' => 'eco_friendly_properties.jpg',
                 'creator' => '1',
                 'slug' => Str::slug('Eco-friendly Properties'),
                 'status' => 1,
