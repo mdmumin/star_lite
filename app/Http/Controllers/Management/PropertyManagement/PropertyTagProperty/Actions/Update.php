@@ -10,9 +10,9 @@ class Update{
 
     public static function execute($model)
     {
-        $propertyCategory = $model::find(request()->id);
+        $propertyTagProperty = $model::find(request()->id);
     
-        if (!$propertyCategory) {
+        if (!$propertyTagProperty) {
             return api_response(
                 data: [],
                 code: 404,
@@ -23,7 +23,8 @@ class Update{
     
         $rules = [
             'property_id' => 'required',
-            'property_tag_id' => 'required',
+            'property_tag_id' => 'nullable',
+            'status' => 'nullable|in:0,1'
         ];
     
         $validator = Validator::make(request()->all(), $rules, []);
@@ -37,14 +38,14 @@ class Update{
             );
         }
     
-        $propertyCategoryProperty = new $model();
-        $propertyCategoryProperty->property_id =  request()->property_id;
-        $propertyCategoryProperty->property_tag_id =  request()->property_tag_id;
-        $propertyCategoryProperty->creator = Auth::user()->id;
-        $propertyCategoryProperty->slug = request()->property_id . '-' . rand(99990, 100000);
-        $propertyCategoryProperty->status = request()->status ?? 1;
-        $propertyCategory->update();
+        $propertyTagProperty->property_id =  request()->property_id;
+        $propertyTagProperty->property_tag_id =  request()->property_tag_id;
+        $propertyTagProperty->creator = Auth::user()->id;
+        $propertyTagProperty->slug = request()->property_id . '-' . rand(90000, 100000);
+        $propertyTagProperty->status = request()->status ?? 1;
         
-        return $propertyCategory;
+        $propertyTagProperty->update();
+        
+        return $propertyTagProperty;
     }
 }

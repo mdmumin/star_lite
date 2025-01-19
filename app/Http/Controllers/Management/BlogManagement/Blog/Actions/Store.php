@@ -46,7 +46,7 @@ class Store
         $data->seo_keyword = request()->seo_keyword;
         $data->seo_description = request()->seo_description;
         $data->status = request()->status ?? 1;
-        $data->slug = request()->title . '-' . rand(99990, 100000);
+        $data->slug = request()->title . '-' . rand(90000, 100000);
 
         if (request()->hasFile('cover_image')) {
             $file = request()->file('cover_image');

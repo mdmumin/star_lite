@@ -23,6 +23,7 @@ class Update{
         $rules = [
             'title' => 'required',
             'image' => 'nullable',
+            'status' => 'nullable|in:0,1'
         ];
     
         $validator = Validator::make(request()->all(), $rules, []);
@@ -45,7 +46,7 @@ class Update{
 
             $file = request()->file('image');
             $fileName = time() . '_' . $file->getClientOriginalName();
-            $filePath = 'upload/property_category/' . $fileName;
+            $filePath = 'upload/property/property_category/' . $fileName;
 
             Image::make($file)
                 ->fit(700, 500, function ($constraint) {

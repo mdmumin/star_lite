@@ -34,7 +34,7 @@ class Store
         $glance->description = request()->description;
         $glance->creator = Auth::user()->id;
         $glance->status = request()->status ?? 1;
-        $glance->slug = request()->title . '-' . rand(99990, 100000);
+        $glance->slug = request()->title . '-' . rand(90000, 100000);
         $glance->save();
 
         return api_response(

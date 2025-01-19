@@ -41,6 +41,7 @@ use Database\Seeders\Property\PropertyFloorPlanCategoryContentSeeder;
 use Database\Seeders\Property\PropertyFloorPlanKeyValueSeeder;
 use Database\Seeders\Property\PropertyGalleriesSeeder;
 use Database\Seeders\Property\PropertyKeyFeatureSeeder;
+use Database\Seeders\Property\PropertyKeyFeatureValueSeeder;
 use Database\Seeders\Property\PropertyLabelPropertySeeder;
 use Database\Seeders\Property\PropertyLabelSeeder;
 use Database\Seeders\Property\PropertyLikeSeeder;
@@ -97,6 +98,7 @@ class DatabaseSeeder extends Seeder
             PropertyRelatedPropertiesSeeder::class,
             PropertyFloorPlanKeyValueSeeder::class,
             PropertyKeyFeatureSeeder::class,
+            PropertyKeyFeatureValueSeeder::class,
             PropertyFloorPlanKeyValueSeeder::class,
             PropertyFloorPlanCategoriesSeeder::class,
             PropertyFloorPlanCategoryContentSeeder::class,

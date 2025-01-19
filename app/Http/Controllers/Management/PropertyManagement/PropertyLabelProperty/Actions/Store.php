@@ -26,16 +26,16 @@ class Store
             );
         }
 
-        $propertyCategoryProperty = new $model();
-        $propertyCategoryProperty->property_id =  request()->property_id;
-        $propertyCategoryProperty->property_label_id =  request()->property_label_id;
-        $propertyCategoryProperty->creator = Auth::user()->id;
-        $propertyCategoryProperty->slug = request()->property_id . '-' . rand(99990, 100000);
-        $propertyCategoryProperty->status = request()->status ?? 1;
-        $propertyCategoryProperty->save();
+        $propertyLabelProperty = new $model();
+        $propertyLabelProperty->property_id =  request()->property_id;
+        $propertyLabelProperty->property_label_id =  request()->property_label_id;
+        $propertyLabelProperty->creator = Auth::user()->id;
+        $propertyLabelProperty->slug = request()->property_id . '-' . rand(90000, 100000);
+        $propertyLabelProperty->status = request()->status ?? 1;
+        $propertyLabelProperty->save();
 
         return api_response(
-            data: $propertyCategoryProperty,
+            data: $propertyLabelProperty,
             code: 201,
             message: 'data created',
             errors: [],

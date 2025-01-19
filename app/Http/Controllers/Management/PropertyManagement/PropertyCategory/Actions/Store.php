@@ -15,6 +15,7 @@ class Store
         $validator = Validator::make(request()->all(), [
             'title' => 'required',
             'image' => 'nullable',
+            'status' => 'nullable|in:0,1'
         ], []);
 
         if ($validator->fails()) {
@@ -32,17 +33,17 @@ class Store
         if (request()->hasFile('image')) {
             $file = request()->file('image');
             $fileName = time() . '_' . $file->getClientOriginalName();
-            $filePath = public_path('upload/property/category/' . $fileName);
+            $filePath = public_path('upload/property/property_category/' . $fileName);
 
             // Save and resize the image
-            $file->move(public_path('upload/property/category'), $fileName);
+            $file->move(public_path('upload/property/property_category'), $fileName);
             $image = Image::make($filePath);
             $image->resize(700, 400)->save($filePath);
 
-            $propertyCategory->image = 'upload/property/category/' . $fileName;
+            $propertyCategory->image = 'upload/property/property_category/' . $fileName;
         }
         $propertyCategory->creator = Auth::user()->id;
-        $propertyCategory->slug = request()->title . '-' . rand(99990, 100000);
+        $propertyCategory->slug = request()->title . '-' . rand(90000, 100000);
         $propertyCategory->status = request()->status ?? 1;
         $propertyCategory->save();
 

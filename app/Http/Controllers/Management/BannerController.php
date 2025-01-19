@@ -58,7 +58,7 @@ class BannerController extends Controller
         $home_banner->button_text = $request->button_text;
         $home_banner->button_url = $request->button_url;
         $home_banner->creator = Auth::user()->id;
-        $home_banner->slug = $request->title .'-'.rand(99990,100000);
+        $home_banner->slug = $request->title .'-'.rand(90000,100000);
         $home_banner->status = $request->status;
         $home_banner->created_at = Carbon::now()->toDateString();
         $home_banner->creator = Auth::user()->id;

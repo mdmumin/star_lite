@@ -37,7 +37,7 @@ class Store
         $data->button_text =  request()->button_text;
         $data->button_url =  request()->button_url;
         $data->creator = Auth::user()->id;
-        $data->slug = request()->title . '-' . rand(99990, 100000);
+        $data->slug = request()->title . '-' . rand(90000, 100000);
         $data->status = request()->status ?? 1;
         $data->save();
 

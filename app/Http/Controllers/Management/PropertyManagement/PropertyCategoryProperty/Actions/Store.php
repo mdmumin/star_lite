@@ -30,7 +30,7 @@ class Store
         $propertyCategoryProperty->property_id =  request()->property_id;
         $propertyCategoryProperty->property_category_id =  request()->property_category_id;
         $propertyCategoryProperty->creator = Auth::user()->id;
-        $propertyCategoryProperty->slug = request()->property_id . '-' . rand(99990, 100000);
+        $propertyCategoryProperty->slug = request()->property_id . '-' . rand(90000, 100000);
         $propertyCategoryProperty->status = request()->status ?? 1;
         $propertyCategoryProperty->save();
 

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Management\PropertyManagement\PropertyTag\Actions
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use Intervention\Image\Facades\Image;
 
 
 class Store
@@ -14,6 +13,7 @@ class Store
     {
         $validator = Validator::make(request()->all(), [
             'title' => 'required',
+            'status' => 'nullable|in:0,1'
         ], []);
 
         if ($validator->fails()) {
@@ -25,15 +25,15 @@ class Store
             );
         }
 
-        $propertyCategory = new $model();
-        $propertyCategory->title =  request()->title;
-        $propertyCategory->creator = Auth::user()->id;
-        $propertyCategory->slug = request()->title . '-' . rand(99990, 100000);
-        $propertyCategory->status = request()->status ?? 1;
-        $propertyCategory->save();
+        $propertyTag = new $model();
+        $propertyTag->title =  request()->title;
+        $propertyTag->creator = Auth::user()->id;
+        $propertyTag->slug = request()->title . '-' . rand(90000, 100000);
+        $propertyTag->status = request()->status ?? 1;
+        $propertyTag->save();
 
         return api_response(
-            data: $propertyCategory,
+            data: $propertyTag,
             code: 201,
             message: 'data created',
             errors: [],

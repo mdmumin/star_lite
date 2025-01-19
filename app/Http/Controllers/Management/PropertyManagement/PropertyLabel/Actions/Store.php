@@ -14,6 +14,7 @@ class Store
     {
         $validator = Validator::make(request()->all(), [
             'title' => 'required',
+            'status' => 'nullable|in:0,1'
         ], []);
 
         if ($validator->fails()) {
@@ -25,15 +26,15 @@ class Store
             );
         }
 
-        $propertyCategory = new $model();
-        $propertyCategory->title =  request()->title;
-        $propertyCategory->creator = Auth::user()->id;
-        $propertyCategory->slug = request()->title . '-' . rand(99990, 100000);
-        $propertyCategory->status = request()->status ?? 1;
-        $propertyCategory->save();
+        $propertyLabel = new $model();
+        $propertyLabel->title =  request()->title;
+        $propertyLabel->creator = Auth::user()->id;
+        $propertyLabel->slug = request()->title . '-' . rand(90000, 100000);
+        $propertyLabel->status = request()->status ?? 1;
+        $propertyLabel->save();
 
         return api_response(
-            data: $propertyCategory,
+            data: $propertyLabel,
             code: 201,
             message: 'data created',
             errors: [],

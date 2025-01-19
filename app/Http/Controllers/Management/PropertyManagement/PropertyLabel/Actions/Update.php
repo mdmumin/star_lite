@@ -10,9 +10,9 @@ class Update{
 
     public static function execute($model)
     {
-        $propertyCategory = $model::find(request()->id);
+        $propertyLabel = $model::find(request()->id);
     
-        if (!$propertyCategory) {
+        if (!$propertyLabel) {
             return api_response(
                 data: [],
                 code: 404,
@@ -23,6 +23,7 @@ class Update{
     
         $rules = [
             'title' => 'required',
+            'status' => 'nullable|in:0,1'
         ];
     
         $validator = Validator::make(request()->all(), $rules, []);
@@ -36,12 +37,12 @@ class Update{
             );
         }
     
-        $propertyCategory->title =  request()->title;
-        $propertyCategory->creator = Auth::user()->id;
-        $propertyCategory->slug = request()->title . '-' . rand(99990, 100000);
-        $propertyCategory->status = request()->status ?? 1;
-        $propertyCategory->update();
+        $propertyLabel->title =  request()->title;
+        $propertyLabel->creator = Auth::user()->id;
+        $propertyLabel->slug = request()->title . '-' . rand(90000, 100000);
+        $propertyLabel->status = request()->status ?? 1;
+        $propertyLabel->update();
         
-        return $propertyCategory;
+        return $propertyLabel;
     }
 }

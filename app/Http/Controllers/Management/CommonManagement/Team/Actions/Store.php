@@ -66,7 +66,7 @@ class Store
         $team->telegram = request()->telegram ?? '#';
         $team->creator = Auth::user()->id;
         $team->status = request()->status ?? 1;
-        $team->slug = request()->name .'-'.rand(99990,100000);
+        $team->slug = request()->name .'-'.rand(90000,100000);
 
         $team->save();
 

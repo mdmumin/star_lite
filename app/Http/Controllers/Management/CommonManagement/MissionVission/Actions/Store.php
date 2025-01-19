@@ -46,7 +46,7 @@ class Store
         $mission_vission->description = request()->description;
         $mission_vission->creator = Auth::user()->id;
         $mission_vission->status = request()->status ?? 1;
-        $mission_vission->slug = request()->type . '-' . rand(99990, 100000);
+        $mission_vission->slug = request()->type . '-' . rand(90000, 100000);
         $mission_vission->save();
 
         return api_response(

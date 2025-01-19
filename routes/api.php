@@ -270,6 +270,18 @@ Route::prefix('v1')
             });
 
         // Property Category
+        Route::prefix('properties')
+            ->group(function () {
+                Route::get('/all', 'Management\PropertyManagement\Properties\Controller@all');
+                Route::post('/store', 'Management\PropertyManagement\Properties\Controller@store');
+                Route::post('/update', 'Management\PropertyManagement\Properties\Controller@update');
+                Route::post('/soft-delete', 'Management\PropertyManagement\Properties\Controller@soft_delete');
+                Route::post('/restore', 'Management\PropertyManagement\Properties\Controller@restore');
+                Route::post('/destroy', 'Management\PropertyManagement\Properties\Controller@destroy');
+                Route::post('/bulk-import', 'Management\PropertyManagement\Properties\Controller@bulk_import');
+                Route::get('/{id}', 'Management\PropertyManagement\Properties\Controller@show');
+            });
+
         Route::prefix('property/category')
             ->group(function () {
                 Route::get('/all', 'Management\PropertyManagement\PropertyCategory\Controller@all');
@@ -282,7 +294,7 @@ Route::prefix('v1')
                 Route::get('/{id}', 'Management\PropertyManagement\PropertyCategory\Controller@show');
             });
 
-            Route::prefix('property/category/property')
+        Route::prefix('property/category/property')
             ->group(function () {
                 Route::get('/all', 'Management\PropertyManagement\PropertyCategoryProperty\Controller@all');
                 Route::post('/store', 'Management\PropertyManagement\PropertyCategoryProperty\Controller@store');
@@ -330,7 +342,7 @@ Route::prefix('v1')
                 Route::get('/{id}', 'Management\PropertyManagement\PropertyLabel\Controller@show');
             });
 
-            Route::prefix('property/label/property')
+        Route::prefix('property/label/property')
             ->group(function () {
                 Route::get('/all', 'Management\PropertyManagement\PropertyLabelProperty\Controller@all');
                 Route::post('/store', 'Management\PropertyManagement\PropertyLabelProperty\Controller@store');
@@ -340,5 +352,151 @@ Route::prefix('v1')
                 Route::post('/destroy', 'Management\PropertyManagement\PropertyLabelProperty\Controller@destroy');
                 Route::post('/bulk-import', 'Management\PropertyManagement\PropertyLabelProperty\Controller@bulk_import');
                 Route::get('/{id}', 'Management\PropertyManagement\PropertyLabelProperty\Controller@show');
+            });
+
+        Route::prefix('property/details/title')
+            ->group(function () {
+                Route::get('/all', 'Management\PropertyManagement\PropertyDetailsTitle\Controller@all');
+                Route::post('/store', 'Management\PropertyManagement\PropertyDetailsTitle\Controller@store');
+                Route::post('/update', 'Management\PropertyManagement\PropertyDetailsTitle\Controller@update');
+                Route::post('/soft-delete', 'Management\PropertyManagement\PropertyDetailsTitle\Controller@soft_delete');
+                Route::post('/restore', 'Management\PropertyManagement\PropertyDetailsTitle\Controller@restore');
+                Route::post('/destroy', 'Management\PropertyManagement\PropertyDetailsTitle\Controller@destroy');
+                Route::post('/bulk-import', 'Management\PropertyManagement\PropertyDetailsTitle\Controller@bulk_import');
+                Route::get('/{id}', 'Management\PropertyManagement\PropertyDetailsTitle\Controller@show');
+            });
+
+        Route::prefix('property/details/title/value')
+            ->group(function () {
+                Route::get('/all', 'Management\PropertyManagement\propertyDetailsTitleValue\Controller@all');
+                Route::post('/store', 'Management\PropertyManagement\propertyDetailsTitleValue\Controller@store');
+                Route::post('/update', 'Management\PropertyManagement\propertyDetailsTitleValue\Controller@update');
+                Route::post('/soft-delete', 'Management\PropertyManagement\propertyDetailsTitleValue\Controller@soft_delete');
+                Route::post('/restore', 'Management\PropertyManagement\propertyDetailsTitleValue\Controller@restore');
+                Route::post('/destroy', 'Management\PropertyManagement\propertyDetailsTitleValue\Controller@destroy');
+                Route::post('/bulk-import', 'Management\PropertyManagement\propertyDetailsTitleValue\Controller@bulk_import');
+                Route::get('/{id}', 'Management\PropertyManagement\propertyDetailsTitleValue\Controller@show');
+            });
+
+        Route::prefix('property/key/feature')
+            ->group(function () {
+                Route::get('/all', 'Management\PropertyManagement\PropertyKeyFeature\Controller@all');
+                Route::post('/store', 'Management\PropertyManagement\PropertyKeyFeature\Controller@store');
+                Route::post('/update', 'Management\PropertyManagement\PropertyKeyFeature\Controller@update');
+                Route::post('/soft-delete', 'Management\PropertyManagement\PropertyKeyFeature\Controller@soft_delete');
+                Route::post('/restore', 'Management\PropertyManagement\PropertyKeyFeature\Controller@restore');
+                Route::post('/destroy', 'Management\PropertyManagement\PropertyKeyFeature\Controller@destroy');
+                Route::post('/bulk-import', 'Management\PropertyManagement\PropertyKeyFeature\Controller@bulk_import');
+                Route::get('/{id}', 'Management\PropertyManagement\PropertyKeyFeature\Controller@show');
+            });
+
+        Route::prefix('property/key/feature/value')
+            ->group(function () {
+                Route::get('/all', 'Management\PropertyManagement\PropertyKeyFeatureValue\Controller@all');
+                Route::post('/store', 'Management\PropertyManagement\PropertyKeyFeatureValue\Controller@store');
+                Route::post('/update', 'Management\PropertyManagement\PropertyKeyFeatureValue\Controller@update');
+                Route::post('/soft-delete', 'Management\PropertyManagement\PropertyKeyFeatureValue\Controller@soft_delete');
+                Route::post('/restore', 'Management\PropertyManagement\PropertyKeyFeatureValue\Controller@restore');
+                Route::post('/destroy', 'Management\PropertyManagement\PropertyKeyFeatureValue\Controller@destroy');
+                Route::post('/bulk-import', 'Management\PropertyManagement\PropertyKeyFeatureValue\Controller@bulk_import');
+                Route::get('/{id}', 'Management\PropertyManagement\PropertyKeyFeatureValue\Controller@show');
+            });
+
+        Route::prefix('property/floor/plan/category')
+            ->group(function () {
+                Route::get('/all', 'Management\PropertyManagement\propertyFloorPlanCategory\Controller@all');
+                Route::post('/store', 'Management\PropertyManagement\propertyFloorPlanCategory\Controller@store');
+                Route::post('/update', 'Management\PropertyManagement\propertyFloorPlanCategory\Controller@update');
+                Route::post('/soft-delete', 'Management\PropertyManagement\propertyFloorPlanCategory\Controller@soft_delete');
+                Route::post('/restore', 'Management\PropertyManagement\propertyFloorPlanCategory\Controller@restore');
+                Route::post('/destroy', 'Management\PropertyManagement\propertyFloorPlanCategory\Controller@destroy');
+                Route::post('/bulk-import', 'Management\PropertyManagement\propertyFloorPlanCategory\Controller@bulk_import');
+                Route::get('/{id}', 'Management\PropertyManagement\propertyFloorPlanCategory\Controller@show');
+            });
+
+        Route::prefix('property/floor/plan/key/value')
+            ->group(function () {
+                Route::get('/all', 'Management\PropertyManagement\PropertyFloorPlanKeyValue\Controller@all');
+                Route::post('/store', 'Management\PropertyManagement\PropertyFloorPlanKeyValue\Controller@store');
+                Route::post('/update', 'Management\PropertyManagement\PropertyFloorPlanKeyValue\Controller@update');
+                Route::post('/soft-delete', 'Management\PropertyManagement\PropertyFloorPlanKeyValue\Controller@soft_delete');
+                Route::post('/restore', 'Management\PropertyManagement\PropertyFloorPlanKeyValue\Controller@restore');
+                Route::post('/destroy', 'Management\PropertyManagement\PropertyFloorPlanKeyValue\Controller@destroy');
+                Route::post('/bulk-import', 'Management\PropertyManagement\PropertyFloorPlanKeyValue\Controller@bulk_import');
+                Route::get('/{id}', 'Management\PropertyManagement\PropertyFloorPlanKeyValue\Controller@show');
+            });
+
+
+        Route::prefix('property/floor/plan/category/content')
+            ->group(function () {
+                Route::get('/all', 'Management\PropertyManagement\propertyFloorPlanCategoryContent\Controller@all');
+                Route::post('/store', 'Management\PropertyManagement\propertyFloorPlanCategoryContent\Controller@store');
+                Route::post('/update', 'Management\PropertyManagement\propertyFloorPlanCategoryContent\Controller@update');
+                Route::post('/soft-delete', 'Management\PropertyManagement\propertyFloorPlanCategoryContent\Controller@soft_delete');
+                Route::post('/restore', 'Management\PropertyManagement\propertyFloorPlanCategoryContent\Controller@restore');
+                Route::post('/destroy', 'Management\PropertyManagement\propertyFloorPlanCategoryContent\Controller@destroy');
+                Route::post('/bulk-import', 'Management\PropertyManagement\propertyFloorPlanCategoryContent\Controller@bulk_import');
+                Route::get('/{id}', 'Management\PropertyManagement\propertyFloorPlanCategoryContent\Controller@show');
+            });
+
+        Route::prefix('property/comment')
+            ->group(function () {
+                Route::get('/all', 'Management\PropertyManagement\propertyComment\Controller@all');
+                Route::post('/store', 'Management\PropertyManagement\propertyComment\Controller@store');
+                Route::post('/update', 'Management\PropertyManagement\propertyComment\Controller@update');
+                Route::post('/soft-delete', 'Management\PropertyManagement\propertyComment\Controller@soft_delete');
+                Route::post('/restore', 'Management\PropertyManagement\propertyComment\Controller@restore');
+                Route::post('/destroy', 'Management\PropertyManagement\propertyComment\Controller@destroy');
+                Route::post('/bulk-import', 'Management\PropertyManagement\propertyComment\Controller@bulk_import');
+                Route::get('/{id}', 'Management\PropertyManagement\propertyComment\Controller@show');
+            });
+
+        Route::prefix('property/like')
+            ->group(function () {
+                Route::get('/all', 'Management\PropertyManagement\PropertyLike\Controller@all');
+                Route::post('/store', 'Management\PropertyManagement\PropertyLike\Controller@store');
+                Route::post('/update', 'Management\PropertyManagement\PropertyLike\Controller@update');
+                Route::post('/soft-delete', 'Management\PropertyManagement\PropertyLike\Controller@soft_delete');
+                Route::post('/restore', 'Management\PropertyManagement\PropertyLike\Controller@restore');
+                Route::post('/destroy', 'Management\PropertyManagement\PropertyLike\Controller@destroy');
+                Route::post('/bulk-import', 'Management\PropertyManagement\PropertyLike\Controller@bulk_import');
+                Route::get('/{id}', 'Management\PropertyManagement\PropertyLike\Controller@show');
+            });
+
+        Route::prefix('property/view')
+            ->group(function () {
+                Route::get('/all', 'Management\PropertyManagement\PropertyView\Controller@all');
+                Route::post('/store', 'Management\PropertyManagement\PropertyView\Controller@store');
+                Route::post('/update', 'Management\PropertyManagement\PropertyView\Controller@update');
+                Route::post('/soft-delete', 'Management\PropertyManagement\PropertyView\Controller@soft_delete');
+                Route::post('/restore', 'Management\PropertyManagement\PropertyView\Controller@restore');
+                Route::post('/destroy', 'Management\PropertyManagement\PropertyView\Controller@destroy');
+                Route::post('/bulk-import', 'Management\PropertyManagement\PropertyView\Controller@bulk_import');
+                Route::get('/{id}', 'Management\PropertyManagement\PropertyView\Controller@show');
+            });
+
+        Route::prefix('property/faq')
+            ->group(function () {
+                Route::get('/all', 'Management\PropertyManagement\propertyFaq\Controller@all');
+                Route::post('/store', 'Management\PropertyManagement\propertyFaq\Controller@store');
+                Route::post('/update', 'Management\PropertyManagement\propertyFaq\Controller@update');
+                Route::post('/soft-delete', 'Management\PropertyManagement\propertyFaq\Controller@soft_delete');
+                Route::post('/restore', 'Management\PropertyManagement\propertyFaq\Controller@restore');
+                Route::post('/destroy', 'Management\PropertyManagement\propertyFaq\Controller@destroy');
+                Route::post('/bulk-import', 'Management\PropertyManagement\propertyFaq\Controller@bulk_import');
+                Route::get('/{id}', 'Management\PropertyManagement\propertyFaq\Controller@show');
+            });
+
+
+        Route::prefix('property/gallary')
+            ->group(function () {
+                Route::get('/all', 'Management\PropertyManagement\PropertyGallary\Controller@all');
+                Route::post('/store', 'Management\PropertyManagement\PropertyGallary\Controller@store');
+                Route::post('/update', 'Management\PropertyManagement\PropertyGallary\Controller@update');
+                Route::post('/soft-delete', 'Management\PropertyManagement\PropertyGallary\Controller@soft_delete');
+                Route::post('/restore', 'Management\PropertyManagement\PropertyGallary\Controller@restore');
+                Route::post('/destroy', 'Management\PropertyManagement\PropertyGallary\Controller@destroy');
+                Route::post('/bulk-import', 'Management\PropertyManagement\PropertyGallary\Controller@bulk_import');
+                Route::get('/{id}', 'Management\PropertyManagement\PropertyGallary\Controller@show');
             });
     });
