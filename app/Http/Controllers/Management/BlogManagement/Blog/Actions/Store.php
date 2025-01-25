@@ -11,9 +11,10 @@ class Store
 
     public static function execute($model)
     {
+        // dd(request()->all());
         $validator = Validator::make(request()->all(), [
             'title' => ['required'],
-            'short_description' => ['nullable'],
+            'short_description' => ['required'],
             'full_description' => ['nullable'],
             'cover_image' => ['nullable'],
             'is_published' => ['boolean'],
@@ -36,7 +37,7 @@ class Store
 
         $data = new $model();
         $data->title = request()->title;
-        $data->creator = Auth::user()->id;
+        $data->creator = Auth::user()->id ?? null;
         $data->short_description = request()->short_description;
         $data->full_description = request()->full_description;
         $data->is_published = request()->is_published ?? false;

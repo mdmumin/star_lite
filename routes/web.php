@@ -70,3 +70,14 @@ Route::group(['prefix' => '', 'namespace' => 'App\Http\Controllers', 'middleware
 });
 
 // Route::get('/admin', [App\Http\Controllers\BackendController\AdminController::class, 'index'])->middleware('admin');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::view('/adminvue', 'backend.index');

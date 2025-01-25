@@ -14,7 +14,7 @@ Route::get('/user', function () {
 Route::prefix('v1')
     ->middleware([
         // "check_token",
-        "auth:api"
+        // "auth:api"
     ])
     ->namespace('App\Http\Controllers')
     ->group(function () {
