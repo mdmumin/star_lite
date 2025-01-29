@@ -77,6 +77,41 @@ Route::prefix('v1')
                 Route::get('/{id}', 'Management\BlogManagement\Blog\Controller@show');
             });
 
+
+        Route::prefix('/blog/comment')
+            ->group(function () {
+                Route::get('/all', 'Management\BlogManagement\BlogComment\Controller@all');
+                Route::post('/store', 'Management\BlogManagement\BlogComment\Controller@store');
+                Route::post('/update', 'Management\BlogManagement\BlogComment\Controller@update');
+                Route::post('/soft-delete', 'Management\BlogManagement\BlogComment\Controller@soft_delete');
+                Route::post('/restore', 'Management\BlogManagement\BlogComment\Controller@restore');
+                Route::post('/destroy', 'Management\BlogManagement\BlogComment\Controller@destroy');
+                Route::post('/bulk-import', 'Management\BlogManagement\BlogComment\Controller@bulk_import');
+                Route::get('/{id}', 'Management\BlogManagement\BlogComment\Controller@show');
+            });
+        Route::prefix('/blog/likes')
+            ->group(function () {
+                Route::get('/all', 'Management\BlogManagement\BlogLike\Controller@all');
+                Route::post('/store', 'Management\BlogManagement\BlogLike\Controller@store');
+                Route::post('/update', 'Management\BlogManagement\BlogLike\Controller@update');
+                Route::post('/soft-delete', 'Management\BlogManagement\BlogLike\Controller@soft_delete');
+                Route::post('/restore', 'Management\BlogManagement\BlogLike\Controller@restore');
+                Route::post('/destroy', 'Management\BlogManagement\BlogLike\Controller@destroy');
+                Route::post('/bulk-import', 'Management\BlogManagement\BlogLike\Controller@bulk_import');
+                Route::get('/{id}', 'Management\BlogManagement\BlogLike\Controller@show');
+            });
+        Route::prefix('/blog/view')
+            ->group(function () {
+                Route::get('/all', 'Management\BlogManagement\BlogView\Controller@all');
+                Route::post('/store', 'Management\BlogManagement\BlogView\Controller@store');
+                Route::post('/update', 'Management\BlogManagement\BlogView\Controller@update');
+                Route::post('/soft-delete', 'Management\BlogManagement\BlogView\Controller@soft_delete');
+                Route::post('/restore', 'Management\BlogManagement\BlogView\Controller@restore');
+                Route::post('/destroy', 'Management\BlogManagement\BlogView\Controller@destroy');
+                Route::post('/bulk-import', 'Management\BlogManagement\BlogView\Controller@bulk_import');
+                Route::get('/{id}', 'Management\BlogManagement\BlogView\Controller@show');
+            });
+
         // Common Managemetn
         Route::prefix('/banner')
             ->group(function () {

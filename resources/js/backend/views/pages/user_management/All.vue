@@ -24,8 +24,8 @@
                         <tbody>
                             <tr>
                                 <td class="text-start"><input type="checkbox" name="" id="" /></td>
-                                <td class="text-start">1</td>
-                                <td class="">one</td>
+                                <td class="text-start">{{ item.id }}</td>
+                                <td class="">{{item.title}}</td>
                                 <td><p class="badge badge-success">active</p></td>
                                 <td class="text-end">
                                     <div class="d-flex justify-content-end gap-3"><a href="#/admin/class/edit/1" class="btn btn-sm btn-outline-info"> Edit </a><a href="#" class="btn btn-sm btn-outline-danger"> delete </a></div>
@@ -58,13 +58,53 @@
 <script>
 import config from './config/index.js';
 import PageTitle from './components/PageTitle.vue';
+import axios from 'axios';
 export default {
     components: {
         PageTitle,
     },
     data: () => ({
         config,
-    })
+        data: [],
+    }),
+
+    beforeCreate: function(){
+        console.log('beforeCreate');
+        
+        
+    },
+    created: async function(){
+        console.log('created');
+        let res = await axios.get('/api/v1/user/all');
+        console.log(res.data.data.data);
+        
+        
+    },
+    beforeMount: function(){
+        console.log('beforeMount');
+        
+    },
+    mounted: function(){
+        console.log('mounted');
+        
+    },
+    beforeUpdate: function(){
+        console.log('beforeUpdate');
+        
+    },
+    updated: function(){
+        console.log('updated');
+        
+    },
+    beforeUnmount: function(){
+        console.log('beforeUnmount');
+        
+    },
+    unmounted: function(){
+        console.log('unmounted');
+        
+    }
+    
 }
 </script>
 <style lang="">

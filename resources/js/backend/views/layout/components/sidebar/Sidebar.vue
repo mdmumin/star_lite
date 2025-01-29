@@ -20,18 +20,18 @@
                 />
             </DropDownMenu>
             <DropDownMenu
-                :group_heading="``"
-                :dropdown_title="`User`"
+                :group_heading="`Blog Management`"
+                :dropdown_title="`Blog`"
             >
                 <SingleMenu
-                    :url="{ name: 'userAll' }"
-                    :title="`All User`"
+                    :url="{ name: 'blogAll' }"
+                    :title="`All Blog`"
                     :icon="`fa fa-angle-right`"
                     :custom_class="``"
                 />
                 <SingleMenu
-                    :url="{ name: 'userCreate' }"
-                    :title="`Create User`"
+                    :url="{ name: 'blogCreate' }"
+                    :title="`Create Blog`"
                     :icon="`fa fa-angle-right`"
                     :custom_class="``"
                 />
