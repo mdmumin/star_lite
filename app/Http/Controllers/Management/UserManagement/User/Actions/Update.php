@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Management\BlogManagement\Blog\Actions;
+namespace App\Http\Controllers\Management\UserManagement\User\Actions;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;

@@ -1,7 +1,7 @@
 <template lang="">
     <div class="container-fluid">
         <PageTitle :page_title="config.create_page_title"/>
-        <form>
+        <form @submit.prevent="from_submit">
             <div class="card">
                 <div>
                     <div
@@ -21,23 +21,26 @@
                     <div class="row">
                         <div class="col-md-8">
                             <div class="form-group">
-                                <label for=""> Title </label>
+                                <label for="title"> Title </label>
                                 <div class="mt-1 mb-3">
-                                    <textarea
+                                    <input class="form-control" type="text" name="title"/>
+                                    <!-- <textarea
                                         class="form-control"
                                         type="text"
                                         name="title"
-                                    ></textarea>
+                                    ></textarea> -->
+                                </div>
+                            </div> 
+                            <div class="form-group">
+                                <label for="short_description">Short Description</label>
+                                <div class="mt-1 mb-3">
+                                    <input class="form-control" type="text" name="short_description"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for=""> Serial </label>
+                                <label for="full_description">Full Description</label>
                                 <div class="mt-1 mb-3">
-                                    <input
-                                        class="form-control"
-                                        type="text"
-                                        name="serial"
-                                    />
+                                    <input class="form-control"  type="text"name="full_description"/>
                                 </div>
                             </div>
                         </div>
@@ -55,13 +58,22 @@
 <script>
 import config from './config/index.js';
 import PageTitle from './components/PageTitle.vue';
+import axios from 'axios';
 export default {
     components: {
         PageTitle,
     },
     data: () => ({
         config,
-    })
+    }),
+    methods:{
+        from_submit: async function(){
+            let target = event.target;
+            let from_data = new FormData(target);
+            await axios.post('/api/v1/user/store', from_data);
+            target.reset();
+        }
+    }
 };
 </script>
 <style lang=""></style>
