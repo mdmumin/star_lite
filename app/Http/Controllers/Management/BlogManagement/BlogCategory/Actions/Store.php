@@ -7,15 +7,16 @@ use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
 
 
-class Store{
-    
+class Store
+{
+
     public static function execute($model)
     {
         $validator = Validator::make(request()->all(), [
             'title' => ['required'],
             'image' => ['nullable'],
         ], []);
-    
+
         if ($validator->fails()) {
             return api_response(
                 data: [],
@@ -24,11 +25,11 @@ class Store{
                 errors: $validator->errors(),
             );
         }
-    
+
         $data = new $model();
         $data->title = request()->title;
-        $data->creator = Auth::user()->id;
-        $data->slug = request()->title .'-'.rand(90000,100000);
+        $data->creator = Auth::user()->id ?? null;
+        $data->slug = request()->title . '-' . rand(90000, 100000);
         $data->status = request()->status ?? 1;
 
 
@@ -44,7 +45,7 @@ class Store{
         }
 
         $data->save();
-    
+
         return api_response(
             data: $data,
             code: 201,

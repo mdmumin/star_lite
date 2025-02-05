@@ -13,17 +13,15 @@ class Store
     {
         // dd(request()->all());
         $validator = Validator::make(request()->all(), [
-            'title' => ['required'],
-            'short_description' => ['required'],
-            'full_description' => ['nullable'],
-            'cover_image' => ['nullable'],
-            'is_published' => ['boolean'],
-            'publish_date' => ['nullable', 'date'],
-            'slug' => ['nullable'],
-            'seo_title' => ['nullable'],
-            'seo_keyword' => ['nullable'],
-            'seo_description' => ['nullable'],
-            'status' => ['nullable', 'in:0,1'],
+            'name' => ['required'],
+            'role_serial' => ['required'],
+            'email' => ['nullable'],
+            'email_verified_at' => ['nullable'],
+            'phone_number' => ['nullable'],
+            'image' => ['nullable'],
+            'password' => ['nullable'],
+            'creator' => ['nullable'],
+            'status' => ['nullable'],
         ], []);
 
         if ($validator->fails()) {
@@ -36,29 +34,25 @@ class Store
         }
 
         $data = new $model();
-        $data->title = request()->title;
+        $data->name = request()->name;
+        $data->role_serial = request()->role_serial;
+        $data->email = request()->email;
+        $data->email_verified_at = request()->email_verified_at ?? null;
+        $data->phone_number = request()->phone_number;
+        $data->password = request()->password;
         $data->creator = Auth::user()->id ?? null;
-        $data->short_description = request()->short_description;
-        $data->full_description = request()->full_description;
-        $data->is_published = request()->is_published ?? false;
-        $data->publish_date = request()->publish_date;
-        $data->slug = request()->slug;
-        $data->seo_title = request()->seo_title;
-        $data->seo_keyword = request()->seo_keyword;
-        $data->seo_description = request()->seo_description;
         $data->status = request()->status ?? 1;
-        $data->slug = request()->title . '-' . rand(90000, 100000);
 
-        if (request()->hasFile('cover_image')) {
-            $file = request()->file('cover_image');
+        if (request()->hasFile('image')) {
+            $file = request()->file('image');
             $fileName = time() . '_' . $file->getClientOriginalName();
-            $filePath = public_path('upload/blog/' . $fileName);
+            $filePath = public_path('upload/user/' . $fileName);
 
-            $file->move(public_path('upload/blog'), $fileName);
+            $file->move(public_path('upload/user'), $fileName);
             $coverImage = Image::make($filePath);
             $coverImage->resize(700, 400)->save($filePath);
 
-            $data->cover_image = 'upload/blog/' . $fileName;
+            $data->image = 'upload/user/' . $fileName;
         }
 
         $data->save();

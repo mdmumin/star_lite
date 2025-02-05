@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use App\Models\Backend\Admin\UserManagement\UserRole;
+use App\Models\BlogManagement\Blogs;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -56,9 +57,17 @@ class User extends Authenticatable
     {
         return $this->belongsTo(UserRole::class,'role_serial','role_serial');
     }
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'creator', 'id');
+    }
     public function scopeActive($query){
         return $query->where('status', 1);
     }
+    public function blog_category_blog(){
+        return $this->hasMany(Blogs::class,'creator','id');
+    }
+
 //     public function getCreatedAtAttribute($value)
 //     {
         

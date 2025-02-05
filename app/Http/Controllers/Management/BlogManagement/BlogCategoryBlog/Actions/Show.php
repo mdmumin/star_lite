@@ -6,7 +6,9 @@ class Show{
 
   public static function execute($model, $id)
     {
-        $data = $model::where('id', $id)->first();
+        $with = ['blog','blog_category'];
+        $data = $model::where('id', $id)->with($with)->first();
+        // dd($data);
         if (!$data) {
             return api_response(
                 [],

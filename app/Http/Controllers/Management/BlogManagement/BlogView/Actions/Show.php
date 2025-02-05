@@ -6,7 +6,8 @@ class Show{
 
   public static function execute($model, $id)
     {
-        $data = $model::where('id', $id)->first();
+        $with = ['blog'];
+        $data = $model::where('id', $id)->with($with)->first();
         if (!$data) {
             return api_response(
                 [],

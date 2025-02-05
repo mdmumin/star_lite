@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Management\BlogManagement\BlogTagBlog\Actions;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class Store{
@@ -9,7 +10,8 @@ class Store{
     public static function execute($model)
     {
         $validator = Validator::make(request()->all(), [
-            'title' => ['required'],
+            'blog_id' => ['required'],
+            'blog_tag_id' => ['nullable'],
         ], []);
     
         if ($validator->fails()) {
@@ -22,7 +24,11 @@ class Store{
         }
     
         $data = new $model();
-        $data->title = request()->title;
+        $data->blog_id = request()->blog_id;
+        $data->blog_tag_id = request()->blog_tag_id;
+        $data->creator = Auth::user()->id ?? null;
+        $data->slug = request()->blog_id . '-' . rand(90000, 100000);
+        $data->status = request()->status ?? 1;
         $data->save();
     
         return api_response(

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Management\BlogManagement\BlogCategoryBlog\Actions;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class Store{
@@ -26,6 +27,9 @@ class Store{
         $data = new $model();
         $data->blog_id = request()->blog_id;
         $data->blog_category_id = request()->blog_category_id;
+        $data->creator = Auth::user()->id ?? null;
+        $data->slug = request()->blog_category_id . '-' . rand(90000, 100000);
+        $data->status = request()->status ?? 1;
         $data->save();
     
         return api_response(

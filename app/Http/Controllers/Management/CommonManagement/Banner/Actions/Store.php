@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Management\CommonManagement\Banner\Actions;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use Intervention\Image\Facades\Image;
 
 
 class Store
@@ -36,7 +35,7 @@ class Store
         $data->short_descripton =  request()->short_descripton;
         $data->button_text =  request()->button_text;
         $data->button_url =  request()->button_url;
-        $data->creator = Auth::user()->id;
+        $data->creator = Auth::user()->id ?? null;
         $data->slug = request()->title . '-' . rand(90000, 100000);
         $data->status = request()->status ?? 1;
         $data->save();

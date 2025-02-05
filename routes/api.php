@@ -20,6 +20,32 @@ Route::prefix('v1')
     ->group(function () {
 
         /** test api for all management */
+        // User Management
+        Route::prefix('/user')
+            ->group(function () {
+                Route::get('/all', 'Management\UserManagement\User\Controller@all');
+                Route::post('/store', 'Management\UserManagement\User\Controller@store');
+                Route::post('/update', 'Management\UserManagement\User\Controller@update');
+                Route::post('/soft-delete', 'Management\UserManagement\User\Controller@soft_delete');
+                Route::post('/restore', 'Management\UserManagement\User\Controller@restore');
+                Route::post('/destroy', 'Management\UserManagement\User\Controller@destroy');
+                Route::post('/bulk-import', 'Management\UserManagement\User\Controller@bulk_import');
+                Route::get('/{id}', 'Management\UserManagement\User\Controller@show');
+            });
+
+        Route::prefix('/user/role')
+            ->group(function () {
+                Route::get('/all', 'Management\UserManagement\UserRole\Controller@all');
+                Route::post('/store', 'Management\UserManagement\UserRole\Controller@store');
+                Route::post('/update', 'Management\UserManagement\UserRole\Controller@update');
+                Route::post('/soft-delete', 'Management\UserManagement\UserRole\Controller@soft_delete');
+                Route::post('/restore', 'Management\UserManagement\UserRole\Controller@restore');
+                Route::post('/destroy', 'Management\UserManagement\UserRole\Controller@destroy');
+                Route::post('/bulk-import', 'Management\UserManagement\UserRole\Controller@bulk_import');
+                Route::get('/{id}', 'Management\UserManagement\UserRole\Controller@show');
+            });
+
+        // Blog Management
         Route::prefix('/blog/category')
             ->group(function () {
                 Route::get('/all', 'Management\BlogManagement\BlogCategory\Controller@all');

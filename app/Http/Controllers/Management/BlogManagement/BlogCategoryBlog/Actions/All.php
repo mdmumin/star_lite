@@ -8,13 +8,14 @@ class All{
         $paginate = (int) request()->paginate ?? 10;
         $orderBy = request()->orderBy ?? 'id';
         $orderByType = request()->orderByType ?? 'DESC';
+        $with = ['blog','blog_category'];
 
         $status = 1;
         if (request()->has('status')) {
             $status = request()->status;
         }
 
-        $query = $model::where('status', $status)->orderBy($orderBy, $orderByType);
+        $query = $model::where('status', $status)->orderBy($orderBy, $orderByType)->with($with);
 
         if (request()->has('search_key')) {
             $key = request()->search_key;

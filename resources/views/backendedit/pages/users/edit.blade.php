@@ -87,7 +87,8 @@
                             <label for="image" class="form-label">Upload Image</label>
                             <input type="file" name="image" class="form-control" id="image" onchange="previewImage(event)">
                             <img id="image-preview" src="/{{ $user->image }}" alt="Image Preview" 
-                                 class="img-thumbnail mt-3" style="max-width: 150px;">
+                                 class="img-thumbnail mt-3" style="max-width: 150px;"
+                            >
                         </div>
 
                         <!-- Submit Button -->

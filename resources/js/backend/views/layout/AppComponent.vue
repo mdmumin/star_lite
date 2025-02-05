@@ -4,9 +4,11 @@
         <!--Page Header Start-->
         <TopHeader></TopHeader>
         <!--Page Header Ends-->
-        
+
         <!--Page Body Start-->
-        <div class="page-body-wrapper">
+        <div
+            class="page-body-wrapper" id="pageBodyWrapper"
+        >
             <!--Page Sidebar Start-->
             <Sidebar></Sidebar>
             <!--Page Sidebar Ends-->
@@ -37,6 +39,10 @@ export default {
         Sidebar,
         BreadCumb,
     },
+
+
+
+  
 };
 </script>
 <style lang=""></style>

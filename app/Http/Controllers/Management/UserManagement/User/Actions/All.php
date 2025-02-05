@@ -14,6 +14,7 @@ class All{
         // dd(  $paginate,(int) request()->paginate );
         $orderBy = request()->orderBy ?? 'id';
         $orderByType = request()->orderByType ?? 'ASC';
+        $with = ['user_role','creator'];
 
         $status = 1;
         if (request()->has('status')) {
@@ -22,7 +23,7 @@ class All{
 
         // $boogCategry = BlogCategories::get();
 
-        $query = $model::where('status', $status)->orderBy($orderBy, $orderByType);
+        $query = $model::where('status', $status)->orderBy($orderBy, $orderByType)->with($with);
 
         if (request()->has('search_key')) {
             $key = request()->search_key;

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Management\BlogManagement\BlogView\Actions;
 
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class Store{
@@ -10,7 +11,6 @@ class Store{
     public static function execute($model)
     {
         $validator = Validator::make(request()->all(), [
-            'user_id' => ['required'],
             'blog_id' => ['nullable'],
             'date' => ['nullable'],
             'total_count' => ['nullable'],
@@ -27,10 +27,9 @@ class Store{
         }
     
         $data = new $model();
-        $data->user_id = request()->user_id;
+        $data->user_id = Auth::user()->id ?? null;
         $data->blog_id = request()->blog_id;
         $data->total_count = request()->total_count;
-        $data->slug = request()->total_count .'-'.rand(90000,100000);
         $data->save();
     
         return api_response(

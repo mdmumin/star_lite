@@ -31,4 +31,12 @@ class BlogTagBlog extends Model
     {
         return $q->where('status', '0');
     }
+
+    public function blog(){
+        return $this->belongsTo(Blogs::class,'blog_id');
+    }
+
+    public function blog_tag(){
+        return $this->belongsTo(BlogTags::class,'blog_tag_id');
+    }
 }

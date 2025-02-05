@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Management\CommonManagement\Banner\Actions;
 class All{
     public static function execute($model)
     {
-        $paginate = (int) request()->paginate ?? 10;
+        $paginate = request()->paginate ?? 10;
         $orderBy = request()->orderBy ?? 'id';
         $orderByType = request()->orderByType ?? 'DESC';
 

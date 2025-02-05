@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Management\BlogManagement\BlogTag\Actions;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class Update{
@@ -35,6 +36,8 @@ class Update{
         }
     
         $data->title = request()->title;
+        $data->creator = Auth::user()->id ?? null;
+        $data->status = request()->status ?? 1;
         $data->update();
     
         return $data;

@@ -6,59 +6,62 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
 
-
-class Update{
-
+class Update
+{
     public static function execute($model)
     {
         $data = $model::find(request()->id);
-    
+
         if (!$data) {
             return api_response(
                 data: [],
                 code: 404,
-                message: 'validation error',
-                errors: ['name' => ['Data not found by given id ' . (request()->id ? request()->id : 'null')]],
+                message: 'User not found',
+                errors: ['name' => ['No data found for the provided ID.']],
             );
         }
-    
+
         $rules = [
-           'title' => ['required'],
-            'short_description' => ['nullable'],
-            'full_description' => ['nullable'],
-            'cover_image' => ['nullable'],
-            'is_published' => ['boolean'],
-            'publish_date' => ['nullable', 'date'],
-            'slug' => ['nullable'],
-            'seo_title' => ['nullable'],
-            'seo_keyword' => ['nullable'],
-            'seo_description' => ['nullable'],
+            'name' => ['required'],
+            'role_serial' => ['required'],
+            'email' => ['nullable', 'email'],
+            'phone_number' => ['nullable', 'numeric'],
+            'image' => ['nullable'],
             'status' => ['nullable', 'in:0,1'],
-        ];
-    
-        $validator = Validator::make(request()->all(), $rules, []);
-    
+        ];    
+       $validator = Validator::make(request()->all(), $rules);
+
         if ($validator->fails()) {
             return api_response(
                 data: [],
                 code: 422,
-                message: 'validation error',
+                message: 'Validation error',
                 errors: $validator->errors(),
             );
         }
-    
-        $data->title = request()->title;
-        $data->short_description = request()->short_description;
-        $data->full_description = request()->full_description;
-        
-        if (request()->hasFile('cover_image')) {
-            if ($data->cover_image && file_exists(public_path($data->cover_image))) {
-                unlink(public_path($data->cover_image));
+
+        // Update the user fields
+        $data->name = request()->name;
+        $data->role_serial = request()->role_serial;
+        $data->email = request()->email;
+        $data->phone_number = request()->phone_number;
+        $data->status = request()->status ?? 1; 
+
+        // Update password only if it's provided
+        if (request()->has('password') && request()->password) {
+            $data->password = bcrypt(request()->password); // Hash password
+        }
+
+        if (request()->hasFile('image')) {
+
+            if (!empty($user->image) && file_exists(public_path($data->image))) {
+                unlink(public_path($data->image));
             }
 
-            $file = request()->file('cover_image');
+
+            $file = request()->file('image');
             $fileName = time() . '_' . $file->getClientOriginalName();
-            $filePath = 'upload/blog/' . $fileName;
+            $filePath = 'upload/user/' . $fileName;
 
 
             Image::make($file)
@@ -66,20 +69,14 @@ class Update{
                     $constraint->aspectRatio();
                     $constraint->upsize();
                 })
-                ->save(public_path($filePath), 90);
-
-            $data->cover_image = $filePath;
+                ->save(public_path($filePath), 100);
+            $data->image = $filePath;
         }
-        $data->is_published = request()->is_published ?? false;
-        $data->publish_date = request()->publish_date;
-        $data->slug = request()->slug;
-        $data->seo_title = request()->seo_title;
-        $data->seo_keyword = request()->seo_keyword;
-        $data->seo_description = request()->seo_description;
-        $data->status = request()->status ?? 1;       
-        $data->update();
 
-    
+        $data->creator = Auth::user()->id ?? null; 
+        $data->save();
+
+        // Return the updated data
         return $data;
     }
 }

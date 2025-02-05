@@ -24,7 +24,7 @@ class Store{
     
         $data = new $model();
         $data->title = request()->title;
-        $data->creator = Auth::user()->id;
+        $data->creator = Auth::user()->id ?? null;
         $data->slug = request()->title .'-'.rand(90000,100000);
         $data->status = request()->status ?? 1;
         $data->save();

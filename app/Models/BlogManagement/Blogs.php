@@ -2,6 +2,7 @@
 
 namespace App\Models\BlogManagement;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Blogs extends Model
@@ -30,6 +31,13 @@ class Blogs extends Model
     public function scopeDective($q)
     {
         return $q->where('status', '0');
+    }
+
+    public function blog_category_blog(){
+        return $this->hasMany(BlogCategoryBlog::class,'blog_id','id');
+    }
+    public function user_creator(){
+        return $this->belongsTo(User::class,'creator');
     }
 
 

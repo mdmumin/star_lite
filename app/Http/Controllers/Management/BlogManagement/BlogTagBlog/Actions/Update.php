@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\Management\BlogManagement\BlogTagBlog\Actions;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
-class Update{
+class Update
+{
 
     public static function execute($model)
     {
         $data = $model::find(request()->id);
-    
+
         if (!$data) {
             return api_response(
                 data: [],
@@ -18,13 +20,14 @@ class Update{
                 errors: ['name' => ['Data not found by given id ' . (request()->id ? request()->id : 'null')]],
             );
         }
-    
+
         $rules = [
-            'title' => ['required'],
+            'blog_id' => ['required'],
+            'blog_tag_id' => ['nullable'],
         ];
-    
+
         $validator = Validator::make(request()->all(), $rules, []);
-    
+
         if ($validator->fails()) {
             return api_response(
                 data: [],
@@ -33,10 +36,13 @@ class Update{
                 errors: $validator->errors(),
             );
         }
-    
-        $data->title = request()->title;
+
+        $data->blog_id = request()->blog_id;
+        $data->blog_tag_id = request()->blog_tag_id;
+        $data->creator = Auth::user()->id ?? null;
+        $data->status = request()->status ?? 1;
         $data->save();
-    
+
         return $data;
     }
 }

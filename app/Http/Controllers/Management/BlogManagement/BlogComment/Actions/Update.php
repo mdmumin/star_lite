@@ -20,7 +20,9 @@ class Update{
         }
     
         $rules = [
+            'blog_id' => ['required'],
             'comment' => ['nullable'],
+            'parent_id' => ['nullable'],
         ];
     
         $validator = Validator::make(request()->all(), $rules, []);
@@ -33,8 +35,10 @@ class Update{
                 errors: $validator->errors(),
             );
         }
-    
+
+        $data->blog_id = request()->blog_id;
         $data->comment = request()->comment;
+        $data->status = request()->status ?? 1;
         $data->update();
     
         return $data;

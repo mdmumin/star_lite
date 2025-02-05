@@ -21,13 +21,13 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="./backend/assets/fontawesome.css">
-    <link rel="stylesheet" type="text/css" href="./backend/assets/icofont.css">
-    <link rel="stylesheet" type="text/css" href="./backend/assets/themify.css">
-    <link rel="stylesheet" type="text/css" href="./backend/assets/flag-icon.css">
-    <link rel="stylesheet" type="text/css" href="./backend/assets/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="./backend/assets/style.css">
-    <link rel="stylesheet" type="text/css" href="./backend/assets/responsive.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/fontawesome.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/icofont.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/themify.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/flag-icon.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/responsive.css') }}">
 
     @vite(['resources/js/backend/app.js'])
 
@@ -38,14 +38,14 @@
         <app-component></app-component>
     </div>
 
-    <!-- latest jquery-->
-    <script src="./backend/assets/jquery-3.2.1.min.js"></script>
-    <!-- Bootstrap js-->
-    <script src="./backend/assets/bootstrap.bundle.min.js"></script>
-    <!-- Sidebar jquery-->
-    <script src="./backend/assets/sidebar-menu.js"></script>
-    <!-- Theme js-->
-    <script src="./backend/assets/script.js"></script>
+      <!-- jQuery (Ensure it's loaded first) -->
+      <script src="{{ asset('backend/assets/jquery-3.2.1.min.js') }}"></script>
+      <!-- Bootstrap JS -->
+      <script src="{{ asset('backend/assets/bootstrap.bundle.min.js') }}"></script>
+      <!-- Sidebar Script -->
+      <script src="{{ asset('backend/assets/sidebar-menu.js') }}"></script>
+      <!-- Theme Script -->
+      <script src="{{ asset('backend/assets/script.js') }}"></script>
 
 </body>
 

@@ -31,4 +31,8 @@ class BlogComments extends Model
     {
         return $q->where('status', '0');
     }
+
+    public function blog(){
+        return $this->belongsTo(Blogs::class,'blog_id');
+    }
 }

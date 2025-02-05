@@ -29,7 +29,6 @@ class Update{
             'cover_image' => ['nullable'],
             'is_published' => ['boolean'],
             'publish_date' => ['nullable', 'date'],
-            'slug' => ['nullable'],
             'seo_title' => ['nullable'],
             'seo_keyword' => ['nullable'],
             'seo_description' => ['nullable'],
@@ -48,9 +47,9 @@ class Update{
         }
     
         $data->title = request()->title;
+        $data->creator = Auth::user()->id ?? null;
         $data->short_description = request()->short_description;
         $data->full_description = request()->full_description;
-        
         if (request()->hasFile('cover_image')) {
             if ($data->cover_image && file_exists(public_path($data->cover_image))) {
                 unlink(public_path($data->cover_image));
@@ -72,14 +71,12 @@ class Update{
         }
         $data->is_published = request()->is_published ?? false;
         $data->publish_date = request()->publish_date;
-        $data->slug = request()->slug;
         $data->seo_title = request()->seo_title;
         $data->seo_keyword = request()->seo_keyword;
         $data->seo_description = request()->seo_description;
-        $data->status = request()->status ?? 1;       
+        $data->status = request()->status ?? 1;
         $data->update();
-
-    
+        
         return $data;
     }
 }

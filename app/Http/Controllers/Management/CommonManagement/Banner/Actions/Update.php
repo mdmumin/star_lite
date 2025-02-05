@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Management\CommonManagement\Banner\Actions;
 
 use Illuminate\Support\Facades\Validator;
-use Intervention\Image\Facades\Image;
 
 class Update{
 
@@ -45,6 +44,8 @@ class Update{
         $data->short_descripton =  request()->short_description;
         $data->button_text =  request()->button_text;
         $data->button_url =  request()->button_url;
+        $data->status = request()->status ?? 1;
+
         $data->update();
         
         return $data;
