@@ -35642,3 +35642,9 @@ body .page-wrapper .page-body-wrapper .page-sidebar.native-image-bg .sidebar-use
     min-width: 34%;
   }
 }
+
+
+.padding-bottom-top{
+  padding-bottom: 20px;
+  padding-top: 20px;
+}

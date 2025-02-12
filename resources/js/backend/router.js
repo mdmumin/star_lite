@@ -16,6 +16,12 @@ import blog_view_management_router from "./views/pages/bolg_management/blog_view
 // common_management
 import common_banner_management_router from "./views/pages/common_management/banner/config/router.js";
 
+// Property management
+import property_management_property_router from "./views/pages/property_management/property/config/router.js";
+import property_management_property_category_router from "./views/pages/property_management/property_category/config/router.js";
+import property_management_property_tag_router from "./views/pages/property_management/property_tag/config/router.js";
+import property_management_property_label_router from "./views/pages/property_management/property_label/config/router.js";
+
 // import BlogAll from "./views/pages/blog_management/blog/All.vue";
 // import BlogCreate from "./views/pages/blog_management/blog/Create.vue";
 
@@ -38,8 +44,12 @@ export const routes = [
     //common_management
     common_banner_management_router,
 
+    //property management
+    property_management_property_router,
+    property_management_property_category_router,
+    property_management_property_tag_router,
+    property_management_property_label_router,
 
-    
     // { path: "/blog-all", component: BlogAll, name: "blogAll" },
     // { path: "/blog-create", component: BlogCreate, name: "blogCreate" },
 ];

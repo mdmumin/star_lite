@@ -31,4 +31,15 @@ class Properties extends Model
     {
         return $q->where('status', '0');
     }
+
+    
+    public function property_category(){
+        return $this->belongsToMany(PropertyCategories::class);
+    }
+    public function property_tag(){
+        return $this->belongsToMany(PropertyTags::class);
+    }
+    public function property_label(){
+        return $this->belongsToMany(PropertyLabels::class);
+    }
 }

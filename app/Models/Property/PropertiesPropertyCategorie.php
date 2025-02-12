@@ -2,9 +2,10 @@
 
 namespace App\Models\Property;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
-class PropertyCategoryProperty extends Model
+class PropertiesPropertyCategorie extends Model
 {
     protected $guarded = [];
     protected static function booted()
@@ -31,4 +32,8 @@ class PropertyCategoryProperty extends Model
     {
         return $q->where('status', '0');
     }
+    public function property_category(){
+        return $this->belongsTo(PropertyCategories::class,'property_category_id','id');
+    }
+    
 }

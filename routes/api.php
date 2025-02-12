@@ -330,7 +330,8 @@ Route::prefix('v1')
                 Route::get('/{id}', 'Management\CommonManagement\SocialMedia\Controller@show');
             });
 
-        // Property Category
+        // Property Management
+
         Route::prefix('properties')
             ->group(function () {
                 Route::get('/all', 'Management\PropertyManagement\Properties\Controller@all');

@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers\Management\PropertyManagement\Properties\Actions;
 
+use App\Models\Property\PropertiesPropertyCategorie;
+use App\Models\Property\PropertiesPropertyLabel;
+use App\Models\Property\PropertiesPropertyTag;
+
+use Exception;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
 
@@ -12,6 +18,7 @@ class Store
 
     public static function execute($model)
     {
+     
         $validator = Validator::make(request()->all(), [
             'title' => 'required|string|max:255',
             'short_description' => 'nullable|string',
@@ -27,8 +34,7 @@ class Store
             'total_flat_sold' => 'nullable|integer',
             'available_text' => 'nullable|string',
             'is_published' => 'nullable|boolean',
-            'is_closed' => 'nullable|boolean',
-            'status' => 'nullable|in:0,1'
+            'is_closed' => 'nullable|boolean'
         ], []);
 
         if ($validator->fails()) {
@@ -39,46 +45,80 @@ class Store
                 errors: $validator->errors(),
             );
         }
+        DB::beginTransaction();
 
-        $property = new $model();
-        $property->title = request()->input('title');
-        $property->short_description = request()->input('short_description');
-        $property->full_description = request()->input('full_description');
-        $property->is_published = request()->input('is_published', false);
-        $property->publish_date = request()->input('publish_date');
-        $property->seo_title = request()->input('seo_title');
-        $property->seo_keyword = request()->input('seo_keyword');
-        $property->seo_description = request()->input('seo_description');
-        $property->is_closed = request()->input('is_closed', false);
-        $property->total_plot = request()->input('total_plot');
-        $property->total_flat = request()->input('total_flat');
-        $property->total_plot_sold = request()->input('total_plot_sold');
-        $property->total_flat_sold = request()->input('total_flat_sold');
-        $property->available_text = request()->input('available_text');
-        // Handle cover_image upload
-        if (request()->hasFile('cover_image')) {
-            $file = request()->file('cover_image');
-            $fileName = time() . '_' . $file->getClientOriginalName();
-            $filePath = public_path('upload/property/properties/' . $fileName);
+        try {
+            $property = new $model();
+            $property->title = request()->input('title');
+            $property->short_description = request()->input('short_description');
+            $property->full_description = request()->input('full_description');
+            $property->is_published = request()->input('is_published', false);
+            $property->publish_date = request()->input('publish_date');
+            $property->seo_title = request()->input('seo_title');
+            $property->seo_keyword = request()->input('seo_keyword');
+            $property->seo_description = request()->input('seo_description');
+            $property->is_closed = request()->input('is_closed', false);
+            $property->total_plot = request()->input('total_plot');
+            $property->total_flat = request()->input('total_flat');
+            $property->total_plot_sold = request()->input('total_plot_sold');
+            $property->total_flat_sold = request()->input('total_flat_sold');
+            $property->available_text = request()->input('available_text');
 
-            // Save and resize the cover_image
-            $file->move(public_path('upload/property/properties'), $fileName);
-            $cover_image = Image::make($filePath);
-            $cover_image->resize(700, 400)->save($filePath);
+            // Handle cover_image upload
+            if (request()->hasFile('cover_image')) {
+                $file = request()->file('cover_image');
+                $fileName = time() . '_' . $file->getClientOriginalName();
+                $filePath = public_path('upload/property/properties/' . $fileName);
 
-            $property->cover_image = 'upload/property/properties/' . $fileName;
+                // Save and resize the cover_image
+                $file->move(public_path('upload/property/properties'), $fileName);
+                $cover_image = Image::make($filePath);
+                $cover_image->resize(700, 400)->save($filePath);
+
+                $property->cover_image = 'upload/property/properties/' . $fileName;
+            }
+
+            $property->creator = Auth::user()->id ?? null;
+            $property->slug = request()->title . '-' . rand(90000, 100000);
+            $property->status = request()->status ?? 1;
+            $property->save();
+
+            // Save property category property
+            // $propertyCategoryProperty = new PropertiesPropertyCategorie();
+            // $propertyCategoryProperty->properties_id = $property->id;
+            // $propertyCategoryProperty->property_categories_id = request()->property_categories_id;
+            // $propertyCategoryProperty->save();
+            $property->property_category()->attach(request()->property_categories_id);
+
+
+            // Save property tag property
+            $propertyTagProperty = new PropertiesPropertyTag();
+            $propertyTagProperty->properties_id = $property->id;
+            $propertyTagProperty->property_tags_id = request()->property_tags_id;
+            $propertyTagProperty->save();
+
+            // Save property label property
+            $propertyLabelProperty = new PropertiesPropertyLabel();
+            $propertyLabelProperty->properties_id = $property->id;
+            $propertyLabelProperty->property_labels_id = request()->property_labels_id;
+            $propertyLabelProperty->save();
+
+            DB::commit();
+
+            return api_response(
+                data: $property,
+                code: 201,
+                message: 'Data created successfully',
+                errors: [],
+            );
+        } catch (Exception $e) {
+            DB::rollback();
+            return api_response(
+                data: [],
+                code: 500,
+                message: 'Failed to create property',
+                errors: $e->getMessage(),
+            );
         }
-
-        $property->creator = Auth::user()->id;
-        $property->slug = request()->title . '-' . rand(90000, 100000);
-        $property->status = request()->status ?? 1;
-        $property->save();
-
-        return api_response(
-            data: $property,
-            code: 201,
-            message: 'data created',
-            errors: [],
-        );
     }
 }

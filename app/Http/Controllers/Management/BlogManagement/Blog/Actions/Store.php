@@ -48,7 +48,6 @@ class Store
         $data->seo_description = request()->seo_description;
         $data->status = request()->status ?? 1;
         $data->slug = request()->title . '-' . rand(90000, 100000);
-
         if (request()->hasFile('cover_image')) {
             $file = request()->file('cover_image');
             $fileName = time() . '_' . $file->getClientOriginalName();
@@ -60,9 +59,8 @@ class Store
 
             $data->cover_image = 'upload/blog/' . $fileName;
         }
-
         $data->save();
-
+        
         return api_response(
             data: $data,
             code: 201,

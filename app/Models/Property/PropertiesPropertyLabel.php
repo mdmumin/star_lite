@@ -4,7 +4,7 @@ namespace App\Models\Property;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PropertyTagProperty extends Model
+class PropertiesPropertyLabel extends Model
 {
     protected $guarded = [];
     protected static function booted()

@@ -12,10 +12,10 @@ class Store
 
     public static function execute($model)
     {
+        // dd(request()->all());
         $validator = Validator::make(request()->all(), [
             'title' => 'required',
             'image' => 'nullable',
-            'status' => 'nullable|in:0,1'
         ], []);
 
         if ($validator->fails()) {
@@ -42,9 +42,9 @@ class Store
 
             $propertyCategory->image = 'upload/property/property_category/' . $fileName;
         }
-        $propertyCategory->creator = Auth::user()->id;
-        $propertyCategory->slug = request()->title . '-' . rand(90000, 100000);
+        $propertyCategory->creator = Auth::user()->id ?? null;
         $propertyCategory->status = request()->status ?? 1;
+        $propertyCategory->slug = request()->title . '-' . rand(90000, 100000);
         $propertyCategory->save();
 
         return api_response(

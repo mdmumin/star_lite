@@ -38,8 +38,7 @@ class Update{
         }
     
         $propertyLabel->title =  request()->title;
-        $propertyLabel->creator = Auth::user()->id;
-        $propertyLabel->slug = request()->title . '-' . rand(90000, 100000);
+        $propertyLabel->creator = Auth::user()->id?? null;
         $propertyLabel->status = request()->status ?? 1;
         $propertyLabel->update();
         

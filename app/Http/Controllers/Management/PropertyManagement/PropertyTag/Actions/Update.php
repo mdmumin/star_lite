@@ -38,9 +38,7 @@ class Update{
         }
     
         $propertyTag->title =  request()->title;
-        $propertyTag->creator = Auth::user()->id;
-        $propertyTag->slug = request()->title . '-' . rand(90000, 100000);
-        $propertyTag->status = request()->status ?? 1;
+        $propertyTag->creator = Auth::user()->id ?? null;
         $propertyTag->update();
         
         return $propertyTag;

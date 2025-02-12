@@ -6,7 +6,9 @@ class Show{
 
   public static function execute($model, $id)
     {
-        $data = $model::where('id', $id)->first();
+        $with = ['property_category','property_tag','property_label'];
+
+        $data = $model::where('id', $id)->with($with)->first();
         if (!$data) {
             return api_response(
                 [],

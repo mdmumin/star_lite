@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Management\PropertyManagement\PropertyCategory\Actions;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
 
@@ -57,6 +58,7 @@ class Update{
 
             $propertyCategory->image = $filePath;
         }
+        $propertyCategory->creator = Auth::user()->id ?? null;
         $propertyCategory->update();
         
         return $propertyCategory;

@@ -27,7 +27,7 @@ class Store
 
         $propertyTag = new $model();
         $propertyTag->title =  request()->title;
-        $propertyTag->creator = Auth::user()->id;
+        $propertyTag->creator = Auth::user()->id ?? null;
         $propertyTag->slug = request()->title . '-' . rand(90000, 100000);
         $propertyTag->status = request()->status ?? 1;
         $propertyTag->save();

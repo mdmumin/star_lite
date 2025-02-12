@@ -28,7 +28,7 @@ class Store
 
         $propertyLabel = new $model();
         $propertyLabel->title =  request()->title;
-        $propertyLabel->creator = Auth::user()->id;
+        $propertyLabel->creator = Auth::user()->id?? null;
         $propertyLabel->slug = request()->title . '-' . rand(90000, 100000);
         $propertyLabel->status = request()->status ?? 1;
         $propertyLabel->save();

@@ -82,11 +82,10 @@ class Update{
                     $constraint->upsize();
                 })
                 ->save(public_path($filePath), 90);
-
+                
             $property->cover_image = $filePath;
         }
-        $property->creator = Auth::user()->id;
-        $property->slug = request()->title . '-' . rand(90000, 100000);
+        $property->creator = Auth::user()->id?? null;
         $property->status = request()->status ?? 1;
         
         $property->update();

@@ -2,6 +2,7 @@
 
 namespace App\Models\Property;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class PropertyTags extends Model
@@ -30,5 +31,8 @@ class PropertyTags extends Model
     public function scopeDective($q)
     {
         return $q->where('status', '0');
+    }
+    public function user_creator(){
+        return $this->belongsTo(User::class,'creator','id');
     }
 }

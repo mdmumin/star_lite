@@ -167,7 +167,77 @@
                 />
             </DropDownMenu>
 
+            <DropDownMenu
+                :group_heading="`Property Management`"
+                :dropdown_title="`Property`"
+            >
+                <SingleMenu
+                    :url="{ name: 'propertyAll' }"
+                    :title="`All Property`"
+                    :icon="`fa fa-angle-right`"
+                    :custom_class="``"
+                />
+                <SingleMenu
+                    :url="{ name: 'propertyCreate' }"
+                    :title="`Create Property`"
+                    :icon="`fa fa-angle-right`"
+                    :custom_class="``"
+                />
+            </DropDownMenu>
 
+            <DropDownMenu
+                :group_heading="``"
+                :dropdown_title="`Property Category`"
+            >
+                <SingleMenu
+                    :url="{ name: 'propertyCategoryAll' }"
+                    :title="`All Property Category`"
+                    :icon="`fa fa-angle-right`"
+                    :custom_class="``"
+                />
+                <SingleMenu
+                    :url="{ name: 'propertyCategoryCreate' }"
+                    :title="`Create Property Category`"
+                    :icon="`fa fa-angle-right`"
+                    :custom_class="``"
+                />
+            </DropDownMenu>
+
+            <DropDownMenu
+                :group_heading="``"
+                :dropdown_title="`Property Tag`"
+            >
+                <SingleMenu
+                    :url="{ name: 'propertyTagAll' }"
+                    :title="`All Property Tag`"
+                    :icon="`fa fa-angle-right`"
+                    :custom_class="``"
+                />
+                <SingleMenu
+                    :url="{ name: 'propertyTagCreate' }"
+                    :title="`Create Property Tag`"
+                    :icon="`fa fa-angle-right`"
+                    :custom_class="``"
+                />
+            </DropDownMenu>
+
+            <DropDownMenu
+                :group_heading="``"
+                :dropdown_title="`Property Label`"
+            >
+                <SingleMenu
+                    :url="{ name: 'propertyLabelAll' }"
+                    :title="`All Property Label`"
+                    :icon="`fa fa-angle-right`"
+                    :custom_class="``"
+                />
+                <SingleMenu
+                    :url="{ name: 'propertyLabelCreate' }"
+                    :title="`Create Property Label`"
+                    :icon="`fa fa-angle-right`"
+                    :custom_class="``"
+                />
+            </DropDownMenu>
 
 
 

@@ -1,6 +1,13 @@
+// import "bootstrap/dist/css/bootstrap.min.css";
 import './bootstrap';
 import { createApp } from 'vue';
 import { backend_vue_routes } from './router';
+// summerNoteStart
+import "summernote/dist/summernote-lite.css";
+import "summernote/dist/summernote-lite.js";
+import jQuery from "jquery";
+window.$ = window.jQuery = jQuery;
+// summerNoteEnd
 
 const app = createApp({});
 

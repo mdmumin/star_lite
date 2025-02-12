@@ -23,10 +23,10 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('property_category_properties', function (Blueprint $table) {
+        Schema::create('properties_property_categories', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('property_id');
-            $table->unsignedBigInteger('property_category_id');
+            $table->unsignedBigInteger('properties_id');
+            $table->unsignedBigInteger('property_categories_id');
 
             $table->unsignedBigInteger('creator')->nullable();
             $table->string('slug',100)->nullable();

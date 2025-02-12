@@ -1,5 +1,7 @@
 <template lang="">
-    <div>Blog Create page</div>
+    <div>
+        <router-view></router-view>
+    </div>
 </template>
 <script>
 export default {};
