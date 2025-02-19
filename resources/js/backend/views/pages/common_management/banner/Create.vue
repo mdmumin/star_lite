@@ -48,14 +48,6 @@
                                     <input class="form-control"  type="text" name="button_url"/>
                                 </div>
                             </div>
-
-                            <div class="form-group">
-                                <label for="status">Status</label>
-                                <select class="form-control"  name="status">
-                                    <option value="1">Active</option>
-                                    <option value="0">Inactive</option>
-                                </select>
-                            </div>
                         </div>
                     </div>
                 </div>

@@ -5,85 +5,96 @@
             <div class="card">
                 <div>
                     <div class="card-header py-3 position-sticky d-flex justify-content-between align-items-center">
-                        <h6>Edit Blog</h6>
-                        <router-link :to="{ name: 'blogAll' }" class="router-link-active btn btn-info btn-sm">Back</router-link>
+                        <h6>Edit Bnnaer</h6>
+                        <router-link :to="{ name: 'teamAll' }" class="router-link-active btn btn-info btn-sm">Back</router-link>
                     </div>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-8">
                             <div class="form-group">
-                                <input v-model="form.id" class="form-control" type="text" name="id" readonly/>
-                                <label for="title">Title</label>
+                                <label for="name"> Name </label>
                                 <div class="mt-1 mb-3">
-                                    <input v-model="form.title" class="form-control" type="text" name="title" />
-                                </div>
-                            </div> 
-                            <div class="form-group">
-                                <label for="short_description">Short Description</label>
-                                <div class="mt-1 mb-3">
-                                    <input v-model="form.short_description" class="form-control" type="text" name="short_description"/>
+                                    <input v-model="form.name" class="form-control" type="text" required />
                                 </div>
                             </div>
+
+                            <!-- Designation -->
                             <div class="form-group">
-                                <label for="full_description">Full Description</label>
+                                <label for="designation">Designation</label>
                                 <div class="mt-1 mb-3">
-                                    <input v-model="form.full_description" class="form-control" type="text" name="full_description"/>
+                                    <input v-model="form.designation" class="form-control" type="text" required />
                                 </div>
                             </div>
+
+                            <!-- Image Upload -->
                             <div class="form-group">
-                                <label for="cover_image">Cover Image</label>
+                                <label for="image">Image</label>
                                 <div class="mt-1 mb-3">
-                                    <input ref="cover_image" class="form-control" name="cover_image" type="file" @change="handleFileUpload"/>
+                                    <input ref="image" class="form-control" name="image" type="file" @change="handleFileUpload"/>
                                 </div>
                                 <!-- Image Preview -->
                                 <div v-if="previewImage" class="mb-3">
                                     <img :src="previewImage" alt="Selected Image" class="img-thumbnail" style="max-width: 100px;">
                                 </div>
                                 <!-- Existing Image Preview -->
-                                <div v-else-if="form.cover_image" class="mb-3">
-                                    <img :src="form.cover_image" alt="Existing Image" class="img-thumbnail" style="max-width: 100px;">
+                                <div v-else-if="form.image" class="mb-3">
+                                    <img :src="form.image" alt="Existing Image" class="img-thumbnail" style="max-width: 100px;">
                                 </div>
                             </div>
+                            <!-- Contact Number -->
                             <div class="form-group">
-                                <label for="is_published">Published</label>
+                                <label for="contact_number">Contact Number</label>
                                 <div class="mt-1 mb-3">
-                                    <select v-model="form.is_published" class="form-control" name="is_published">
-                                        <option value="1">True</option>
-                                        <option value="0">False</option>
-                                    </select>
+                                    <input v-model="form.contact_number" class="form-control" type="text" required />
                                 </div>
                             </div>
+
+                            <!-- Email -->
                             <div class="form-group">
-                                <label for="publish_date">Publish Date</label>
+                                <label for="email">Email</label>
                                 <div class="mt-1 mb-3">
-                                    <input v-model="form.publish_date" class="form-control" type="date" name="publish_date"/>
+                                    <input v-model="form.email" class="form-control" type="email" required />
                                 </div>
                             </div>
+
+                            <!-- Short Description -->
                             <div class="form-group">
-                                <label for="seo_title">SEO Title</label>
+                                <label for="short_description">Short Description</label>
                                 <div class="mt-1 mb-3">
-                                    <input v-model="form.seo_title" class="form-control" type="text" name="seo_title"/>
+                                    <textarea v-model="form.short_description" class="form-control"></textarea>
                                 </div>
                             </div>
+
+                            <!-- Full Description -->
                             <div class="form-group">
-                                <label for="seo_keyword">SEO Keywords</label>
+                                <label for="description">Description</label>
                                 <div class="mt-1 mb-3">
-                                    <input v-model="form.seo_keyword" class="form-control" type="text" name="seo_keyword"/>
+                                    <textarea v-model="form.description" class="form-control"></textarea>
                                 </div>
                             </div>
+
+
+                            <!-- Social Links -->
                             <div class="form-group">
-                                <label for="seo_description">SEO Description</label>
-                                <div class="mt-1 mb-3">
-                                    <textarea v-model="form.seo_description" class="form-control" name="seo_description"></textarea>
-                                </div>
+                                <label for="facebook">Facebook</label>
+                                <input v-model="form.facebook" class="form-control" type="text" />
                             </div>
                             <div class="form-group">
-                                <label for="status">Status</label>
-                                <select v-model="form.status" class="form-control" name="status">
-                                    <option value="1">Active</option>
-                                    <option value="0">Inactive</option>
-                                </select>
+                                <label for="linkedin">LinkedIn</label>
+                                <input v-model="form.linkedin" class="form-control" type="text" />
+                            </div>
+                            <div class="form-group">
+                                <label for="instagram">Instagram</label>
+                                <input v-model="form.instagram" class="form-control" type="text" />
+                            </div>
+                            <div class="form-group">
+                                <label for="whatsapp">WhatsApp</label>
+                                <input v-model="form.whatsapp" class="form-control" type="text" />
+                            </div>
+                            <div class="form-group">
+                                <label for="telegram">Telegram</label>
+                                <input v-model="form.telegram" class="form-control" type="text" />
                             </div>
                         </div>
                     </div>
@@ -109,7 +120,6 @@ export default {
         config,
         form: {},
         previewImage: null, // Image preview URL
-
     }),
     created() {
         this.get_data();
@@ -121,39 +131,37 @@ export default {
             for (let key in this.form) {
                 formData.append(key, this.form[key]);
             }
-
             // Add the file if it's selected
-            const file = this.$refs.cover_image.files[0];
+            const file = this.$refs.image.files[0];
             if (file) {
-                formData.append("cover_image", file);
+                formData.append("image", file);
             }
 
             try {
-                await axios.post('/api/v1/blog/update', formData);
-                alert("Blog updated successfully!");
+                await axios.post('/api/v1/team/update', formData);
+                alert("Team updated successfully!");
             } catch (error) {
-                console.error("Error updating blog:", error);
-                alert("Error updating the blog.");
+                console.error("Error updating team:", error);
+                alert("Error updating the team.");
             }
         },
 
         // Fetch the data for editing
         async get_data() {
             try {
-                let res = await axios.get('/api/v1/blog/' + this.$route.params.id);
+                let res = await axios.get('/api/v1/team/' + this.$route.params.id);
                 this.form = res.data.data;
-                this.previewImage = this.form.cover_image;
+                this.previewImage = this.form.image;
             } catch (error) {
-                console.error('Error fetching blog data:', error);
-                alert('Failed to load blog data.');
+                console.error('Error fetching team data:', error);
+                alert('Failed to load team data.');
             }
         },
-
         // Handle file upload preview
         handleFileUpload(event) {
             const file = event.target.files[0];
             if (file) {
-                this.form.cover_image = file;
+                this.form.image = file;
                 this.previewImage = URL.createObjectURL(file);
             }
         }

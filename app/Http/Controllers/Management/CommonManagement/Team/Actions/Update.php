@@ -27,7 +27,6 @@ class Update
             $rules = [
                 'name' => ['required'],
                 'designation' => ['nullable'],
-                'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
                 'contact_number' => ['nullable'],
                 'email' => ['required', 'email', 'max:100', 'unique:teams,email,' . $team->id],
                 'short_description' => ['nullable', 'string'],
@@ -74,7 +73,6 @@ class Update
 
                 $team->image = $filePath;
             }
-
             $team->contact_number = request()->contact_number;
             $team->email = request()->email;
             $team->short_description = request()->short_description;
@@ -84,10 +82,7 @@ class Update
             $team->instagram = request()->instagram ?? '#';
             $team->whatsapp = request()->whatsapp ?? '#';
             $team->telegram = request()->telegram ?? '#';
-            $team->creator = $team->creator ?? Auth::user()->id;
-            $team->status = request()->status ?? 1;
-            $team->slug = request()->name . '-' . rand(10000, 99999);
-
+            $team->creator = Auth::user()->id ?? null;
             $team->save();
 
             return api_response(

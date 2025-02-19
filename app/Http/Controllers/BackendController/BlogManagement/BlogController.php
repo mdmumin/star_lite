@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 class BlogController extends Controller
 {
     public function index(){
+
+         
+
+
         $response = Http::get('/api/v1/blog/all'); // Replace with your actual API URL
 
         // Check if the request was successful

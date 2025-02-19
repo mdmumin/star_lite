@@ -1,16 +1,10 @@
 <template lang="">
     <li :class="{ active: isActive }" class="toggle">
-        <div class="sidebar-title" v-if="group_heading">
+        <a href="javascript:void(0)" class="sidebar-title"  @click="toggleDropdown">
             {{ group_heading }}
-        </div>
-        <a href="javascript:void(0)" :class="`sidebar-header ${custom_class}`" @click="toggleDropdown">
-            <i :class="icon"></i>
-            <span>
-                {{ dropdown_title }}
-            </span>
             <i class="fa fa-angle-right pull-right"></i>
         </a>
-        <ul class="sidebar-submenu menu-open" v-show="true">
+        <ul class="sidebar-submenu menu-open">
             <slot/>
         </ul>
     </li>
@@ -26,14 +20,14 @@ export default {
             type: String,
             default: "",
         },
-        icon: {
-            type: String,
-            default: "icon-desktop",
-        },
-        dropdown_title: {
-            type: String,
-            default: "Group title",
-        },
+        // icon: {
+        //     type: String,
+        //     default: "icon-desktop",
+        // },
+        // dropdown_title: {
+        //     type: String,
+        //     default: "Group title",
+        // },
     },
     data() {
         return {

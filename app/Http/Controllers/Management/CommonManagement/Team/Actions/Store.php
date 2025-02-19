@@ -64,7 +64,7 @@ class Store
         $team->instagram = request()->instagram ?? '#';
         $team->whatsapp = request()->whatsapp ?? '#';
         $team->telegram = request()->telegram ?? '#';
-        $team->creator = Auth::user()->id;
+        $team->creator = Auth::user()->id ?? null;
         $team->status = request()->status ?? 1;
         $team->slug = request()->name .'-'.rand(90000,100000);
 

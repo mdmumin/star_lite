@@ -8,17 +8,14 @@
                 >
                     <div>
                         <h4 class="bn" style="font-size: 22px !important">
-                            All User
+                            All Team
                         </h4>
                     </div>
                     <div class="d-flex justify-content-between">
                         <div class="ps-3 d-flex gap-2">
-                            <a
-                                href="#/admin/class/create"
-                                class="btn btn-sm btn-info"
-                            >
+                            <router-link :to="{ name: 'teamCreate' }" class="router-link-active btn btn-info btn-sm">
                                 Create
-                            </a>
+                            </router-link>
                         </div>
                     </div>
                 </div>
@@ -37,9 +34,12 @@
                                     <th class="text-start" style="width: 50px">
                                         Sl
                                     </th>
-                                    <th class="" style="width: 300px">Title</th>
+                                    <th class="" style="width: 300px">Name</th>
                                     <th class="" style="width: 200px">
-                                        Cover Image
+                                        Designation
+                                    </th>
+                                    <th class="" style="width: 200px">
+                                        Image
                                     </th>
                                     <th style="width: 150px">Status</th>
                                     <th
@@ -57,11 +57,14 @@
                                     </td>
                                     <td class="text-start">{{ item.id }}</td>
                                     <td class="">
-                                        {{ getShortTitle(item.title) }}
+                                        {{ getShortTitle(item.name) }}
+                                    </td>
+                                    <td class="">
+                                        {{ getShortTitle(item.designation) }}
                                     </td>
                                     <td>
                                         <img
-                                            :src="getImageUrl(item.cover_image)"
+                                            :src="getImageUrl(item.image)"
                                             alt="Cover Image"
                                             class="img-thumbnail"
                                             style="max-width: 100px"
@@ -76,7 +79,7 @@
                                         <div class="d-flex justify-content-end gap-1" >
                                             <router-link
                                                 :to="{
-                                                    name: 'blogEdit',
+                                                    name: 'teamEdit',
                                                     params: { id: item.id },
                                                 }"
                                                 class="btn btn-sm btn-outline-info"
@@ -85,7 +88,7 @@
                                             </router-link>
                                             <router-link
                                                 :to="{
-                                                    name: 'blogShow',
+                                                    name: 'teamShow',
                                                     params: { id: item.id },
                                                 }"
                                                 class="btn btn-sm btn-outline-success"
@@ -159,7 +162,7 @@ export default {
         delet_data: async function (id) {
             let con = window.confirm("Are you sure?");
             if (con) {
-                await axios.post("/api/v1/blog/destroy", { id: id });
+                await axios.post("/api/v1/team/destroy", { id: id });
                 alert("Deleted");
                 this.get_all_data();
             }
@@ -170,18 +173,18 @@ export default {
                 if (url) {
                     res = await axios.get(url);
                 } else {
-                    res = await axios.get("/api/v1/blog/all");
+                    res = await axios.get("/api/v1/team/all");
                 }
                 this.data = res.data.data; // Ensure res is assigned before accessing
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
         },
-        getImageUrl(cover_image) {
-            return cover_image ? `/${cover_image}` : "/default-image.jpg"; // Adjust path based on your actual image storage
+        getImageUrl(image) {
+            return image ? `/${image}` : "/default-image.jpg"; // Adjust path based on your actual image storage
         },
-        getShortTitle(title) {
-            return title ? title.split(" ").slice(0, 3).join(" ") : "";
+        getShortTitle(text) {
+            return text ? text.split(" ").slice(0, 3).join(" ") : "";
         },
     },
     beforeCreate: function () {

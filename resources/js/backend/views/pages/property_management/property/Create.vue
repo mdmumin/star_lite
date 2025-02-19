@@ -147,7 +147,7 @@
                             <div class="form-group">
                                 <label for="property_tags_id">Property Tag ID</label>
                                 <div class="mt-1 mb-3">
-                                    <select class="form-control"  name="property_tags_id">
+                                    <select class="form-control" multiple name="property_tags_id[]">
                                     <option value="">Selet-- Property Tag</option>
                                     <option v-for="item in tag?.data" :key="item.id" :value=" item.id ">
                                         {{ item.title }}
@@ -158,7 +158,7 @@
                             <div class="form-group">
                                 <label for="property_labels_id">Property Label ID</label>
                                 <div class="mt-1 mb-3">
-                                    <select class="form-control"  name="property_labels_id">
+                                    <select class="form-control" multiple name="property_labels_id[]">
                                     <option value="">Selet-- Property Label</option>
                                     <option v-for="item in label?.data" :key="item.id" :value=" item.id ">
                                         {{ item.title }}
@@ -206,8 +206,14 @@ export default {
         from_submit: async function(){
             let target = event.target;
             let from_data = new FormData(target);
-            await axios.post('/api/v1/properties/store', from_data);
-            target.reset();
+            try {
+                await axios.post('/api/v1/properties/store', from_data);
+                alert("Property Created successfully!");
+                target.reset();
+            } catch (error) {
+                console.error("Error updating properties:", error);
+                alert("Error Created the properties.");
+            }
         },
         // ✅ Image Preview Function
         handleFileUpload(event) {

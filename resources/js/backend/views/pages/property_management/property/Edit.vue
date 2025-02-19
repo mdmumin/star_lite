@@ -6,7 +6,7 @@
                 <div>
                     <div class="card-header py-3 position-sticky d-flex justify-content-between align-items-center">
                         <h6>Edit Property</h6>
-                        <router-link :to="{ name: 'blogAll' }" class="router-link-active btn btn-info btn-sm">Back</router-link>
+                        <router-link :to="{ name: 'propertyAll' }" class="router-link-active btn btn-info btn-sm">Back</router-link>
                     </div>
                 </div>
                 <div class="card-body">
@@ -127,36 +127,47 @@
                             <div class="form-group">
                                 <label for="property_categories_id">Property Category ID</label>
                                 <div class="mt-1 mb-3">
-                                    <select class="form-control" name="property_category_id">
+                                    <select class="form-control" multiple name="property_category_id[]">
                                         <option value="">Selet-- Property Category</option>
                                         <option v-for="item in category?.data" 
                                         :key="item.id" :value="item.id"
-                                        :selected="form.property_category[0].id == item.id" >
+                                        :selected="form.property_category.some(property_category => property_category.id === item.id)">
                                             {{ item.title }}
                                         </option>    
-                                </select>
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="property_tags_id">Property Tag ID</label>
                                 <div class="mt-1 mb-3">
-                                    <select class="form-control"  name="property_tags_id">
-                                    <option value="">Selet-- Property Tag</option>
-                                    <option v-for="item in tag?.data" :key="item.id" :value=" item.id ">
-                                        {{ item.title }}
-                                    </option>    
-                                </select>
+                                    <!-- <select class="form-control" multiple name="property_tags_id[]">
+                                        <option value="">Selet-- Property Tag</option>
+                                        <option v-for="item in tag?.data" :key="item.id" :value="item.id 
+                                        :selected="form.property_tag[0].id == item.id"">
+                                            {{ item.title }}
+                                        </option>    
+                                    </select> -->
+                                    <select class="form-control" multiple name="property_tags_id[]">
+                                        <option value="">Selet-- Property Category</option>
+                                        <option v-for="item in category?.data" 
+                                        :key="item.id" :value="item.id"
+                                        :selected="form.property_tag.some(property_tag => property_tag.id === item.id)" >
+                                            {{ item.title }}
+                                        </option>    
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="property_labels_id">Property Label ID</label>
                                 <div class="">
-                                    <select class="form-control"  name="property_labels_id">
-                                    <option value="">Selet-- Property Label</option>
-                                    <option v-for="item in label?.data" :key="item.id" :value=" item.id ">
-                                        {{ item.title }}
-                                    </option>    
-                                </select>
+                                    <select class="form-control" multiple name="property_labels_id[]">
+                                        <option value="">Selet-- Property Label</option>
+                                        <option v-for="item in label?.data" 
+                                        :key="item.id" :value="item.id"
+                                        :selected="form.property_label.some(property_label => property_label.id === item.id)">
+                                            {{ item.title }}
+                                        </option>    
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -210,7 +221,7 @@ export default {
 
             try {
                 await axios.post('/api/v1/properties/update', formData);
-                alert("Blog updated successfully!");
+                alert("Properties updated  successfully!");
             } catch (error) {
                 console.error("Error updating properties:", error);
                 alert("Error updating the properties.");

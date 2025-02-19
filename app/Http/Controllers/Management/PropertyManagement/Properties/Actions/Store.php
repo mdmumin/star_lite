@@ -92,16 +92,21 @@ class Store
 
 
             // Save property tag property
-            $propertyTagProperty = new PropertiesPropertyTag();
-            $propertyTagProperty->properties_id = $property->id;
-            $propertyTagProperty->property_tags_id = request()->property_tags_id;
-            $propertyTagProperty->save();
+            // $propertyTagProperty = new PropertiesPropertyTag();
+            // $propertyTagProperty->properties_id = $property->id;
+            // $propertyTagProperty->property_tags_id = request()->property_tags_id;
+            // $propertyTagProperty->save();
+
+            $property->property_tag()->attach(request()->property_tags_id);
 
             // Save property label property
-            $propertyLabelProperty = new PropertiesPropertyLabel();
-            $propertyLabelProperty->properties_id = $property->id;
-            $propertyLabelProperty->property_labels_id = request()->property_labels_id;
-            $propertyLabelProperty->save();
+            // $propertyLabelProperty = new PropertiesPropertyLabel();
+            // $propertyLabelProperty->properties_id = $property->id;
+            // $propertyLabelProperty->property_labels_id = request()->property_labels_id;
+            // $propertyLabelProperty->save();
+
+            $property->property_label()->attach(request()->property_labels_id);
+
 
             DB::commit();
 

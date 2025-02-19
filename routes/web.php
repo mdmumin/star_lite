@@ -5,7 +5,13 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+
+// dd(app());
 Auth::routes();
+
+
+require_once __DIR__ . '/middleware.php';
+
 
 Route::get('/token',function(){
     return User::first()->createToken('accessToken');
@@ -43,7 +49,7 @@ Route::group([
 Route::group(['prefix' => '', 'namespace' => 'App\Http\Controllers', 'middleware' => ['auth']], function () {
 
     Route::get('/admin', 'BackendController\AdminController@admin')->name('admin');
-
+ 
     Route::get('/user/index', 'BackendController\UserController@index')->name('user_index');
     Route::get('/user/create', 'BackendController\UserController@create')->name('user_create');
     Route::post('/user/store', 'BackendController\UserController@store')->name('user_store');

@@ -6,8 +6,8 @@ let config = {
     edit_page_title: prefix + " Managemnet",
     detais_page_title: prefix + " Managemnet",
 
-    route_name_prefix:  'blog',
-    route_path_prefix : '/blog',
+    route_name_prefix:  'team',
+    route_path_prefix : '/team',
 
     api_host: 'http://127.0.0.1:8000',
     api_version: '/api/v1',
