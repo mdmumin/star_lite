@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Management\PropertyManagement\PropertyCategoryProperty;
 
 use App\Http\Controllers\Controller as MainController;
-use App\Models\Property\PropertyCategoryProperty;
+use App\Models\Property\PropertiesPropertyCategorie;
 
 use App\Http\Controllers\Management\PropertyManagement\PropertyCategoryProperty\Actions\All;
 use App\Http\Controllers\Management\PropertyManagement\PropertyCategoryProperty\Actions\BulkImport;
@@ -20,7 +20,7 @@ class Controller extends MainController
 
     public function __construct()
     {
-        $this->model = PropertyCategoryProperty::class;
+        $this->model = PropertiesPropertyCategorie::class;
     }
 
     public function all()

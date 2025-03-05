@@ -16,7 +16,6 @@ class Store
             'title' => 'nullable',
             'icon' => 'nullable',
             'description' => 'nullable',
-            'status' => 'nullable|in:0,1'
         ], []);
 
         if ($validator->fails()) {
@@ -28,17 +27,17 @@ class Store
             );
         }
 
-        $glance = new $model();
-        $glance->title = request()->title;
-        $glance->icon = request()->icon;
-        $glance->description = request()->description;
-        $glance->creator = Auth::user()->id;
-        $glance->status = request()->status ?? 1;
-        $glance->slug = request()->title . '-' . rand(90000, 100000);
-        $glance->save();
+        $aboutUsPoint = new $model();
+        $aboutUsPoint->title = request()->title;
+        $aboutUsPoint->icon = request()->icon;
+        $aboutUsPoint->description = request()->description;
+        $aboutUsPoint->creator = Auth::user()->id ?? null;
+        $aboutUsPoint->status = request()->status ?? 1;
+        $aboutUsPoint->slug = request()->title . '-' . rand(90000, 100000);
+        $aboutUsPoint->save();
 
         return api_response(
-            data: $glance,
+            data: $aboutUsPoint,
             code: 201,
             message: 'About Us Point created successfully',
             errors: [],

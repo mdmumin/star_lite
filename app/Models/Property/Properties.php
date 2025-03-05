@@ -2,6 +2,7 @@
 
 namespace App\Models\Property;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Properties extends Model
@@ -32,7 +33,10 @@ class Properties extends Model
         return $q->where('status', '0');
     }
 
-    
+    public function user_creator(){
+        return $this->belongsTo(User::class,'creator','id');
+    }
+       
     public function property_category(){
         return $this->belongsToMany(PropertyCategories::class);
     }

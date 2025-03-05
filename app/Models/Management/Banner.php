@@ -2,6 +2,7 @@
 
 namespace App\Models\Management;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -34,5 +35,8 @@ class Banner extends Model
     public function scopeDective($q)
     {
         return $q->where('status', '0');
+    }
+    public function user_creator(){
+        return $this->belongsTo(User::class,'creator','id');
     }
 }

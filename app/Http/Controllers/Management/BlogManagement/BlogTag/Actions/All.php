@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Management\BlogManagement\BlogTag\Actions;
 
-class All{
+class All
+{
     public static function execute($model)
     {
         $paginate = (int) request()->paginate ?? 10;
@@ -28,7 +29,11 @@ class All{
             });
         }
 
-        $data = $query->paginate($paginate);
+        if (request()->has('get_all') && request()->get_all == "true") {
+            $data = $query->get();
+        } else {
+            $data = $query->paginate($paginate);
+        }
 
         return api_response(data: $data, code: 200, message: 'data fetched', errors: []);;
     }

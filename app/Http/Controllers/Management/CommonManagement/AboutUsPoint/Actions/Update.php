@@ -12,9 +12,9 @@ class Update
     {
         try {
             // Find the team member by ID
-            $glance = $model::find(request()->id);
+            $aboutUsPoint = $model::find(request()->id);
 
-            if (!$glance) {
+            if (!$aboutUsPoint) {
                 return api_response(
                     data: [],
                     code: 404,
@@ -28,7 +28,6 @@ class Update
                 'title' => 'nullable',
                 'icon' => 'nullable',
                 'description' => 'nullable',
-                'status' => 'nullable|in:0,1'
             ];
 
             $validator = Validator::make(request()->all(), $rules);
@@ -42,16 +41,16 @@ class Update
                 );
             }
 
-            $glance->title = request()->title;
-            $glance->icon = request()->icon;
-            $glance->description = request()->description;
-            $glance->creator = $glance->creator ?? Auth::user()->id;
-            $glance->status = request()->status ?? 1;
-            $glance->slug = request()->title . '-' . rand(10000, 99999);
-            $glance->save();
+            $aboutUsPoint->title = request()->title;
+            $aboutUsPoint->icon = request()->icon;
+            $aboutUsPoint->description = request()->description;
+            $aboutUsPoint->creator = Auth::user()->id ?? null;
+            $aboutUsPoint->status = request()->status ?? 1;
+            $aboutUsPoint->slug = request()->title . '-' . rand(10000, 99999);
+            $aboutUsPoint->save();
 
             return api_response(
-                data: $glance,
+                data: $aboutUsPoint,
                 code: 200,
                 message: 'About Us Point updated successfully',
                 errors: [],

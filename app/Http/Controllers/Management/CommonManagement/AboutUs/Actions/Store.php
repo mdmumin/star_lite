@@ -18,7 +18,7 @@ class Store
             'short_description' => 'nullable',
             'description' => 'nullable',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'video_thumbnail_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            // 'video_thumbnail_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'video_url' => 'nullable',
             'quote_text' => 'nullable',
             'button_text' => 'nullable',
@@ -44,44 +44,36 @@ class Store
         // Handle image upload
         if (request()->hasFile('image')) {
             $file = request()->file('image');
-            $fileName = time() . '_image_' . $file->getClientOriginalName();
-            $filePath = 'upload/about_us/' . $fileName;
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $filePath = public_path('upload/about_us/' . $fileName);
 
             $file->move(public_path('upload/about_us'), $fileName);
-            Image::make($file)
-                ->fit(700, 400, function ($constraint) {
-                    $constraint->aspectRatio();
-                    $constraint->upsize();
-                })
-                ->save(public_path($filePath), 90);
+            $image = Image::make($filePath);
+            $image->resize(700, 400)->save($filePath);
 
-            $aboutUs->image = $filePath;
+            $aboutUs->image = 'upload/about_us/' . $fileName;
         }
 
         // Handle video thumbnail image upload
         if (request()->hasFile('video_thumbnail_image')) {
-            $videoFile = request()->file('video_thumbnail_image');
-            $videoFileName = time() . '_video_thumbnail_' . $videoFile->getClientOriginalName();
-            $videoFilePath = 'upload/about_us/' . $videoFileName;
+            $file = request()->file('video_thumbnail_image');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $filePath = public_path('upload/about_us/' . $fileName);
 
-            $videoFile->move(public_path('upload/about_us'), $videoFileName);
-            Image::make($videoFile)
-                ->fit(700, 400, function ($constraint) {
-                    $constraint->aspectRatio();
-                    $constraint->upsize();
-                })
-                ->save(public_path($videoFilePath), 90);
+            $file->move(public_path('upload/about_us'), $fileName);
+            $video_thumbnail_image = Image::make($filePath);
+            $video_thumbnail_image->resize(700, 400)->save($filePath);
 
-            $aboutUs->video_thumbnail_image = $videoFilePath;
+            $aboutUs->video_thumbnail_image = 'upload/about_us/' . $fileName;
         }
 
         $aboutUs->video_url = request()->video_url;
         $aboutUs->quote_text = request()->quote_text;
         $aboutUs->button_text = request()->button_text;
         $aboutUs->button_url = request()->button_url;
-        $aboutUs->status = request()->input('status', 1);
-        $aboutUs->creator =  Auth::user()->id;
-        $aboutUs->slug = request()->title . '-' . rand(10000, 99999);
+        $aboutUs->creator = Auth::user()->id ?? null;
+        $aboutUs->status = request()->status ?? 1;
+        $aboutUs->slug = request()->title . '-' . rand(10000, 90000);
         $aboutUs->save();
 
         return api_response(

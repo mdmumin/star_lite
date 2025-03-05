@@ -28,7 +28,12 @@ class All{
             });
         }
 
-        $data = $query->paginate($paginate);
+        if (request()->has('get_all') && request()->get_all == "true") {
+            $data = $query->get();
+        } else {
+            $data = $query->paginate($paginate);
+        }
+
 
         return api_response(data: $data, code: 200, message: 'data fetched', errors: []);;
     }

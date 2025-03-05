@@ -6,14 +6,14 @@
                 <div>
                     <div class="card-header py-3 position-sticky d-flex justify-content-between align-items-center">
                         <h6>Edit Bnnaer</h6>
-                        <router-link :to="{ name: 'blogAll' }" class="router-link-active btn btn-info btn-sm">Back</router-link>
+                        <router-link :to="{ name: 'bannerAll' }" class="router-link-active btn btn-info btn-sm">Back</router-link>
                     </div>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-8">
                             <div class="form-group">
-                                <input v-model="form.id" class="form-control" type="text" name="id" readonly/>
+                                <input v-model="form.id" class="form-control" type="hidden" name="id" readonly/>
                                 <label for="title">Title</label>
                                 <div class="mt-1 mb-3">
                                     <input v-model="form.title" class="form-control" type="text" name="title" />

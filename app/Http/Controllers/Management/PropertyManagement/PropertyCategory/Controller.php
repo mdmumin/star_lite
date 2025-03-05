@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller as MainController;
 use App\Models\Property\PropertyCategories;
 
 use App\Http\Controllers\Management\PropertyManagement\PropertyCategory\Actions\All;
+// use App\Http\Controllers\Management\PropertyManagement\PropertyCategory\Actions\AllData;
 use App\Http\Controllers\Management\PropertyManagement\PropertyCategory\Actions\BulkImport;
 use App\Http\Controllers\Management\PropertyManagement\PropertyCategory\Actions\Destroy;
 use App\Http\Controllers\Management\PropertyManagement\PropertyCategory\Actions\Restore;
@@ -27,6 +28,11 @@ class Controller extends MainController
     {
         $data = All::execute($this->model);
         return $data;
+    }
+
+    public function alldata()
+    {
+        return PropertyCategories::get();
     }
 
     public function show($id)

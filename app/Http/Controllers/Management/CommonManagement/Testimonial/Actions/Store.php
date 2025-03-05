@@ -46,7 +46,7 @@ class Store
         }
 
         $testimonial->comment = request()->comment;
-        $testimonial->creator = Auth::user()->id;
+        $testimonial->creator = Auth::user()->id ?? null;
         $testimonial->status = request()->status ?? 1;
         $testimonial->slug = request()->name . '-' . rand(90000, 100000);
 

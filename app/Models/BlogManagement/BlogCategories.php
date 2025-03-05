@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class BlogCategories extends Model
 {
     protected $guarded = [];
+    protected $appends = [
+        'label',
+        'value',
+    ];
     protected static function booted()
     {
         static::created(function ($data) {
@@ -30,5 +34,14 @@ class BlogCategories extends Model
     public function scopeDective($q)
     {
         return $q->where('status', '0');
+    }
+
+    public function getValueAttribute()
+    {
+        return $this->id;
+    }
+    public function getLabelAttribute()
+    {
+        return $this->title;
     }
 }

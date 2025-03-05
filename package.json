@@ -24,8 +24,12 @@
     "dependencies": {
         "jquery": "^3.7.1",
         "pinia": "^2.3.1",
+        "select2": "^4.1.0-rc.0",
+        "select2-vue-component": "^6.1.1",
         "summernote": "^0.9.1",
+        "v-select2-component": "^0.4.7",
         "vue": "^3.5.13",
-        "vue-router": "^4.5.0"
+        "vue-router": "^4.5.0",
+        "vue-select2-component": "^1.0.1"
     }
 }

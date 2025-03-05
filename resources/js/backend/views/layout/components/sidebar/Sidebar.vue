@@ -192,6 +192,77 @@
                         :custom_class="``"
                     />
                 </DropDownMenu>
+                <DropDownMenu
+                    :group_heading="``"
+                    :dropdown_title="`Testimonial`"
+                >
+                    <SingleMenu
+                        :url="{ name: 'testimonialAll' }"
+                        :title="`All Testimonial`"
+                        :icon="`fa fa-angle-right`"
+                        :custom_class="``"
+                    />
+                    <SingleMenu
+                        :url="{ name: 'testimonialCreate' }"
+                        :title="`Create Testimonial`"
+                        :icon="`fa fa-angle-right`"
+                        :custom_class="``"
+                    />
+                </DropDownMenu>
+
+                <DropDownMenu
+                    :group_heading="``"
+                    :dropdown_title="`About Us`"
+                >
+                    <SingleMenu
+                        :url="{ name: 'aboutAll' }"
+                        :title="`All About US`"
+                        :icon="`fa fa-angle-right`"
+                        :custom_class="``"
+                    />
+                    <SingleMenu
+                        :url="{ name: 'aboutCreate' }"
+                        :title="`Create About US`"
+                        :icon="`fa fa-angle-right`"
+                        :custom_class="``"
+                    />
+                </DropDownMenu>
+                <DropDownMenu
+                    :group_heading="``"
+                    :dropdown_title="`At A Glance`"
+                >
+                    <SingleMenu
+                        :url="{ name: 'glanceAll' }"
+                        :title="`All Glance`"
+                        :icon="`fa fa-angle-right`"
+                        :custom_class="``"
+                    />
+                    <SingleMenu
+                        :url="{ name: 'glanceCreate' }"
+                        :title="`Create Glance`"
+                        :icon="`fa fa-angle-right`"
+                        :custom_class="``"
+                    />
+                </DropDownMenu>
+
+                <DropDownMenu
+                    :group_heading="``"
+                    :dropdown_title="`Mission Vission`"
+                >
+                    <SingleMenu
+                        :url="{ name: 'missionVissionAll' }"
+                        :title="`All Mission Vission`"
+                        :icon="`fa fa-angle-right`"
+                        :custom_class="``"
+                    />
+                    <SingleMenu
+                        :url="{ name: 'missionVissionCreate' }"
+                        :title="`Create Mission Vission`"
+                        :icon="`fa fa-angle-right`"
+                        :custom_class="``"
+                    />
+                </DropDownMenu>
+                
             </MainDropDown>           
 
             <DropDownMenu

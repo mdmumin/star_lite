@@ -5,7 +5,7 @@
             <div class="card">
                 <div>
                     <div class="card-header py-3 position-sticky d-flex justify-content-between align-items-center">
-                        <h6>Edit Bnnaer</h6>
+                        <h6>Edit Testimonial</h6>
                         <router-link :to="{ name: 'teamAll' }" class="router-link-active btn btn-info btn-sm">Back</router-link>
                     </div>
                 </div>

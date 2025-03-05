@@ -18,7 +18,6 @@ class Store
             'sub_title' => 'nullable',
             'short_description' => 'nullable',
             'description' => 'nullable',
-            'status' => 'nullable|in:0,1',
         ], []);
 
         if ($validator->fails()) {
@@ -37,7 +36,7 @@ class Store
         $aboutUs->short_description = request()->short_description;
         $aboutUs->description = request()->description;
         $aboutUs->status = request()->input('status', 1);
-        $aboutUs->creator =  Auth::user()->id;
+        $aboutUs->creator =  Auth::user()->id ?? null;
         $aboutUs->slug = request()->title . '-' . rand(10000, 99999);
         $aboutUs->save();
 

@@ -31,4 +31,12 @@ class BlogTags extends Model
     {
         return $q->where('status', '0');
     }
+    public function getValueAttribute()
+    {
+        return $this->id;
+    }
+    public function getLabelAttribute()
+    {
+        return $this->title;
+    }
 }

@@ -29,12 +29,12 @@ class Update
                 'sub_title' => 'nullable',
                 'short_description' => 'nullable',
                 'description' => 'nullable',
-                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-                'video_thumbnail_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-                'video_url' => 'nullable',
+                // 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+                // 'video_thumbnail_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+                // 'video_url' => 'nullable',
                 'quote_text' => 'nullable',
                 'button_text' => 'nullable',
-                'button_url' => 'nullable',
+                // 'button_url' => 'nullable',
                 'status' => 'nullable|in:0,1',
             ];
 
@@ -66,6 +66,7 @@ class Update
                 $fileName = time() . '_' . $file->getClientOriginalName();
                 $filePath = 'upload/about_us/' . $fileName;
 
+
                 Image::make($file)
                     ->fit(700, 500, function ($constraint) {
                         $constraint->aspectRatio();
@@ -77,31 +78,32 @@ class Update
             }
 
             // Handle video thumbnail image upload
+
             if (request()->hasFile('video_thumbnail_image')) {
                 if ($aboutUs->video_thumbnail_image && file_exists(public_path($aboutUs->video_thumbnail_image))) {
                     unlink(public_path($aboutUs->video_thumbnail_image));
                 }
 
-                $videoFile = request()->file('video_thumbnail_image');
-                $videoFileName = time() . '_meta_' . $videoFile->getClientOriginalName();
-                $videoFilePath = 'upload/dynamic_pages/' . $videoFileName;
+                $file = request()->file('video_thumbnail_image');
+                $fileName = time() . '_' . $file->getClientOriginalName();
+                $filePath = 'upload/about_us/' . $fileName;
 
-                Image::make($videoFile)
+
+                Image::make($file)
                     ->fit(700, 500, function ($constraint) {
                         $constraint->aspectRatio();
                         $constraint->upsize();
                     })
-                    ->save(public_path($videoFilePath), 90);
+                    ->save(public_path($filePath), 90);
 
-                $aboutUs->video_thumbnail_image = $videoFilePath;
+                $aboutUs->video_thumbnail_image = $filePath;
             }
 
             $aboutUs->video_url = request()->video_url;
             $aboutUs->quote_text = request()->quote_text;
             $aboutUs->button_text = request()->button_text;
             $aboutUs->button_url = request()->button_url;
-            $aboutUs->slug = request()->title . '-' . rand(10000, 99999);
-            $aboutUs->status = request()->status ?? 1;
+            $aboutUs->creator = Auth::user()->id ?? null;
             $aboutUs->save();
 
             return api_response(

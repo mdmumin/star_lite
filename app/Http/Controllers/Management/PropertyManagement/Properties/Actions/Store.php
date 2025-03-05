@@ -18,6 +18,11 @@ class Store
 
     public static function execute($model)
     {
+
+
+        // dd(request()->property_categories_id);
+
+
      
         $validator = Validator::make(request()->all(), [
             'title' => 'required|string|max:255',
@@ -82,13 +87,13 @@ class Store
             $property->slug = request()->title . '-' . rand(90000, 100000);
             $property->status = request()->status ?? 1;
             $property->save();
-
             // Save property category property
             // $propertyCategoryProperty = new PropertiesPropertyCategorie();
             // $propertyCategoryProperty->properties_id = $property->id;
             // $propertyCategoryProperty->property_categories_id = request()->property_categories_id;
             // $propertyCategoryProperty->save();
-            $property->property_category()->attach(request()->property_categories_id);
+            $property_categories_id= explode(',',request()->property_categories_id);
+            $property->property_category()->attach($property_categories_id);
 
 
             // Save property tag property
@@ -96,20 +101,20 @@ class Store
             // $propertyTagProperty->properties_id = $property->id;
             // $propertyTagProperty->property_tags_id = request()->property_tags_id;
             // $propertyTagProperty->save();
-
-            $property->property_tag()->attach(request()->property_tags_id);
+            $property_tags_id= explode(',',request()->property_tags_id);
+            $property->property_tag()->attach($property_tags_id);
 
             // Save property label property
             // $propertyLabelProperty = new PropertiesPropertyLabel();
             // $propertyLabelProperty->properties_id = $property->id;
             // $propertyLabelProperty->property_labels_id = request()->property_labels_id;
             // $propertyLabelProperty->save();
+            // $property->property_label()->attach(request()->property_labels_id);
 
-            $property->property_label()->attach(request()->property_labels_id);
-
+            $property_labels_id= explode(',',request()->property_labels_id);
+            $property->property_label()->attach($property_labels_id);
 
             DB::commit();
-
             return api_response(
                 data: $property,
                 code: 201,

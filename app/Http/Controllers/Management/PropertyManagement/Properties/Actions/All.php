@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Management\PropertyManagement\Properties\Actions;
 class All{
     public static function execute($model)
     {
-        $paginate = (int) request()->paginate ?? 10;
+        $paginate = request()->paginate ?? 10;
         $orderBy = request()->orderBy ?? 'id';
         $orderByType = request()->orderByType ?? 'DESC';
         $with = ['property_category','property_tag','property_label'];

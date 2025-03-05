@@ -15,7 +15,7 @@ class Store
         $validator = Validator::make(request()->all(), [
             'name' => ['required'],
             'designation' => ['nullable'],
-            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
+            'image' => ['nullable'],
             'contact_number' => ['nullable'],
             'email' => ['required', 'email', 'max:100', 'unique:teams,email'],
             'short_description' => ['nullable'],
@@ -25,7 +25,6 @@ class Store
             'instagram' => ['nullable'],
             'whatsapp' => ['nullable'],
             'telegram' => ['nullable'],
-            'status' => ['nullable', 'integer', 'in:0,1'],
         ], []);
 
         if ($validator->fails()) {

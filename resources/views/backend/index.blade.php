@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/bootstrap.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/responsive.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/select2.css') }}"/>
 
     @vite(['resources/js/backend/app.js'])
 

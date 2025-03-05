@@ -30,13 +30,11 @@
                             </div>
                             
                             <div class="form-group">
-                                <label for="full_description">Full Description</label>
-                                <div class="mt-1 mb-3">  
-                                    <!-- <SummernoteEditor v-model="fullDescription" />   -->
-                                    <textarea class="form-control" name="full_description"></textarea>
+                                <label for="full_description">Description</label>
+                                <div class="mt-1 mb-3">
+                                    <SummernoteEditor name="full_description"/>
                                 </div>
                             </div>
-                            
                             <div class="form-group">
                                 <label for="cover_image">Cover Image</label>
                                 <div class="mt-1 mb-3">
@@ -136,34 +134,35 @@
                             <div class="form-group">
                                 <label for="property_categories_id">Property Category ID</label>
                                 <div class="mt-1 mb-3">
-                                    <select class="form-control" multiple  name="property_categories_id[]">
-                                    <option value="">Selet-- Property Category</option>
-                                    <option v-for="item in category?.data" :key="item.id" :value=" item.id ">
-                                        {{ item.title }}
-                                    </option>    
-                                </select>
-                                </div>
+                                    <select2
+                                        :data="categories"
+                                        :value="selected"
+                                        @update="updateCategories"
+                                        :multiple="true"
+                                    ></select2>
+                            </div>
+                                
                             </div>
                             <div class="form-group">
                                 <label for="property_tags_id">Property Tag ID</label>
                                 <div class="mt-1 mb-3">
-                                    <select class="form-control" multiple name="property_tags_id[]">
-                                    <option value="">Selet-- Property Tag</option>
-                                    <option v-for="item in tag?.data" :key="item.id" :value=" item.id ">
-                                        {{ item.title }}
-                                    </option>    
-                                </select>
+                                    <select2
+                                        :data="tag"
+                                        :value="selectedTag"
+                                        @update="updateTags"
+                                        :multiple="true"
+                                    ></select2>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="property_labels_id">Property Label ID</label>
                                 <div class="mt-1 mb-3">
-                                    <select class="form-control" multiple name="property_labels_id[]">
-                                    <option value="">Selet-- Property Label</option>
-                                    <option v-for="item in label?.data" :key="item.id" :value=" item.id ">
-                                        {{ item.title }}
-                                    </option>    
-                                </select>
+                                    <select2
+                                        :data="label"
+                                        :value="selectedLabel"
+                                        @update="updateLabels"
+                                        :multiple="true"
+                                    ></select2>
                                 </div>
                             </div>
                         </div>
@@ -183,18 +182,27 @@ import config from './config/index.js';
 import PageTitle from './components/PageTitle.vue';
 import axios from 'axios';
 import SummernoteEditor from '../../../layout/components/SummernoteEditor.vue';
+import { Select2 } from "select2-vue-component";
+
 export default {
     components: {
         PageTitle,
         SummernoteEditor,
+        Select2,
     },
     data() {
         return {
             config,
-            previewImage: null, // ✅ Added previewImage variable
-            category: [],
+            previewImage: null,
+            value: [],
+
+            categories: [],
             tag: [],
             label: [],
+            
+            selected: [],
+            selectedTag: [],
+            selectedLabel: [],
         };
     },
     created: async function(){
@@ -206,6 +214,10 @@ export default {
         from_submit: async function(){
             let target = event.target;
             let from_data = new FormData(target);
+            from_data.append('property_categories_id', this.selected.join(','));
+            from_data.append('property_tags_id', this.selectedTag.join(','));
+            from_data.append('property_labels_id', this.selectedLabel.join(','));
+
             try {
                 await axios.post('/api/v1/properties/store', from_data);
                 alert("Property Created successfully!");
@@ -215,30 +227,35 @@ export default {
                 alert("Error Created the properties.");
             }
         },
-        // ✅ Image Preview Function
         handleFileUpload(event) {
             const file = event.target.files[0];
             if (file) {
                 this.previewImage = URL.createObjectURL(file);
             }
         },
+        updateCategories(value) {
+            this.selected = value;
+        },
+        updateTags(value) {
+            this.selectedTag = value;
+        },
+        updateLabels(value) {
+            this.selectedLabel = value;
+        },
         get_data_category: async function(){
-            let res = await axios.get('/api/v1/property/category/all');
-            this.category = res.data.data;
-            // console.log("created", this.category);
-            
+            let res = await axios.get('/api/v1/property/category/alldata?get_all=true');
+            this.categories = res.data;
+            this.selected = this.value = [];
         },
         get_data_tag: async function(){
-            let res = await axios.get('/api/v1/property/tag/all');
+            let res = await axios.get('/api/v1/property/tag/all?get_all=true');
             this.tag = res.data.data;
-            // console.log("created", this.tag);
-            
+            this.selectedTag = this.value = [];
         },
         get_data_label: async function(){
-            let res = await axios.get('/api/v1/property/tag/all');
+            let res = await axios.get('/api/v1/property/label/all?get_all=true');
             this.label = res.data.data;
-            // console.log("created", this.label);
-            
+            this.selectedLabel = this.value = [];
         },
     }
 };

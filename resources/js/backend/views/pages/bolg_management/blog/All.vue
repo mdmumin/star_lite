@@ -8,13 +8,13 @@
                 >
                     <div>
                         <h4 class="bn" style="font-size: 22px !important">
-                            All User
+                            All Bolg
                         </h4>
                     </div>
                     <div class="d-flex justify-content-between">
                         <div class="ps-3 d-flex gap-2">
                             <router-link :to="{ name: 'blogCreate' }" class="router-link-active btn btn-info btn-sm">
-                                Back  
+                                Create  
                             </router-link>
                         </div>
                     </div>

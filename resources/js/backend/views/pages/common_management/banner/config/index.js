@@ -1,4 +1,4 @@
-let prefix = 'blog';
+let prefix = '';
 
 let config = {
     all_page_title: prefix + " Managemnet",

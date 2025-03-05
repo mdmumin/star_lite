@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Management\PropertyManagement\Properties\Actions;
 
+use App\Models\Property\PropertiesPropertyCategorie;
+use App\Models\Property\PropertiesPropertyLabel;
+use App\Models\Property\PropertiesPropertyTag;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -53,9 +56,10 @@ class Update
             );
         }
 
-        DB::beginTransaction();
-
+        
         try {
+            DB::beginTransaction();
+            
             $property->title = request()->input('title');
             $property->short_description = request()->input('short_description');
             $property->full_description = request()->input('full_description');
@@ -95,27 +99,28 @@ class Update
             $property->creator = Auth::user()->id ?? null;
             $property->status = request()->status ?? 1;
             
+            // Sync property categories
+            if (request()->has('property_categories_id')) {
+                $property_categories_id = explode(',', request()->property_categories_id);
+                $property->property_category()->sync($property_categories_id);
+            }
 
+            // Sync property tags
+            if (request()->has('property_tags_id')) {
+                $property_tags_id = explode(',', request()->property_tags_id);
+                $property->property_tag()->sync($property_tags_id);
+            }
 
-            $property->property_category()->attach(request()->property_categories_id);
+            // Sync property labels
+            if (request()->has('property_labels_id')) {
+                $property_labels_id = explode(',', request()->property_labels_id);
+                $property->property_label()->sync($property_labels_id);
+            }
 
-            // Save property tag property
-            // $propertyTagProperty = new PropertiesPropertyTag();
-            // $propertyTagProperty->properties_id = $property->id;
-            // $propertyTagProperty->property_tags_id = request()->property_tags_id;
-            // $propertyTagProperty->save();
-
-            $property->property_tag()->attach(request()->property_tags_id);
-
-            // Save property label property
-            // $propertyLabelProperty = new PropertiesPropertyLabel();
-            // $propertyLabelProperty->properties_id = $property->id;
-            // $propertyLabelProperty->property_labels_id = request()->property_labels_id;
-            // $propertyLabelProperty->save();
-
-            $property->property_label()->attach(request()->property_labels_id);
 
             $property->update();
+
+
 
             DB::commit();
 
@@ -125,7 +130,7 @@ class Update
             return api_response(
                 data: [],
                 code: 500,
-                message: 'Failed to create property',
+                message: 'Failed to Update property',
                 errors: $e->getMessage(),
             );
         }

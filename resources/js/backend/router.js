@@ -16,6 +16,10 @@ import blog_view_management_router from "./views/pages/bolg_management/blog_view
 // common_management
 import common_banner_management_router from "./views/pages/common_management/banner/config/router.js";
 import common_team_management_router from "./views/pages/common_management/team/config/router.js";
+import common_testimonial_management_router from "./views/pages/common_management/testimonial/config/router.js";
+import common_about_us_management_router from "./views/pages/common_management/about_us/config/router.js";
+import common_at_a_glance_management_router from "./views/pages/common_management/at_a_glance/config/router.js";
+import common_mission_vission_management_router from "./views/pages/common_management/mission_vission/config/router.js";
 
 // Property management
 import property_management_property_router from "./views/pages/property_management/property/config/router.js";
@@ -45,6 +49,10 @@ export const routes = [
     //common_management
     common_banner_management_router,
     common_team_management_router,
+    common_testimonial_management_router,
+    common_about_us_management_router,
+    common_at_a_glance_management_router,
+    common_mission_vission_management_router,
 
     //property management
     property_management_property_router,

@@ -14,8 +14,6 @@ const app = createApp({});
 import AppComponent from './views/layout/AppComponent.vue';
 
 
-
-
 app.component('app-component', AppComponent);
 
 app.use(backend_vue_routes);

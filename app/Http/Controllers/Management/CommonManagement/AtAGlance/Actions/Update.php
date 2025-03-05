@@ -45,8 +45,7 @@ class Update
             $glance->title = request()->title;
             $glance->icon = request()->icon;
             $glance->amount = request()->amount;
-            $glance->creator = $glance->creator ?? Auth::user()->id;
-            $glance->status = request()->status ?? 1;
+            $glance->creator = Auth::user()->id ?? null;
             $glance->slug = request()->title . '-' . rand(10000, 99999);
             $glance->save();
 

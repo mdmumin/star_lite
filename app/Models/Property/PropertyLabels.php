@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class PropertyLabels extends Model
 {
     protected $guarded = [];
+    protected $appends = [
+        'label',
+        'value',
+    ];
     protected static function booted()
     {
         static::created(function ($data) {
@@ -35,4 +39,14 @@ class PropertyLabels extends Model
     public function user_creator(){
         return $this->belongsTo(User::class,'creator','id');
     }
+
+    public function getValueAttribute()
+    {
+        return $this->id;
+    }
+    public function getLabelAttribute()
+    {
+        return $this->title;
+    }
+    
 }

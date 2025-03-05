@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Models\BlogManagement\BlogCategories;
+use App\Models\Property\PropertiesPropertyCategorie;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -10,6 +12,11 @@ Route::get('/user', function (Request $request) {
 Route::get('/user', function () {
     // ...
 })->middleware('auth:api');
+
+Route::get('blog-cats', function(){
+    return BlogCategories::get();
+});
+
 
 Route::prefix('v1')
     ->middleware([
@@ -347,6 +354,7 @@ Route::prefix('v1')
         Route::prefix('property/category')
             ->group(function () {
                 Route::get('/all', 'Management\PropertyManagement\PropertyCategory\Controller@all');
+                Route::get('/alldata', 'Management\PropertyManagement\PropertyCategory\Controller@alldata');
                 Route::post('/store', 'Management\PropertyManagement\PropertyCategory\Controller@store');
                 Route::post('/update', 'Management\PropertyManagement\PropertyCategory\Controller@update');
                 Route::post('/soft-delete', 'Management\PropertyManagement\PropertyCategory\Controller@soft_delete');

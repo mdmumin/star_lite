@@ -26,9 +26,8 @@ class Update
 
             $rules = [
                 'type' => 'required',
-                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+                // 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
                 'description' => 'nullable',
-                'status' => 'nullable|in:0,1'
             ];
 
             $validator = Validator::make(request()->all(), $rules);
@@ -64,9 +63,8 @@ class Update
             }
 
             $mission_vission->description = request()->description;
-            $mission_vission->creator = $mission_vission->creator ?? Auth::user()->id;
-            $mission_vission->status = request()->status ?? 1;
-            $mission_vission->slug = request()->name . '-' . rand(10000, 99999);
+            $mission_vission->creator = Auth::user()->id ?? null;
+            $mission_vission->slug = request()->type . '-' . rand(10000, 99999);
 
             $mission_vission->save();
 

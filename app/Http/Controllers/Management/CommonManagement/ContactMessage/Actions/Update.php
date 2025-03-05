@@ -36,7 +36,6 @@ class Update
                 'is_replide' => 'nullable',
                 'ip' => 'nullable',
                 'location' => 'nullable',
-                'status' => 'nullable|in:0,1',
             ];
 
             // Validate the request data
@@ -63,9 +62,7 @@ class Update
             $contactMessage->is_replied = false;
             $contactMessage->ip = request()->ip();
             $contactMessage->location = request()->location;
-            $contactMessage->status = request()->input('status', 1);
-            $contactMessage->creator =  Auth::user()->id;
-            $contactMessage->slug = request()->name . '-' . rand(10000, 99999);
+            $contactMessage->creator =  Auth::user()->id ?? null;
             $contactMessage->save();
 
             return api_response(

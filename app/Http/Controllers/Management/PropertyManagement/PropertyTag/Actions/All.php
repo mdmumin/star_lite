@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Management\PropertyManagement\PropertyTag\Actions
 class All{
     public static function execute($model)
     {
-        $paginate = (int) request()->paginate ?? 10;
+        $paginate = request()->paginate ?? 3;
         $orderBy = request()->orderBy ?? 'id';
         $orderByType = request()->orderByType ?? 'DESC';
         $with = ['user_creator'];
@@ -28,7 +28,11 @@ class All{
             });
         }
 
-        $data = $query->paginate($paginate);
+        if (request()->has('get_all') && request()->get_all == "true") {
+            $data = $query->get();
+        } else {
+            $data = $query->paginate($paginate);
+        }
 
         return api_response(data: $data, code: 200, message: 'data fetched', errors: []);;
     }

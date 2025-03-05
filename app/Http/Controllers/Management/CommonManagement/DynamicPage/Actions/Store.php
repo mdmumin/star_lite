@@ -48,8 +48,8 @@ class Store
         $page->meta_keywords = request()->input('meta_keywords');
         $page->page_css = request()->input('page_css');
         $page->page_script = request()->input('page_script');
-        $page->status = request()->input('status', 1);
-        $page->creator =  Auth::user()->id;
+        $page->creator = Auth::user()->id ?? null;
+        $page->status = request()->status ?? 1;
         $page->slug = request()->title . '-' . rand(10000, 99999);
 
         if (request()->hasFile('image')) {

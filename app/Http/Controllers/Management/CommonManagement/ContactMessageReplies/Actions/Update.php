@@ -48,9 +48,7 @@ class Update
             $contactMessage->subject = request()->subject;
             $contactMessage->message = request()->message;
             $contactMessage->is_seen = false;
-            $contactMessage->status = request()->input('status', 1);
-            $contactMessage->creator =  Auth::user()->id;
-            $contactMessage->slug = request()->name . '-' . rand(10000, 99999);
+            $contactMessage->creator =  Auth::user()->id ?? null;
             $contactMessage->save();
 
             return api_response(

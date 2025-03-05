@@ -12,9 +12,9 @@ class Update
     {
         try {
             // Find the page by ID
-            $aboutUs = $model::find(request()->id);
+            $ourGoal = $model::find(request()->id);
 
-            if (!$aboutUs) {
+            if (!$ourGoal) {
                 return api_response(
                     data: [],
                     code: 404,
@@ -26,11 +26,9 @@ class Update
             // Validation rules
             $rules = [
                 'title' => 'nullable',
-                'icon' => 'nullable',
                 'sub_title' => 'nullable',
                 'short_description' => 'nullable',
                 'description' => 'nullable',
-                'status' => 'nullable|in:0,1',
             ];
 
             // Validate the request data
@@ -45,18 +43,17 @@ class Update
                 );
             }
 
-            // Update aboutUs attributes
-            $aboutUs->title = request()->title;
-            $aboutUs->icon = request()->icon;
-            $aboutUs->sub_title = request()->sub_title;
-            $aboutUs->short_description = request()->short_description;
-            $aboutUs->description = request()->description;
-            $aboutUs->slug = request()->title . '-' . rand(10000, 99999);
-            $aboutUs->status = request()->status ?? 1;
-            $aboutUs->save();
+            // Update ourGoal attributes
+            $ourGoal->title = request()->title;
+            $ourGoal->icon = request()->icon;
+            $ourGoal->sub_title = request()->sub_title;
+            $ourGoal->short_description = request()->short_description;
+            $ourGoal->description = request()->description;
+            $ourGoal->creator = Auth::user()->id ?? null;
+            $ourGoal->save();
 
             return api_response(
-                data: $aboutUs,
+                data: $ourGoal,
                 code: 200,
                 message: 'A bout Us updated successfully',
                 errors: [],

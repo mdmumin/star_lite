@@ -27,9 +27,7 @@ class Update
             $rules = [
                 'name' => 'required',
                 'designation' => 'nullable',
-                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', 
                 'comment' => 'nullable',
-                'status' => 'nullable|in:0,1',
             ];
 
             $validator = Validator::make(request()->all(), $rules);
@@ -67,7 +65,7 @@ class Update
             }
 
             $testimonial->comment = request()->comment;
-            $testimonial->creator = $testimonial->creator ?? Auth::user()->id;
+            $testimonial->creator = Auth::user()->id ?? null;
             $testimonial->status = request()->status ?? 1;
             $testimonial->slug = request()->name . '-' . rand(10000, 99999);
 

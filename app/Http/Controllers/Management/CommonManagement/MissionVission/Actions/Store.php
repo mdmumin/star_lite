@@ -16,7 +16,6 @@ class Store
             'type' => 'nullable',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'description' => 'nullable',
-            'status' => 'nullable|in:0,1'
         ], []);
 
         if ($validator->fails()) {
@@ -44,7 +43,7 @@ class Store
         }
 
         $mission_vission->description = request()->description;
-        $mission_vission->creator = Auth::user()->id;
+        $mission_vission->creator = Auth::user()->id ?? null;
         $mission_vission->status = request()->status ?? 1;
         $mission_vission->slug = request()->type . '-' . rand(90000, 100000);
         $mission_vission->save();

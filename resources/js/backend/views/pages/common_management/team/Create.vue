@@ -66,7 +66,7 @@
 
                             <!-- Image Upload -->
                             <div class="form-group">
-                                <label for="image">Cover Image</label>
+                                <label for="image">Image</label>
                                 <div class="mt-1 mb-3">
                                     <input class="form-control" name="image" type="file" @change="handleFileUpload"/>
                                 </div>
@@ -132,7 +132,7 @@ export default {
                 alert("Team created successfully!");
                 target.reset();
             } catch (error) {
-                console.error("Error creating blogTag:", error);
+                console.error("Error creating team:", error);
                 alert("Error creating the Team. Please try again.");
             }
         },

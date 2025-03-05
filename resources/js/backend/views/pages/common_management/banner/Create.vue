@@ -82,7 +82,7 @@ export default {
                 alert("Banner created successfully!");
                 target.reset();
             } catch (error) {
-                console.error("Error creating blogTag:", error);
+                console.error("Error creating banner:", error);
                 alert("Error creating the Banner. Please try again.");
             }
         }

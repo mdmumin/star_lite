@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Management\CommonManagement\AtAGlance\Actions;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use Intervention\Image\Facades\Image;
-
 
 class Store
 {
@@ -14,9 +12,7 @@ class Store
     {
         $validator = Validator::make(request()->all(), [
             'title' => 'nullable',
-            'icon' => 'nullable',
             'amount' => 'nullable',
-            'status' => 'nullable|in:0,1'
         ], []);
 
         if ($validator->fails()) {
@@ -32,7 +28,7 @@ class Store
         $glance->title = request()->title;
         $glance->icon = request()->icon;
         $glance->amount = request()->amount;
-        $glance->creator = Auth::user()->id;
+        $glance->creator = Auth::user()->id ?? null;
         $glance->status = request()->status ?? 1;
         $glance->slug = request()->title . '-' . rand(90000, 100000);
         $glance->save();

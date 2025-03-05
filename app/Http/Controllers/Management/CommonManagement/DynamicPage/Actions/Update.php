@@ -63,8 +63,7 @@ class Update
             $page->meta_keywords = request()->meta_keywords;
             $page->page_css = request()->page_css;
             $page->page_script = request()->page_script;
-            $page->status = request()->status ?? 1;
-
+            $page->creator = Auth::user()->id ?? null;
             // Handle image upload
             if (request()->hasFile('image')) {
                 if ($page->image && file_exists(public_path($page->image))) {

@@ -24,7 +24,6 @@ class Store
             'is_replide' => 'nullable',
             'ip' => 'nullable',
             'location' => 'nullable',
-            'status' => 'nullable|in:0,1',
         ], []);
 
         if ($validator->fails()) {
@@ -49,7 +48,7 @@ class Store
         $contactMessage->ip = request()->ip();
         $contactMessage->location = request()->location;
         $contactMessage->status = request()->input('status', 1);
-        $contactMessage->creator =  Auth::user()->id;
+        $contactMessage->creator =  Auth::user()->id ?? null;
         $contactMessage->slug = request()->name . '-' . rand(10000, 99999);
         $contactMessage->save();
 

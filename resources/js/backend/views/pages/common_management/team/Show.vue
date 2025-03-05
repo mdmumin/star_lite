@@ -3,59 +3,72 @@
         <PageTitle :page_title="config.show_page_title"/>
         <div class="card">
             <div class="card-header py-3 position-sticky d-flex justify-content-between align-items-center">
-                <h6>Blog Details</h6>
-                <router-link :to="{ name: 'blogCategoryBlogAll' }" class="router-link-active btn btn-info btn-sm">Back</router-link>
+                <h6>Team Details</h6>
+                <router-link :to="{ name: 'teamAll' }" class="router-link-active btn btn-info btn-sm">Back</router-link>
             </div>
             <div class="card-body">
-                <div v-if="blog">
+                <div v-if="team">
                     <table class="table table-bordered">
                         <tbody>
                             <tr>
-                                <th style="width: 200px;">Title</th>
-                                <td>{{ blog.title }}</td>
+                                <th style="width: 200px;">Name</th>
+                                <td>{{ team.name }}</td>
                             </tr>
                             <tr>
-                                <th>Short Description</th>
-                                <td>{{ blog.short_description }}</td>
+                                <th style="width: 200px;">Designation</th>
+                                <td>{{ team.designation }}</td>
                             </tr>
                             <tr>
-                                <th>Full Description</th>
-                                <td>{{ blog.full_description }}</td>
-                            </tr>
-                            <tr>
-                                <th>Cover Image</th>
+                                <th>Image</th>
                                 <td>
-                                    <img v-if="blog.cover_image" :src="blog.cover_image" alt="Cover Image" class="img-thumbnail" style="max-width: 150px;">
+                                    <img v-if="team.image" :src="team.image" alt="Image" class="img-thumbnail" style="max-width: 150px;">
                                     <span v-else>No image uploaded</span>
                                 </td>
                             </tr>
                             <tr>
-                                <th>Published</th>
-                                <td>
-                                    <span v-if="blog.is_published === 1" class="badge bg-success">Yes</span>
-                                    <span v-else class="badge bg-danger">No</span>
-                                </td>
+                                <th style="width: 200px;">Contact number</th>
+                                <td>{{ team.contact_number }}</td>
                             </tr>
                             <tr>
-                                <th>Publish Date</th>
-                                <td>{{ blog.publish_date }}</td>
+                                <th style="width: 200px;">email </th>
+                                <td>{{ team.email  }}</td>
                             </tr>
                             <tr>
-                                <th>SEO Title</th>
-                                <td>{{ blog.seo_title }}</td>
+                                <th>Short Description</th>
+                                <td>{{ team.short_description }}</td>
                             </tr>
                             <tr>
-                                <th>SEO Keywords</th>
-                                <td>{{ blog.seo_keyword }}</td>
+                                <th>Description</th>
+                                <td>{{ team.description }}</td>
                             </tr>
                             <tr>
-                                <th>SEO Description</th>
-                                <td>{{ blog.seo_description }}</td>
+                                <th>facebook </th>
+                                <td>{{ team.facebook }}</td>
+                            </tr>
+                            <tr>
+                                <th>Linkedin</th>
+                                <td>{{ team.linkedin }}</td>
+                            </tr>
+                            <tr>
+                                <th>Instagram</th>
+                                <td>{{ team.instagram }}</td>
+                            </tr>
+                            <tr>
+                                <th>Telegram</th>
+                                <td>{{ team.telegram }}</td>
+                            </tr>
+                            <tr>
+                                <th>Whatsapp</th>
+                                <td>{{ team.whatsapp }}</td>
+                            </tr>
+                            <tr>
+                                <th>Creator</th>
+                                <td>{{ team.user_creator?.name }}</td>
                             </tr>
                             <tr>
                                 <th>Status</th>
                                 <td>
-                                    <span v-if="blog.status === 1" class="badge bg-success">Active</span>
+                                    <span v-if="team.status === 1" class="badge bg-success">Active</span>
                                     <span v-else class="badge bg-danger">Inactive</span>
                                 </td>
                             </tr>
@@ -63,7 +76,7 @@
                     </table>
                 </div>
                 <div v-else>
-                    <p>Loading blog details...</p>
+                    <p>Loading team details...</p>
                 </div>
             </div>
         </div>
@@ -81,7 +94,7 @@ export default {
     },
     data: () => ({
         config,
-        blog: null,
+        team: null,
     }),
     created() {
         this.getBlogDetails();
@@ -89,11 +102,11 @@ export default {
     methods: {
         getBlogDetails: async function() {
             try {
-                let response = await axios.get(`/api/v1/blog/${this.$route.params.id}`);
-                this.blog = response.data.data;
+                let response = await axios.get(`/api/v1/team/${this.$route.params.id}`);
+                this.team = response.data.data;
             } catch (error) {
-                console.error("Error fetching blog details:", error);
-                alert("Failed to load blog details.");
+                console.error("Error fetching team details:", error);
+                alert("Failed to load team details.");
             }
         },
     },

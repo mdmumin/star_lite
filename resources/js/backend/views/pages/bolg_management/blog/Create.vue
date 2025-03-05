@@ -8,7 +8,7 @@
                         class="card-header py-3 position-sticky d-flex justify-content-between align-items-center"
                     >
                         <h6>
-                            Create User
+                            Create Blog
                         </h6>
                         <router-link :to="{ name: 'blogAll' }" class="router-link-active btn btn-info btn-sm">Back</router-link>
                     </div>

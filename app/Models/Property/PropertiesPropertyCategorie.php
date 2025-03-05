@@ -35,5 +35,6 @@ class PropertiesPropertyCategorie extends Model
     public function property_category(){
         return $this->belongsTo(PropertyCategories::class,'property_category_id','id');
     }
+
     
 }
